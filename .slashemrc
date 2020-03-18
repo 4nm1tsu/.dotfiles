@@ -1,0 +1,24 @@
+OPTIONS=color
+#OPTIONS=!autopickup
+OPTIONS=time
+OPTIONS=lit_corridor
+OPTIONS=DECgraphics
+
+OPTIONS=hilite_pet
+OPTIONS=pickup_types:$
+OPTIONS=showdmg
+OPTIONS=menucolors
+OPTIONS=invweight
+OPTIONS=showweight
+
+MENUCOLOR="blessed"=cyan&bold
+MENUCOLOR="cursed"=orange&bold
+MENUCOLOR="uncursed"=green
+
+MENUCOLOR="loadstone\|wand \(of\|called\) cancellation"=underline
+MENUCOLOR="Amulet of Yendor named"=magenta                           # color only the real Amulet
+MENUCOLOR="gold piece"=yellow
+
+MENUCOLOR="[a-zA-Z] - [a-zA-Z ]+[ ]+[0-9]+\*[ ]+[a-z]+[ ]+[0-9]+%"=magenta  # forgotten spell
+# This version will work on NAO.
+# MENUCOLOR="[a-zA-Z ]+[ ]+[0-9]+\*[ ]+[a-z]+[ ]+[0-9]+%"=magenta  # forgotten spell

@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/hibiki/tmp/laravel/estimator/resources/views/estimator'
+let g:netrw_dirhist_2='/Users/hibiki/tmp/laravel/estimator/app/Http/Controllers'
+let g:netrw_dirhist_3='/Users/hibiki/tmp/laravel/estimator/app/Http'
+let g:netrw_dirhist_4='/Users/hibiki/tmp/laravel/estimator/app/Http/Controllers'
+let g:netrw_dirhist_5='/Users/hibiki/tmp'
