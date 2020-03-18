@@ -1,3 +1,8 @@
 [alias]
     tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 
+[include]
+	path = ~/.gitconfig_shared
+[user]
+	email = 4617016@ed.tus.ac.jp
+	name = dhaiibfiukkiu

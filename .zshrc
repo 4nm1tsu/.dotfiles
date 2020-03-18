@@ -18,6 +18,8 @@ alias ps='procs'
 alias grep='rg'
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/anaconda3/bin:$PATH
 
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
