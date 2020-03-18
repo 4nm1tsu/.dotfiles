@@ -6,16 +6,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### added by myself
-#alias ll='ls -al'
-#alias la='ls -a'
-#alias ls='ls -G'
-alias ll='exa -labgh --icons'
-alias la='exa -abgh --icons'
-alias ls='exa -bgh --icons'
-alias cat='bat'
-alias find='fd'
-alias ps='procs'
-alias grep='rg'
+if type "exa" > /dev/null 2>&1; then
+    alias ll='exa -labgh --icons'
+    alias la='exa -abgh --icons'
+    alias ls='exa -bgh --icons'
+fi
+if type "bat" > /dev/null 2>&1; then
+    alias cat='bat'
+fi
+if type "fd" > /dev/null 2>&1; then
+    alias find='fd'
+fi
+if type "procs" > /dev/null 2>&1; then
+    alias ps='procs'
+fi
+if type "rg" > /dev/null 2>&1; then
+    alias grep='rg'
+fi
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
