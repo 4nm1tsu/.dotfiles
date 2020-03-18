@@ -20,15 +20,21 @@ alias grep='rg'
 export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/nh/install/games:$PATH
+export TERM='xterm-256color'
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:$PATH"
-eval "$(pyenv init -)"
+if type "pyenv" > /dev/null 2>&1; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
 # rbenv PATH
+if type "rbenv" > /dev/null 2>&1; then
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+fi
 
 #openssl for compiler
 export PATH=/usr/local/opt/openssl/bin:$PATH
