@@ -111,6 +111,11 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gorodinskiy/vim-coloresque'
+NeoBundle 'prabirshrestha/async.vim'
+NeoBundle 'prabirshrestha/vim-lsp'
+NeoBundle 'mattn/vim-lsp-settings'
+NeoBundle 'prabirshrestha/asyncomplete.vim'
+NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
 "colorscheme
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'popkirby/lightline-iceberg'
@@ -168,41 +173,41 @@ set clipboard+=unnamed
 set backspace=indent,eol,start
 
 "Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_php_checkers = ['phpcs']
-let g:syntastic_php_phpcs_args='--standard=Symfony'
-let g:syntastic_c_compiler="gcc"
-let g:syntastic_c_compiler_options="-Wall -Wextra -Werror"
-let g:syntastic_cpp_compiler="g++"
-let g:syntastic_cpp_compiler_options="-std=c++14"
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '❌'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '⚠️'
-
-augroup SyntasticConfig
-  au!
-  au FileType javascript call s:syntastic_javascript_settings()
-augroup END
-
-function! s:syntastic_javascript_settings()
-  if executable('npm')
-    let bin_path = systemlist('npm bin')[0] . '/eslint'
-    if executable(bin_path)
-      let b:syntastic_javascript_eslint_exec = bin_path
-    endif
-  endif
-endfunction
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_php_checkers = ['phpcs']
+"let g:syntastic_php_phpcs_args='--standard=Symfony'
+"let g:syntastic_c_compiler="gcc"
+"let g:syntastic_c_compiler_options="-Wall -Wextra -Werror"
+"let g:syntastic_cpp_compiler="g++"
+"let g:syntastic_cpp_compiler_options="-std=c++14"
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_error_symbol = '❌'
+"let g:syntastic_style_error_symbol = '❌'
+"let g:syntastic_warning_symbol = '⚠️'
+"let g:syntastic_style_warning_symbol = '⚠️'
+"
+"augroup SyntasticConfig
+"  au!
+"  au FileType javascript call s:syntastic_javascript_settings()
+"augroup END
+"
+"function! s:syntastic_javascript_settings()
+"  if executable('npm')
+"    let bin_path = systemlist('npm bin')[0] . '/eslint'
+"    if executable(bin_path)
+"      let b:syntastic_javascript_eslint_exec = bin_path
+"    endif
+"  endif
+"endfunction
 "Syntastic
 
 "ale
@@ -227,3 +232,17 @@ let g:ale_php_phpstan_level = 4
 "エラー間の移動
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"ale
+
+"vim-lsp
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_error = {'text': ''}
+let g:lsp_signs_warning = {'text': ''}
+let g:lsp_signs_hint = {'text': ''}
+nnoremap <silent> ]e  :LspNextError<CR>
+nnoremap <silent> [e  :LspPreviousError<CR>
+nmap <silent> ]dd :LspDefinition <CR>
+nmap <silent> ]ds :split \| :LspDefinition <CR>
+nmap <silent> ]dv :vsplit \| :LspDefinition <CR>
+nmap <silent> <C-h> :LspHover <CR>
