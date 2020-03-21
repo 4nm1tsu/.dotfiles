@@ -225,7 +225,7 @@ let g:ale_sign_style_warning = ''
 let g:ale_php_phpcs_standard = 'Symfony'
 let g:ale_cpp_clang_options = "-std=c++14 -Wall"
 let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
-"eslintは特に設定しなくてもローカルのものが動く
+"eslint,phpcsは特に設定しなくてもローカルのものが動く
 ".gitが存在すればphpstanはローカルで動く
 let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo phpstan; fi; fi')
 let g:ale_php_phpstan_level = 4
