@@ -111,6 +111,9 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gorodinskiy/vim-coloresque'
+"colorscheme
+NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'popkirby/lightline-iceberg'
 
 
 "----------------------------------------------------------
@@ -211,6 +214,9 @@ endfunction
 "\}
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+let g:ale_sign_info = ''
+let g:ale_sign_style_error = ''
+let g:ale_sign_style_warning = ''
 let g:ale_php_phpcs_standard = 'Symfony'
 let g:ale_cpp_clang_options = "-std=c++14 -Wall"
 let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
