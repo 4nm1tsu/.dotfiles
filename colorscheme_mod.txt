@@ -1,0 +1,5 @@
+hi! LspErrorText ctermbg=235 ctermfg=203 guibg=#1e2132 guifg=#e27878
+hi! LspWarningText ctermbg=235 ctermfg=216 guibg=#1e2132 guifg=#e2a478
+hi! LspInformationText ctermbg=235 ctermfg=234 guibg=#1e2132 guifg=#d4d5db
+hi! LspHintText ctermbg=235 ctermfg=110 guibg=#1e2132 guifg=#84a0c6
+
