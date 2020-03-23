@@ -24,7 +24,7 @@ if type "rg" > /dev/null 2>&1; then
     alias grep='rg'
 fi
 
-#export PATH=$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/nh/install/games:$PATH
@@ -75,3 +75,6 @@ zplugin load zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#vim keymap
+bindkey -v
