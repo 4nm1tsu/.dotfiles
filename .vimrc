@@ -6,7 +6,7 @@ set shortmess+=I
 
 "みため
 syntax on
-colorscheme iceberg
+
 
 "nomalに戻る時の遅延をなくす
 set ttimeoutlen=50
@@ -124,6 +124,8 @@ NeoBundle 'popkirby/lightline-iceberg'
 "----------------------------------------------------------
 call neobundle#end()
 
+colorscheme iceberg
+
 " ファイルタイプ別のVimプラグイン/インデントを有効にする
 filetype plugin indent on
 
@@ -131,9 +133,8 @@ filetype plugin indent on
 NeoBundleCheck
 
 "lightLineの設定
-let g:lightline = {
-            \ 'colorscheme': 'iceberg'
-            \ }
+let g:lightline = {}
+let g:lightline.colorscheme = 'iceberg'
 
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
