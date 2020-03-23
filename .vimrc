@@ -202,4 +202,7 @@ nnoremap <silent> [e  :LspPreviousError<CR>
 nmap <silent> ]dd :LspDefinition <CR>
 nmap <silent> ]ds :split \| :LspDefinition <CR>
 nmap <silent> ]dv :vsplit \| :LspDefinition <CR>
+nmap <silent> [dd :LspTypeDefinition <CR>
+nmap <silent> [ds :split \| :LspTypeDefinition <CR>
+nmap <silent> [dv :vsplit \| :LspTypeDefinition <CR>
 nmap <silent> <C-h> :LspHover <CR>
