@@ -110,6 +110,7 @@ NeoBundle 'w0rp/ale'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'prabirshrestha/async.vim'
 NeoBundle 'prabirshrestha/vim-lsp'
@@ -133,8 +134,9 @@ filetype plugin indent on
 NeoBundleCheck
 
 "lightLineの設定
-let g:lightline = {}
-let g:lightline.colorscheme = 'iceberg'
+let g:lightline = {
+      \ 'colorscheme': 'iceberg',
+      \ }
 
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
@@ -206,3 +208,17 @@ nmap <silent> [dd :LspTypeDefinition <CR>
 nmap <silent> [ds :split \| :LspTypeDefinition <CR>
 nmap <silent> [dv :vsplit \| :LspTypeDefinition <CR>
 nmap <silent> <C-h> :LspHover <CR>
+
+"git-fugitive
+nnoremap <Space>gs :tab sp<CR>:Gstatus<CR>:only<CR>
+nnoremap <Space>ga :Gwrite<CR>
+nnoremap <Space>gc :Gcommit<CR>
+nnoremap <Space>gb :Gblame<CR>
+nnoremap <Space>gl :Git log<CR>
+nnoremap <Space>gh :tab sp<CR>:0Glog<CR>
+nnoremap <Space>gp :Gpush<CR>
+nnoremap <Space>gf :Gfetch<CR>
+nnoremap <Space>gd :Gvdiff<CR>
+nnoremap <Space>gr :Grebase -i<CR>
+nnoremap <Space>gg :Ggrep
+nnoremap <Space>gm :Gmerge
