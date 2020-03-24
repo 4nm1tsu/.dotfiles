@@ -136,7 +136,36 @@ NeoBundleCheck
 "lightLineの設定
 let g:lightline = {
       \ 'colorscheme': 'iceberg',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'gitbranch', 'gitstatus', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'gitstatus': 'MyGitGutter'
+      \ },
       \ }
+
+function! MyGitGutter()
+  if ! exists('*GitGutterGetHunkSummary')
+        \ || ! get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+    return ''
+  endif
+  let symbols = [
+        \ g:gitgutter_sign_added . '',
+        \ g:gitgutter_sign_modified . '',
+        \ g:gitgutter_sign_removed . ''
+        \ ]
+  let hunks = GitGutterGetHunkSummary()
+  let ret = []
+  for i in [0, 1, 2]
+    if hunks[i] > 0
+      call add(ret, symbols[i] . hunks[i])
+    endif
+  endfor
+  return join(ret, ' ')
+endfunction
 
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
