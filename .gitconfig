@@ -1,5 +1,7 @@
 [alias]
     tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+    me   = !git config --get-regexp user
+    lg   = log --decorate --oneline --graph
 
 [include]
 	path = ~/.gitconfig_shared
