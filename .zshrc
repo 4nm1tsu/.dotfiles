@@ -10,6 +10,7 @@ if type "exa" > /dev/null 2>&1; then
     alias ll='exa -labgh --icons'
     alias la='exa -abgh --icons'
     alias ls='exa -bgh --icons'
+    alias lt='exa -T --icons'
 fi
 if type "bat" > /dev/null 2>&1; then
     alias cat='bat'
