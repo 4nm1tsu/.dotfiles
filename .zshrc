@@ -10,6 +10,7 @@ if type "exa" > /dev/null 2>&1; then
     alias ll='exa -labgh --icons'
     alias la='exa -abgh --icons'
     alias ls='exa -bgh --icons'
+    alias lt='exa -T --icons'
 fi
 if type "bat" > /dev/null 2>&1; then
     alias cat='bat'
@@ -22,6 +23,9 @@ if type "procs" > /dev/null 2>&1; then
 fi
 if type "rg" > /dev/null 2>&1; then
     alias grep='rg'
+fi
+if type "gomi" > /dev/null 2>&1; then
+    alias rm='gomi'
 fi
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
