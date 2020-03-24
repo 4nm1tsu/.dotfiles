@@ -24,6 +24,9 @@ fi
 if type "rg" > /dev/null 2>&1; then
     alias grep='rg'
 fi
+if type "gomi" > /dev/null 2>&1; then
+    alias rm='gomi'
+fi
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
