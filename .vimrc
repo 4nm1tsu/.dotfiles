@@ -108,6 +108,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'w0rp/ale'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
@@ -178,6 +179,21 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "NERDTreeを表示するコマンドを設定する
 map <C-n> :NERDTreeToggle<CR>
+
+"nerdtree-git-plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "",
+    \ "Staged"    : "",
+    \ "Untracked" : "",
+    \ "Renamed"   : "",
+    \ "Unmerged"  : "",
+    \ "Deleted"   : "",
+    \ "Dirty"     : "",
+    \ "Clean"     : "",
+    \ 'Ignored'   : "",
+    \ "Unknown"   : ""
+    \ }
+let g:NERDTreeShowIgnoredStatus = 1
 
 "devicons
 set encoding=UTF-8
