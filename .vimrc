@@ -108,6 +108,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'w0rp/ale'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'airblade/vim-gitgutter'
@@ -181,19 +182,34 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 
 "nerdtree-git-plugin
+"let g:NERDTreeIndicatorMapCustom = {
+"    \ "Modified"  : "",
+"    \ "Staged"    : "",
+"    \ "Untracked" : "",
+"    \ "Renamed"   : "",
+"    \ "Unmerged"  : "",
+"    \ "Deleted"   : "",
+"    \ "Dirty"     : "",
+"    \ "Clean"     : "",
+"    \ "Ignored"   : "",
+"    \ "Unknown"   : ""
+"    \ }
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "",
-    \ "Staged"    : "",
-    \ "Untracked" : "",
-    \ "Renamed"   : "",
-    \ "Unmerged"  : "",
-    \ "Deleted"   : "",
-    \ "Dirty"     : "",
-    \ "Clean"     : "",
-    \ 'Ignored'   : "",
-    \ "Unknown"   : ""
+    \ "Modified"  : "~",
+    \ "Staged"    : "+",
+    \ "Untracked" : "*",
+    \ "Renamed"   : "»",
+    \ "Unmerged"  : "=",
+    \ "Deleted"   : "-",
+    \ "Dirty"     : "×",
+    \ "Clean"     : "ø",
+    \ "Ignored"   : "!",
+    \ "Unknown"   : "?"
     \ }
 let g:NERDTreeShowIgnoredStatus = 1
+
+"nerdtree-syntax-highlighting
+let g:NERDTreeLimitedSyntax = 1
 
 "devicons
 set encoding=UTF-8
