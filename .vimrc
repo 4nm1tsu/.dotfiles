@@ -107,15 +107,15 @@ NeoBundle 'itchyny/lightline.vim'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'w0rp/ale'
-"NeoBundle 'scrooloose/nerdtree'
-"NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-"NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-"NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'Shougo/defx.nvim'
-"NeoBundle 'roxma/nvim-yarp'
-"NeoBundle 'roxma/vim-hug-neovim-rpc'
-NeoBundle 'kristijanhusak/defx-icons'
-NeoBundle 'kristijanhusak/defx-git'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'ryanoasis/vim-devicons'
+"NeoBundle 'Shougo/defx.nvim'
+""NeoBundle 'roxma/nvim-yarp'
+""NeoBundle 'roxma/vim-hug-neovim-rpc'
+"NeoBundle 'kristijanhusak/defx-icons'
+"NeoBundle 'kristijanhusak/defx-git'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gorodinskiy/vim-coloresque'
@@ -181,96 +181,95 @@ set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
 
 " NERDTreeのように左に表示する。現在のファイルの階層を開く。
-" Defx `expand('%:p:h')` -search=`expand('%:p')`
-nnoremap <silent><C-n> :<C-u>Defx`expand('%:p:h')` -search=`expand('%:p')<CR>
-
-call defx#custom#column('icon', {
-      \ 'directory_icon': '▸',
-      \ 'opened_icon': '▾',
-      \ })
-call defx#custom#option('_', {
-      \ 'winwidth': 40,
-      \ 'split': 'vertical',
-      \ 'direction': 'topleft',
-      \ 'show_ignored_files': 0,
-      \ 'buffer_name': 'defxplorer',
-      \ 'toggle': 1,
-      \ 'columns': 'indent:git:icon:icons:filename',
-      \ 'resume': 1,
-      \ })
-call defx#custom#column('git', 'indicators', {
-      \ "Modified"  : "~",
-      \ "Staged"    : "+",
-      \ "Untracked" : "*",
-      \ "Renamed"   : "»",
-      \ "Unmerged"  : "=",
-      \ "Deleted"   : "-",
-      \ "Ignored"   : "!",
-      \ "Unknown"   : "?",
-  \ })
-call defx#custom#column('git', 'show_ignored', 1)
-call defx#custom#column('git', 'max_indicator_width', 1)
-
-autocmd FileType defx call s:defx_my_settings()
-    function! s:defx_my_settings() abort
-     " Define mappings
-      nnoremap <silent><buffer><expr> <CR>
-     \ defx#do_action('open_or_close_tree')
-      nnoremap <silent><buffer><expr> o
-     \ defx#do_action('drop')
-      nnoremap <silent><buffer><expr> c
-     \ defx#do_action('copy')
-      nnoremap <silent><buffer><expr> m
-     \ defx#do_action('move')
-      nnoremap <silent><buffer><expr> p
-     \ defx#do_action('paste')
-      nnoremap <silent><buffer><expr> l
-     \ defx#do_action('drop')
-      nnoremap <silent><buffer><expr> E
-     \ defx#do_action('open', 'vsplit')
-      nnoremap <silent><buffer><expr> P
-     \ defx#do_action('open', 'pedit')
-      nnoremap <silent><buffer><expr> K
-     \ defx#do_action('new_directory')
-      nnoremap <silent><buffer><expr> N
-     \ defx#do_action('new_file')
-      nnoremap <silent><buffer><expr> d
-     \ defx#do_action('remove')
-      nnoremap <silent><buffer><expr> r
-     \ defx#do_action('rename')
-      nnoremap <silent><buffer><expr> x
-     \ defx#do_action('execute_system')
-      nnoremap <silent><buffer><expr> yy
-     \ defx#do_action('yank_path')
-      nnoremap <silent><buffer><expr> .
-     \ defx#do_action('toggle_ignored_files')
-      nnoremap <silent><buffer><expr> h
-     \ defx#do_action('cd', ['..'])
-      nnoremap <silent><buffer><expr> ~
-     \ defx#do_action('cd')
-      nnoremap <silent><buffer><expr> q
-     \ defx#do_action('quit')
-      nnoremap <silent><buffer><expr> <Space>
-     \ defx#do_action('toggle_select') . 'j'
-      nnoremap <silent><buffer><expr> *
-     \ defx#do_action('toggle_select_all')
-      nnoremap <silent><buffer><expr> j
-     \ line('.') == line('$') ? 'gg' : 'j'
-      nnoremap <silent><buffer><expr> k
-     \ line('.') == 1 ? 'G' : 'k'
-      nnoremap <silent><buffer><expr> <C-l>
-     \ defx#do_action('redraw')
-      nnoremap <silent><buffer><expr> <C-g>
-     \ defx#do_action('print')
-      nnoremap <silent><buffer><expr> cd
-     \ defx#do_action('change_vim_cwd')
-    endfunction
+"nnoremap <silent><C-n> :<C-u>Defx`expand('%:p:h')` -search=`expand('%:p')<CR>
+"
+"call defx#custom#column('icon', {
+"      \ 'directory_icon': '▸',
+"      \ 'opened_icon': '▾',
+"      \ })
+"call defx#custom#option('_', {
+"      \ 'winwidth': 40,
+"      \ 'split': 'vertical',
+"      \ 'direction': 'topleft',
+"      \ 'show_ignored_files': 0,
+"      \ 'buffer_name': 'defxplorer',
+"      \ 'toggle': 1,
+"      \ 'columns': 'indent:git:icon:icons:filename',
+"      \ 'resume': 1,
+"      \ })
+"call defx#custom#column('git', 'indicators', {
+"      \ "Modified"  : "~",
+"      \ "Staged"    : "+",
+"      \ "Untracked" : "*",
+"      \ "Renamed"   : "»",
+"      \ "Unmerged"  : "=",
+"      \ "Deleted"   : "-",
+"      \ "Ignored"   : "!",
+"      \ "Unknown"   : "?",
+"  \ })
+"call defx#custom#column('git', 'show_ignored', 1)
+"call defx#custom#column('git', 'max_indicator_width', 1)
+"
+"autocmd FileType defx call s:defx_my_settings()
+"    function! s:defx_my_settings() abort
+"     " Define mappings
+"      nnoremap <silent><buffer><expr> <CR>
+"     \ defx#do_action('open_or_close_tree')
+"      nnoremap <silent><buffer><expr> o
+"     \ defx#do_action('drop')
+"      nnoremap <silent><buffer><expr> c
+"     \ defx#do_action('copy')
+"      nnoremap <silent><buffer><expr> m
+"     \ defx#do_action('move')
+"      nnoremap <silent><buffer><expr> p
+"     \ defx#do_action('paste')
+"      nnoremap <silent><buffer><expr> l
+"     \ defx#do_action('drop')
+"      nnoremap <silent><buffer><expr> E
+"     \ defx#do_action('open', 'vsplit')
+"      nnoremap <silent><buffer><expr> P
+"     \ defx#do_action('open', 'pedit')
+"      nnoremap <silent><buffer><expr> K
+"     \ defx#do_action('new_directory')
+"      nnoremap <silent><buffer><expr> N
+"     \ defx#do_action('new_file')
+"      nnoremap <silent><buffer><expr> d
+"     \ defx#do_action('remove')
+"      nnoremap <silent><buffer><expr> r
+"     \ defx#do_action('rename')
+"      nnoremap <silent><buffer><expr> x
+"     \ defx#do_action('execute_system')
+"      nnoremap <silent><buffer><expr> yy
+"     \ defx#do_action('yank_path')
+"      nnoremap <silent><buffer><expr> .
+"     \ defx#do_action('toggle_ignored_files')
+"      nnoremap <silent><buffer><expr> h
+"     \ defx#do_action('cd', ['..'])
+"      nnoremap <silent><buffer><expr> ~
+"     \ defx#do_action('cd')
+"      nnoremap <silent><buffer><expr> q
+"     \ defx#do_action('quit')
+"      nnoremap <silent><buffer><expr> <Space>
+"     \ defx#do_action('toggle_select') . 'j'
+"      nnoremap <silent><buffer><expr> *
+"     \ defx#do_action('toggle_select_all')
+"      nnoremap <silent><buffer><expr> j
+"     \ line('.') == line('$') ? 'gg' : 'j'
+"      nnoremap <silent><buffer><expr> k
+"     \ line('.') == 1 ? 'G' : 'k'
+"      nnoremap <silent><buffer><expr> <C-l>
+"     \ defx#do_action('redraw')
+"      nnoremap <silent><buffer><expr> <C-g>
+"     \ defx#do_action('print')
+"      nnoremap <silent><buffer><expr> cd
+"     \ defx#do_action('change_vim_cwd')
+"    endfunction
 
 ""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 ""NERDTreeを表示するコマンドを設定する
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 "nerdtree-git-plugin
 "let g:NERDTreeIndicatorMapCustom = {
@@ -285,22 +284,22 @@ autocmd FileType defx call s:defx_my_settings()
 "    \ "Ignored"   : "",
 "    \ "Unknown"   : ""
 "    \ }
-"let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "~",
-"    \ "Staged"    : "+",
-"    \ "Untracked" : "*",
-"    \ "Renamed"   : "»",
-"    \ "Unmerged"  : "=",
-"    \ "Deleted"   : "-",
-"    \ "Dirty"     : "×",
-"    \ "Clean"     : "ø",
-"    \ "Ignored"   : "!",
-"    \ "Unknown"   : "?"
-"    \ }
-"let g:NERDTreeShowIgnoredStatus = 1
-"
-""nerdtree-syntax-highlighting
-"let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "~",
+    \ "Staged"    : "+",
+    \ "Untracked" : "*",
+    \ "Renamed"   : "»",
+    \ "Unmerged"  : "=",
+    \ "Deleted"   : "-",
+    \ "Dirty"     : "×",
+    \ "Clean"     : "ø",
+    \ "Ignored"   : "!",
+    \ "Unknown"   : "?"
+    \ }
+let g:NERDTreeShowIgnoredStatus = 1
+
+"nerdtree-syntax-highlighting
+let g:NERDTreeLimitedSyntax = 1
 
 "devicons
 set encoding=UTF-8
