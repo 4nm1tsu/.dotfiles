@@ -25,10 +25,10 @@ fi
 if type "rg" > /dev/null 2>&1; then
     alias grep='rg'
 fi
-if type "nvim" > /dev/null 2>&1; then
-    alias vim='nvim'
-    alias vi='nvim'
-fi
+#if type "nvim" > /dev/null 2>&1; then
+#    alias vim='nvim'
+#    alias vi='nvim'
+#fi
 #if type "gomi" > /dev/null 2>&1; then
 #    alias rm='gomi'
 #fi
