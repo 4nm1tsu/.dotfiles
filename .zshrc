@@ -34,7 +34,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/nh/install/games:$PATH
 export TERM='xterm-256color'
-export XDG_CONFIG_HOME="$HOME/.config" 
+export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export PYENV_ROOT="${HOME}/.pyenv"
