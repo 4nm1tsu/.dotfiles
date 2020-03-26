@@ -208,7 +208,7 @@ call defx#custom#column('git', 'indicators', {
       \ "Ignored"   : "!",
       \ "Unknown"   : "?",
   \ })
-call defx#custom#column('git', 'show_ignored', 0)
+call defx#custom#column('git', 'show_ignored', 1)
 call defx#custom#column('git', 'max_indicator_width', 1)
 
 autocmd FileType defx call s:defx_my_settings()
