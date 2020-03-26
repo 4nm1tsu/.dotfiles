@@ -306,7 +306,7 @@ autocmd FileType defx call s:defx_my_settings()
 set encoding=UTF-8
 
 "git-gutter
-set updatetime=10
+set updatetime=100
 
 "----------------------------------------------------------
 " タブ・インデント
