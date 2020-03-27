@@ -3,6 +3,8 @@
     me   = !git config --get-regexp user
     lg   = log --decorate --oneline --graph
 
+[diff]
+    algorithm = histogram
 [include]
 	path = ~/.gitconfig_shared
 [user]

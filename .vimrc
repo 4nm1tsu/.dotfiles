@@ -140,12 +140,13 @@ filetype plugin indent on
 " 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定・・・・・・③
 NeoBundleCheck
 
+"'gitbranch'は長くなるので非推奨
 "lightLineの設定
 let g:lightline = {
       \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'gitbranch', 'gitstatus', 'filename', 'modified' ] ]
+      \             [ 'readonly', 'gitstatus', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
@@ -270,6 +271,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 ""NERDTreeを表示するコマンドを設定する
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeWinSize=40
 
 "nerdtree-git-plugin
 "let g:NERDTreeIndicatorMapCustom = {
