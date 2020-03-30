@@ -271,6 +271,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 ""NERDTreeを表示するコマンドを設定する
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeWinSize=40
 
 "nerdtree-git-plugin
 "let g:NERDTreeIndicatorMapCustom = {
