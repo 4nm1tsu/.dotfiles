@@ -329,8 +329,19 @@ set ruler " ステータスラインの右側にカーソルの現在位置を�
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 ""NERDTreeを表示するコマンドを設定する
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
+map <silent><C-n> :call ToggleNERDTreeFind()<CR>
 let NERDTreeWinSize=40
+let NERDTreeQuitOnOpen=1
+let NERDTreeMinimalUI=1
+
+function! ToggleNERDTreeFind()
+    if g:NERDTree.IsOpen()
+        execute ':NERDTreeClose'
+    else
+        execute ':NERDTreeFind'
+    endif
+endfunction
 
 "nerdtree-git-plugin
 "let g:NERDTreeIndicatorMapCustom = {
