@@ -64,6 +64,8 @@ set shortmess+=I
 "みため
 syntax on
 
+"横のスクロールを細かく
+set sidescroll=1
 
 "nomalに戻る時の遅延をなくす
 set ttimeoutlen=50
