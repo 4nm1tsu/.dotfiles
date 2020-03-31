@@ -1,5 +1,62 @@
+" 縦分割時の高速化設定
+if has("vim_starting") && !has('gui_running') && has('vertsplit')
+  function! EnableVsplitMode()
+    " enable origin mode and left/right margins
+    let &t_CS = "y"
+    let &t_ti = &t_ti . "\e[?6;69h"
+    let &t_te = "\e[?6;69l\e[999H" . &t_te
+    let &t_CV = "\e[%i%p1%d;%p2%ds"
+    call writefile([ "\e[?6;69h" ], "/dev/tty", "a")
+  endfunction
+
+  " old vim does not ignore CPR
+  map <special> <Esc>[3;9R <Nop>
+
+  " new vim can't handle CPR with direct mapping
+  " map <expr> [3;3R EnableVsplitMode()
+  set t_F9=[3;3R
+  map <expr> <t_F9> EnableVsplitMode()
+  let &t_RV .= "\e[?6;69h\e[1;3s\e[3;9H\e[6n\e[0;0s\e[?6;69l"
+endif
+
+"tab間の移動
+nmap <silent><Space>t :tabe<CR>
+nmap <silent><Space>j :-tabmove<CR>
+nmap <silent><Space>k :+tabmove<CR>
+nmap <silent><C-k> :tabnext<CR>
+nmap <silent><C-j> :tabprevious<CR>
+
 "行番号のハイライト
-set cursorline
+"set cursorline
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          setlocal nocursorline
+          let s:cursorline_lock = 0
+        endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      setlocal cursorline
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
 
 "起動時メッセージ出さない
 set shortmess+=I
@@ -7,6 +64,8 @@ set shortmess+=I
 "みため
 syntax on
 
+"横のスクロールを細かく
+set sidescroll=1
 
 "nomalに戻る時の遅延をなくす
 set ttimeoutlen=50
@@ -341,8 +400,8 @@ let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
 let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo phpstan; fi; fi')
 let g:ale_php_phpstan_level = 4
 "エラー間の移動
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> [a <Plug>(ale_previous_wrap)
+nmap <silent> ]a <Plug>(ale_next_wrap)
 "ale
 
 "vim-lsp
