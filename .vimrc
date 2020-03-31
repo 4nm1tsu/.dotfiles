@@ -19,6 +19,13 @@ if has("vim_starting") && !has('gui_running') && has('vertsplit')
   let &t_RV .= "\e[?6;69h\e[1;3s\e[3;9H\e[6n\e[0;0s\e[?6;69l"
 endif
 
+"tab間の移動
+nmap <silent><Space>t :tabe<CR>
+nmap <silent><Space>j :-tabmove<CR>
+nmap <silent><Space>k :+tabmove<CR>
+nmap <silent><C-k> :tabnext<CR>
+nmap <silent><C-j> :tabprevious<CR>
+
 "行番号のハイライト
 "set cursorline
 augroup vimrc-auto-cursorline
@@ -391,8 +398,8 @@ let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
 let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo phpstan; fi; fi')
 let g:ale_php_phpstan_level = 4
 "エラー間の移動
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> [a <Plug>(ale_previous_wrap)
+nmap <silent> ]a <Plug>(ale_next_wrap)
 "ale
 
 "vim-lsp
