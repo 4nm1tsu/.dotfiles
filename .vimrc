@@ -339,7 +339,22 @@ function! ToggleNERDTreeFind()
     if g:NERDTree.IsOpen()
         execute ':NERDTreeClose'
     else
-        execute ':NERDTreeFind'
+        "無名バッファ
+        if @% == '' && s:GetBufByte() == 0
+            execute ':NERDTreeToggle'
+        "すでにファイルを開いている
+        else
+            execute ':NERDTreeFind'
+        endif
+    endif
+endfunction
+"標準入力にも対応
+function! s:GetBufByte()
+    let byte = line2byte(line('$') + 1)
+    if byte == -1
+        return 0
+    else
+        return byte - 1
     endif
 endfunction
 
