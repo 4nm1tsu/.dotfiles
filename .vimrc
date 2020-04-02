@@ -328,6 +328,8 @@ set ruler " ステータスラインの右側にカーソルの現在位置を�
 ""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 ""NERDTreeを表示するコマンドを設定する
 "map <C-n> :NERDTreeToggle<CR>
 map <silent><C-n> :call ToggleNERDTreeFind()<CR>
