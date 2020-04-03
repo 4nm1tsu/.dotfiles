@@ -68,7 +68,7 @@ syntax on
 set sidescroll=1
 
 "nomalに戻る時の遅延をなくす
-set ttimeoutlen=50
+"set ttimeoutlen=50
 
 " 編集箇所のカーソルを記憶
 if has("autocmd")
