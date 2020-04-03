@@ -6,6 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### added by myself
+#git auto-completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    source ~/.git-completion.bash
+fi
+
 if type "exa" > /dev/null 2>&1; then
     alias ll='exa -labgh --icons'
     alias la='exa -abgh --icons'
