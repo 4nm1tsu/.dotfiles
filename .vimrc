@@ -397,6 +397,8 @@ let g:NERDTreeLimitedSyntax = 1
 
 "devicons
 set encoding=UTF-8
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
 "git-gutter
 set updatetime=100
