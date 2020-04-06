@@ -19,6 +19,9 @@
 "  let &t_RV .= "\e[?6;69h\e[1;3s\e[3;9H\e[6n\e[0;0s\e[?6;69l"
 "endif
 
+"起動時にカーソル形状を問い合わせるシーケンスが出ないようにする（for mac "iterm2）
+set t_RC=
+
 "tab間の移動
 nmap <silent><Space>t :tabe<CR>
 nmap <silent><Space>j :-tabmove<CR>
@@ -68,7 +71,7 @@ syntax on
 set sidescroll=1
 
 "nomalに戻る時の遅延をなくす
-set ttimeoutlen=50
+"set ttimeoutlen=50
 
 " 編集箇所のカーソルを記憶
 if has("autocmd")
