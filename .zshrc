@@ -6,11 +6,24 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### added by myself
+#history
+# 履歴ファイルの保存先
+export HISTFILE=${HOME}/.zsh_history
+# メモリに保存される履歴の件数
+export HISTSIZE=1000
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000
+# 重複を記録しない
+setopt hist_ignore_dups
+# 開始と終了を記録
+setopt EXTENDED_HISTORY
+
 #git auto-completion
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     source ~/.git-completion.bash
 fi
 
+#代替コマンドのエイリアス
 if type "exa" > /dev/null 2>&1; then
     alias ll='exa -labgh --icons'
     alias la='exa -abgh --icons'
@@ -40,6 +53,7 @@ fi
 
 #for42
 export MAIL=hokada@student.42tokyo.jp
+alias norminette=$HOME/.norminette/norminette.rb
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
