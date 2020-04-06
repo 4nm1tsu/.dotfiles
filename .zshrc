@@ -68,9 +68,8 @@ export PATH="${PYENV_ROOT}/bin:$PATH"
 eval "$(pyenv init -)"
 
 # rbenv PATH
-if type "rbenv" > /dev/null 2>&1; then
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.rbenv/bin:$PATH"
+if type "rbenv" > /dev/null 2>&1; then
 eval "$(rbenv init -)"
 fi
 
