@@ -10,3 +10,10 @@
 - neovim0.4.3
 - pip install neovim
 - `:UpdateRemotePlugins` after launching nvim
+
+## .じゃないファイルもあるじゃん
+
+vscodeの設定です。。。
+Windows %APPDATA%\Code\User\settings.json
+Mac $HOME/Library/Application Support/Code/User/settings.json
+Linux $HOME/.config/Code/User/settings.json
