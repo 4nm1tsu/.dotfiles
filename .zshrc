@@ -18,10 +18,8 @@ setopt hist_ignore_dups
 # 開始と終了を記録
 setopt EXTENDED_HISTORY
 
-#git auto-completion
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-    source ~/.git-completion.bash
-fi
+autoload -Uz compinit
+compinit
 
 #代替コマンドのエイリアス
 if type "exa" > /dev/null 2>&1; then
@@ -30,18 +28,28 @@ if type "exa" > /dev/null 2>&1; then
     alias ls='exa -bgh --icons'
     alias lt='exa -T --icons'
     alias lg='exa -labgh --icons --git'
+else
+    echo "'exa' is not installed."
 fi
 if type "bat" > /dev/null 2>&1; then
     alias cat='bat'
+else
+    echo "'bat' is not installed."
 fi
 if type "fd" > /dev/null 2>&1; then
     alias find='fd'
+else
+    echo "'fd' is not installed."
 fi
 if type "procs" > /dev/null 2>&1; then
     alias ps='procs'
+else
+    echo "'procs' is not installed."
 fi
 if type "rg" > /dev/null 2>&1; then
     alias grep='rg'
+else
+    echo "'ripgrep(rg)' is not installed."
 fi
 #if type "nvim" > /dev/null 2>&1; then
 #    alias vim='nvim'
