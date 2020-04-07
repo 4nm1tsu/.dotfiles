@@ -338,6 +338,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 ""NERDTreeを表示するコマンドを設定する
 "map <C-n> :NERDTreeToggle<CR>
 map <silent><C-n> :call ToggleNERDTreeFind()<CR>
+
+"uをUの動作にremap
+let g:NERDTreeMapUpdirKeepOpen='u'
+
 let NERDTreeWinSize=40
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
@@ -393,12 +397,17 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeShowIgnoredStatus = 1
 
 "nerdtree-syntax-highlighting
+"let g:NERDTreeHighlightFolders = 1 "完全一致を使用してフォルダーアイコンの強調表示を有効にします
 let g:NERDTreeLimitedSyntax = 1
 
 "devicons
 set encoding=UTF-8
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let NERDTreeDirArrowExpandable = "\u00a0"
+let NERDTreeDirArrowCollapsible = "\u00a0"
+let NERDTreeNodeDelimiter = "\x07"
 
 "git-gutter
 set updatetime=100
