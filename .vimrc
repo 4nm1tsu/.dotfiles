@@ -96,7 +96,6 @@ augroup vimrc
 
     " C/C++/Java 言語系のファイルタイプが設定されたら cindent モードを有効にする
     autocmd FileType c,cpp,java  setl cindent
-    autocmd FileType c,cpp,java  setl expandtab tabstop=4 shiftwidth=4 softtabstop=4 shiftround
 augroup END
 
 "行番号表示
