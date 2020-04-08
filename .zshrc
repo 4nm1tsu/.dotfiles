@@ -61,6 +61,7 @@ fi
 
 #for42
 export MAIL=hokada@student.42tokyo.jp
+export USER=hokada
 alias norminette=$HOME/.norminette/norminette.rb
 
 export PATH=$HOME/.composer/vendor/bin:$PATH
