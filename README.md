@@ -10,3 +10,13 @@
 - neovim0.4.3
 - pip install neovim
 - `:UpdateRemotePlugins` after launching nvim
+
+## commands
+- exa
+- bat
+- fd
+- procs
+- rg
+- hexyl
+- vtop
+- fzf
