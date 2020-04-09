@@ -37,7 +37,7 @@ else
     echo "'bat' is not installed."
 fi
 if type "fd" > /dev/null 2>&1; then
-    alias find='fd'
+    #alias find='fd'
 else
     echo "'fd' is not installed."
 fi
@@ -135,3 +135,13 @@ if type "fzf" > /dev/null 2>&1; then
 else
     echo "'fzf' is not installed."
 fi
+#git branch
+alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
+#cd
+cd-fzf-find() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m --preview 'ls -al {} | head -200') &&
+  cd "$dir"
+}
+alias fcd=cd-fzf-find
