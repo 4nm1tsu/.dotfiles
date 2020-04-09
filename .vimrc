@@ -185,6 +185,8 @@ NeoBundle 'prabirshrestha/vim-lsp'
 NeoBundle 'mattn/vim-lsp-settings'
 NeoBundle 'prabirshrestha/asyncomplete.vim'
 NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
+NeoBundle 'junegunn/fzf'
+NeoBundle 'junegunn/fzf.vim'
 "colorscheme
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'popkirby/lightline-iceberg'
@@ -331,7 +333,8 @@ set ruler " ステータスラインの右側にカーソルの現在位置を�
 
 ""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+""ファイル名が指定されなかったらNERDTreeを起動
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 ""NERDTreeを表示するコマンドを設定する
@@ -477,3 +480,7 @@ nnoremap <Space>gd :Gvdiff<CR>
 nnoremap <Space>gr :Grebase -i<CR>
 nnoremap <Space>gg :Ggrep
 nnoremap <Space>gm :Gmerge
+
+"fzf
+nnoremap <silent> <C-f> :Files<CR>
+"ファイル名が指定されなかったらfzf起動できるようにしたい
