@@ -136,7 +136,9 @@ else
     echo "'fzf' is not installed."
 fi
 #git branch
-alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
+alias -g B='`git branch --all | grep -v HEAD | fzf -m --preview "" | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
+#file alias
+alias -g F='`fzf`'
 #cd
 cd-fzf-find() {
   local dir
