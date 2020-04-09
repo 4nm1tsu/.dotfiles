@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 ### added by myself
@@ -75,13 +75,13 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
 if type "pyenv" > /dev/null 2>&1; then
-eval "$(pyenv init -)"
+    eval "$(pyenv init -)"
 fi
 
 # rbenv PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 if type "rbenv" > /dev/null 2>&1; then
-eval "$(rbenv init -)"
+    eval "$(rbenv init -)"
 fi
 
 #openssl for compiler
@@ -119,3 +119,19 @@ zplugin load zsh-users/zsh-syntax-highlighting
 
 #vim keymap
 bindkey -v
+
+#fzf関係
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if type "fzf" > /dev/null 2>&1; then
+    if type "bat" > /dev/null 2>&1; then
+        export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
+    else
+        export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'head -100 {}'"
+    fi
+    if type "fd" > /dev/null 2>&1; then
+        export  FZF_DEFAULT_COMMAND="fd -H --type f"
+    fi
+else
+    echo "'fzf' is not installed."
+fi

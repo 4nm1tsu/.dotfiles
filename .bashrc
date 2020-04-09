@@ -64,3 +64,5 @@ export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
 
 export PATH=~/.composer/vendor/bin:/usr/local/opt/openssl/bin:/Users/hibiki/.rbenv/shims:/Users/hibiki/.rbenv/bin:/Users/hibiki/.rbenv/shims:/Users/hibiki/.pyenv/shims:/Users/hibiki/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Applications/Wireshark.app/Contents/MacOS:/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/bin
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
