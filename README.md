@@ -20,4 +20,4 @@
 - hexyl
 - vtop
 - fzf
-- tmux
+- tmux (2.5~)
