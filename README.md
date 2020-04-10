@@ -18,6 +18,7 @@
 - procs
 - rg
 - hexyl
-- vtop
+- vtop(npm)
 - fzf
 - tmux (2.5~)
+- diff-so-fancy(npm)
