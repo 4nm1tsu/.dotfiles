@@ -20,3 +20,4 @@
 - hexyl
 - vtop
 - fzf
+- tmux
