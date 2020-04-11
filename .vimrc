@@ -189,7 +189,7 @@ NeoBundle 'junegunn/fzf'
 NeoBundle 'junegunn/fzf.vim'
 "colorscheme
 NeoBundle 'cocopon/iceberg.vim'
-NeoBundle 'popkirby/lightline-iceberg'
+"NeoBundle 'popkirby/lightline-iceberg'
 "for42
 NeoBundle 'pbondoer/vim-42header'
 

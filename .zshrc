@@ -129,7 +129,7 @@ if type "fzf" > /dev/null 2>&1; then
     else
         export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'head -100 {}'"
     fi
-    if type "fd" > /dev/null 2>&1; then
+    if type "rg" > /dev/null 2>&1; then
         export  FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
 else
