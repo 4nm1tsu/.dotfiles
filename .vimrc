@@ -1,24 +1,3 @@
-"" 縦分割時の高速化設定
-"if has("vim_starting") && !has('gui_running') && has('vertsplit')
-"  function! EnableVsplitMode()
-"    " enable origin mode and left/right margins
-"    let &t_CS = "y"
-"    let &t_ti = &t_ti . "\e[?6;69h"
-"    let &t_te = "\e[?6;69l\e[999H" . &t_te
-"    let &t_CV = "\e[%i%p1%d;%p2%ds"
-"    call writefile([ "\e[?6;69h" ], "/dev/tty", "a")
-"  endfunction
-"
-"  " old vim does not ignore CPR
-"  map <special> <Esc>[3;9R <Nop>
-"
-"  " new vim can't handle CPR with direct mapping
-"  " map <expr> [3;3R EnableVsplitMode()
-"  set t_F9=[3;3R
-"  map <expr> <t_F9> EnableVsplitMode()
-"  let &t_RV .= "\e[?6;69h\e[1;3s\e[3;9H\e[6n\e[0;0s\e[?6;69l"
-"endif
-
 "起動時にカーソル形状を問い合わせるシーケンスが出ないようにする（for mac "iterm2）
 set t_RC=
 
@@ -64,9 +43,6 @@ augroup END
 "起動時メッセージ出さない
 set shortmess+=I
 
-"みため
-syntax on
-
 "横のスクロールを細かく
 set sidescroll=1
 
@@ -107,7 +83,7 @@ set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先�
 "set ambiwidth=double " □や○文字が崩れる問題を解決
 
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
-set noignorecase " 検索パターンに大文字小文字を区別する
+"set noignorecase " 検索パターンに大文字小文字を区別する
 "set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
 set hlsearch " 検索結果をハイライト
 
@@ -142,68 +118,77 @@ cnoremap <special> <Esc>[200~ <nop>
 cnoremap <special> <Esc>[201~ <nop>
 endif
 
-"以下、NeoBundle雛形
-if has('vim_starting')
-    " 初回起動時のみruntimepathにNeoBundleのパスを指定する
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+"----------------------------------------------------------
+" タブ・インデント
+"----------------------------------------------------------
+set expandtab " タブ入力を複数の空白入力に置き換える
+set tabstop=4 " 画面上でタブ文字が占める幅
+set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set autoindent " 改行時に前の行のインデントを継続する
+set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
+set shiftwidth=4 " smartindentで増減する幅
 
-    " NeoBundleが未インストールであればgit cloneする・・・・・・①
-    if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-        echo "install NeoBundle..."
-        :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-    endif
+"数行余裕を持たせてスクロールする
+:set scrolloff=7
+
+"クリップボードをつかえるようにする
+set clipboard+=unnamed
+
+"backspaceを有効に
+set backspace=indent,eol,start
+
+" deinの設定
+if &compatible
+  set nocompatible
+endif
+" dein自体の自動インストール
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('cohama/lexima.vim')
+  call dein#add('w0rp/ale')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('ryanoasis/vim-devicons')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('gorodinskiy/vim-coloresque', { 'lazy': 1 })
+  call dein#add('prabirshrestha/async.vim')
+  call dein#add('prabirshrestha/vim-lsp', { 'depends': 'async.vim' })
+  call dein#add('mattn/vim-lsp-settings')
+  call dein#add('prabirshrestha/asyncomplete.vim')
+  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+  call dein#add('junegunn/fzf', { 'build': './install -all', 'merged': 0 })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('cocopon/iceberg.vim')
+  call dein#add('popkirby/lightline-iceberg')
+  call dein#add('pbondoer/vim-42header')
+"  if !has('nvim')
+"    call dein#add('roxma/nvim-yarp')
+"    call dein#add('roxma/vim-hug-neovim-rpc')
+"  endif
+
+  call dein#end()
+  call dein#save_state()
+endif
+" 不足プラグインの自動インストール
+if has('vim_starting') && dein#check_install()
+  call dein#install()
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" インストールするVimプラグインを以下に記述
-" NeoBundle自身を管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-"----------------------------------------------------------
-" ここに追加したいVimプラグインを記述する・・・・・・②
-
-
-" ステータスラインの表示内容強化
-NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'cohama/lexima.vim'
-NeoBundle 'w0rp/ale'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'ryanoasis/vim-devicons'
-"NeoBundle 'Shougo/defx.nvim'
-""NeoBundle 'roxma/nvim-yarp'
-""NeoBundle 'roxma/vim-hug-neovim-rpc'
-"NeoBundle 'kristijanhusak/defx-icons'
-"NeoBundle 'kristijanhusak/defx-git'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gorodinskiy/vim-coloresque'
-NeoBundle 'prabirshrestha/async.vim'
-NeoBundle 'prabirshrestha/vim-lsp'
-NeoBundle 'mattn/vim-lsp-settings'
-NeoBundle 'prabirshrestha/asyncomplete.vim'
-NeoBundle 'prabirshrestha/asyncomplete-lsp.vim'
-NeoBundle 'junegunn/fzf'
-NeoBundle 'junegunn/fzf.vim'
-"colorscheme
-NeoBundle 'cocopon/iceberg.vim'
-NeoBundle 'popkirby/lightline-iceberg'
-"for42
-NeoBundle 'pbondoer/vim-42header'
-
-
-"----------------------------------------------------------
-call neobundle#end()
-
 colorscheme iceberg
-
-" ファイルタイプ別のVimプラグイン/インデントを有効にする
-filetype plugin indent on
-
-" 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定・・・・・・③
-NeoBundleCheck
+syntax on
 
 "'gitbranch'は長くなるので非推奨
 "lightLineの設定
@@ -245,91 +230,6 @@ set laststatus=2 " ステータスラインを常に表示
 set showmode " 現在のモードを表示
 set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
-
-" NERDTreeのように左に表示する。現在のファイルの階層を開く。
-"nnoremap <silent><C-n> :<C-u>Defx`expand('%:p:h')` -search=`expand('%:p')<CR>
-"
-"call defx#custom#column('icon', {
-"      \ 'directory_icon': '▸',
-"      \ 'opened_icon': '▾',
-"      \ })
-"call defx#custom#option('_', {
-"      \ 'winwidth': 40,
-"      \ 'split': 'vertical',
-"      \ 'direction': 'topleft',
-"      \ 'show_ignored_files': 0,
-"      \ 'buffer_name': 'defxplorer',
-"      \ 'toggle': 1,
-"      \ 'columns': 'indent:git:icon:icons:filename',
-"      \ 'resume': 1,
-"      \ })
-"call defx#custom#column('git', 'indicators', {
-"      \ "Modified"  : "~",
-"      \ "Staged"    : "+",
-"      \ "Untracked" : "*",
-"      \ "Renamed"   : "»",
-"      \ "Unmerged"  : "=",
-"      \ "Deleted"   : "-",
-"      \ "Ignored"   : "!",
-"      \ "Unknown"   : "?",
-"  \ })
-"call defx#custom#column('git', 'show_ignored', 1)
-"call defx#custom#column('git', 'max_indicator_width', 1)
-"
-"autocmd FileType defx call s:defx_my_settings()
-"    function! s:defx_my_settings() abort
-"     " Define mappings
-"      nnoremap <silent><buffer><expr> <CR>
-"     \ defx#do_action('open_or_close_tree')
-"      nnoremap <silent><buffer><expr> o
-"     \ defx#do_action('drop')
-"      nnoremap <silent><buffer><expr> c
-"     \ defx#do_action('copy')
-"      nnoremap <silent><buffer><expr> m
-"     \ defx#do_action('move')
-"      nnoremap <silent><buffer><expr> p
-"     \ defx#do_action('paste')
-"      nnoremap <silent><buffer><expr> l
-"     \ defx#do_action('drop')
-"      nnoremap <silent><buffer><expr> E
-"     \ defx#do_action('open', 'vsplit')
-"      nnoremap <silent><buffer><expr> P
-"     \ defx#do_action('open', 'pedit')
-"      nnoremap <silent><buffer><expr> K
-"     \ defx#do_action('new_directory')
-"      nnoremap <silent><buffer><expr> N
-"     \ defx#do_action('new_file')
-"      nnoremap <silent><buffer><expr> d
-"     \ defx#do_action('remove')
-"      nnoremap <silent><buffer><expr> r
-"     \ defx#do_action('rename')
-"      nnoremap <silent><buffer><expr> x
-"     \ defx#do_action('execute_system')
-"      nnoremap <silent><buffer><expr> yy
-"     \ defx#do_action('yank_path')
-"      nnoremap <silent><buffer><expr> .
-"     \ defx#do_action('toggle_ignored_files')
-"      nnoremap <silent><buffer><expr> h
-"     \ defx#do_action('cd', ['..'])
-"      nnoremap <silent><buffer><expr> ~
-"     \ defx#do_action('cd')
-"      nnoremap <silent><buffer><expr> q
-"     \ defx#do_action('quit')
-"      nnoremap <silent><buffer><expr> <Space>
-"     \ defx#do_action('toggle_select') . 'j'
-"      nnoremap <silent><buffer><expr> *
-"     \ defx#do_action('toggle_select_all')
-"      nnoremap <silent><buffer><expr> j
-"     \ line('.') == line('$') ? 'gg' : 'j'
-"      nnoremap <silent><buffer><expr> k
-"     \ line('.') == 1 ? 'G' : 'k'
-"      nnoremap <silent><buffer><expr> <C-l>
-"     \ defx#do_action('redraw')
-"      nnoremap <silent><buffer><expr> <C-g>
-"     \ defx#do_action('print')
-"      nnoremap <silent><buffer><expr> cd
-"     \ defx#do_action('change_vim_cwd')
-"    endfunction
 
 ""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
 autocmd StdinReadPre * let s:std_in=1
@@ -413,25 +313,6 @@ let NERDTreeNodeDelimiter = "\x07"
 
 "git-gutter
 set updatetime=100
-
-"----------------------------------------------------------
-" タブ・インデント
-"----------------------------------------------------------
-set expandtab " タブ入力を複数の空白入力に置き換える
-set tabstop=4 " 画面上でタブ文字が占める幅
-set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent " 改行時に前の行のインデントを継続する
-set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
-set shiftwidth=4 " smartindentで増減する幅
-
-"数行余裕を持たせてスクロールする
-:set scrolloff=7
-
-"クリップボードをつかえるようにする
-set clipboard+=unnamed
-
-"backspaceを有効に
-set backspace=indent,eol,start
 
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
