@@ -122,6 +122,10 @@ endif
 " タブ・インデント
 "----------------------------------------------------------
 set expandtab " タブ入力を複数の空白入力に置き換える
+augroup vimrc-42
+    autocmd!
+    autocmd BufNewFile,BufRead ~/42tokyo/* set noexpandtab
+augroup END
 set tabstop=4 " 画面上でタブ文字が占める幅
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent " 改行時に前の行のインデントを継続する
