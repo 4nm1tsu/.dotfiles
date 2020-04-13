@@ -64,6 +64,14 @@ endif
 
 " ファイルタイプ検出を有効にする
 filetype on
+filetype plugin indent on
+
+" html,xmlの閉じタグ自動入力
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
 "c/c++/javaインデント設定
 augroup vimrc
