@@ -358,6 +358,7 @@ nmap <silent> [dd :LspTypeDefinition <CR>
 nmap <silent> [ds :split \| :LspTypeDefinition <CR>
 nmap <silent> [dv :vsplit \| :LspTypeDefinition <CR>
 nmap <silent> <C-h> :LspHover <CR>
+nmap <silent> <Space>r :LspReferences <CR>
 
 "git-fugitive
 nnoremap <Space>gs :tab sp<CR>:Gstatus<CR>:only<CR>
