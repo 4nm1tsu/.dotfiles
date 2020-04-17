@@ -59,6 +59,9 @@ fi
 #    alias rm='gomi'
 #fi
 
+#xclipのエイリアス
+alias xclip='xclip -sel clip'
+
 #for42
 export MAIL=hokada@student.42tokyo.jp
 export USER=hokada
