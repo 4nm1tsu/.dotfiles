@@ -60,3 +60,8 @@
 ! white
 *.color7:       #d0d2db
 *.color15:      #e9ebf5
+
+## for Linux(Debian)
+cp ./fonts.conf ~/.config/fontconfig/fonts.conf
+fc-cache
+reboot
