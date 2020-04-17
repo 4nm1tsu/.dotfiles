@@ -183,6 +183,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('prabirshrestha/asyncomplete-lsp.vim')
   call dein#add('junegunn/fzf', { 'build': './install -all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
   call dein#add('cocopon/iceberg.vim')
   call dein#add('pbondoer/vim-42header')
 "  if !has('nvim')
@@ -379,3 +380,9 @@ nnoremap <Space>gm :Gmerge
 "fzf
 nnoremap <silent> <C-f> :Files<CR>
 "ファイル名が指定されなかったらfzf起動できるようにしたい
+
+"vista
+let g:vista_default_executive = 'vim_lsp'
+let g:vista_sidebar_sidth = 40
+let g:vista_echo_cursor = 0
+nnoremap <silent> <Space>v :Vista!!<CR>
