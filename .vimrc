@@ -201,6 +201,7 @@ endif
 
 colorscheme iceberg
 syntax on
+set termguicolors
 
 "'gitbranch'は長くなるので非推奨
 "lightLineの設定
