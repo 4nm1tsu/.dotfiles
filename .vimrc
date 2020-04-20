@@ -213,7 +213,9 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'gitstatus': 'MyGitGutter'
+      \   'gitstatus': 'MyGitGutter',
+      \   'filetype' : 'MyFiletype',
+      \   'fileformtat' : 'MyFileformat',
       \ },
       \ }
 
@@ -237,6 +239,14 @@ function! MyGitGutter()
   endfor
   return join(ret, ' ')
 endfunction
+
+  function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+  
+  function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  endfunction
 
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
@@ -325,6 +335,7 @@ let NERDTreeDirArrowCollapsible = "\u00a0"
 let NERDTreeNodeDelimiter = "\x07"
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
+set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\ %=\ %P%)
 
 "git-gutter
 set updatetime=100
