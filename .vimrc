@@ -66,13 +66,6 @@ endif
 filetype on
 filetype plugin indent on
 
-" html,xmlの閉じタグ自動入力
-augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-augroup END
-
 "c/c++/javaインデント設定
 augroup vimrc
     " 以前の autocmd コマンドをクリア
@@ -184,6 +177,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('junegunn/fzf', { 'build': './install -all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
+  call dein#add('alvan/vim-closetag')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('pbondoer/vim-42header')
 "  if !has('nvim')
@@ -363,6 +357,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 "ale
 
 "vim-lsp
+let g:lsp_async_completion = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 "バーチャルテキストとしてエラーなどを表示
