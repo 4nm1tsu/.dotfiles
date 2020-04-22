@@ -344,6 +344,9 @@ set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\
 "git-gutter
 set updatetime=100
 
+let g:ale_linters = {
+    \ 'python': [],
+    \ }
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_sign_info = ''

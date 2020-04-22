@@ -23,6 +23,7 @@
 - fzf
 - tmux (2.5~)
 - diff-so-fancy(npm)
+- tig
 
 ## lsp
 - pip install 'python-language-server[all]'
