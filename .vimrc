@@ -177,6 +177,11 @@ if dein#load_state('~/.cache/dein')
   call dein#add('junegunn/fzf', { 'build': './install -all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
+  call dein#add('SirVer/ultisnips')
+  call dein#add('thomasfaingnaert/vim-lsp-snippets')
+  call dein#add('thomasfaingnaert/vim-lsp-ultisnips', { 'depends': [
+              \'prabirshrestha/vim-lsp',
+              \'thomasfaingnaert/vim-lsp-snippets',]})
   call dein#add('alvan/vim-closetag')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('pbondoer/vim-42header')
