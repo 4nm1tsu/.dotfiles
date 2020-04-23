@@ -27,6 +27,10 @@
 
 ## lsp
 - pip install 'python-language-server[all]'
+- gem install solargraph
+    - 各プロジェクトでbundlerで管理するgemは`bundle install --path ./vendor/bandler`とかしてから`solargraph config .`をしてやれば補完が効く
+    - globalなgemはまず`yard gems`
+    - `yard config --gem-install-yri`しておけば新しいgem入れた時に自動でやってくれる
 
 ## iceberg (ANSI)
 ! special
