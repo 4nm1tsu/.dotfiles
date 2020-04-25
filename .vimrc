@@ -184,6 +184,7 @@ if dein#load_state('~/.cache/dein')
               \'prabirshrestha/vim-lsp',
               \'thomasfaingnaert/vim-lsp-snippets',]})
   call dein#add('alvan/vim-closetag')
+  call dein#add('Yggdroot/indentLine')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('pbondoer/vim-42header')
 "  if !has('nvim')
@@ -407,7 +408,7 @@ nnoremap <silent> <C-f> :Files<CR>
 
 "vista
 let g:vista_default_executive = 'vim_lsp'
-let g:vista_sidebar_sidth = 40
+let g:vista_sidebar_sidth = 80
 let g:vista_echo_cursor = 0
 nnoremap <silent> <Space>v :Vista!!<CR>
 
