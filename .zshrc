@@ -98,6 +98,9 @@ export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
 #symfony
 export PATH="$HOME/.symfony/bin:$PATH"
 
+#poetry
+export PATH=${HOME}/.poetry/bin:${PATH}
+
 ### End of chunk by myself
 
 ### Added by Zinit's installer
