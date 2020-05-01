@@ -88,12 +88,12 @@ if type "rbenv" > /dev/null 2>&1; then
 fi
 
 #openssl for compiler
-export PATH=/usr/local/opt/openssl@1.1/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/opt/openssl@1.1/lib:$LD_LIBRARY_PATH
-export CPATH=/usr/local/opt/openssl@1.1/include:$CPATH
-export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
-export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
-export PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH
+export PATH=/usr/local/opt/openssl/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
+export CPATH=/usr/local/opt/openssl/include:$CPATH
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
 
 #symfony
 export PATH="$HOME/.symfony/bin:$PATH"
