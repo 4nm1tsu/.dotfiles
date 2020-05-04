@@ -26,6 +26,9 @@
 - tig
 
 ## lsp
+- 各lspのsettingの書き方は（どのlinterをonにするとか）lsp clientに依存する
+- clangd
+    - compile_flags.txtにオプションを`-std=c++17`のように改行区切りで羅列すれば反映される
 - pip install 'python-language-server[all]'
 - gem install solargraph
     - 各プロジェクトでbundlerで管理するgemは`bundle install --path ./vendor/bandler`とかしてから`solargraph config .`をしてやれば補完が効く
