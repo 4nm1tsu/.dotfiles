@@ -460,3 +460,21 @@ let g:vista#renderer#icons = {
             \ 'typeParameter':  "\Uff950",
             \ 'default':        "\Uff923"
             \ }
+"pylsのlinter
+"if executable('pyls')
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pyls']},
+"        \ 'whitelist': ['python'],
+"        \ 'workspace_config': {'pyls': {'plugins': {
+"        \ 'pydocstyle': {'enabled': v:false},
+"        \ 'pylint': {'enabled': v:true},
+"        \ 'flake8': {'enabled': v:true},
+"        \ 'pycodestyle': {'enabled': v:false},
+"        \ 'autopep8': {'enabled': v:false},
+"        \ 'yapf': {'enabled': v:false},
+"        \ 'pyflakes': {'enabled': v:false},
+"        \ 'mccabe': {'enabled': v:false},
+"        \ }}}
+"        \ })
+"endif

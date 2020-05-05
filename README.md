@@ -26,7 +26,7 @@
 - tig
 
 ## lsp
-- 各lspのsettingの書き方は（どのlinterをonにするとか）lsp clientに依存する
+- 各lspのsettingの書き方は（どのlinterをonにするとか）lsp clientに依存する(https://github.com/prabirshrestha/vim-lsp/wiki/Servers)
 - clangd
     - compile_flags.txtにオプションを`-std=c++17`のように改行区切りで羅列すれば反映される
 - pip install 'python-language-server[all]'
@@ -34,6 +34,7 @@
     - 各プロジェクトでbundlerで管理するgemは`bundle install --path ./vendor/bandler`とかしてから`solargraph config .`をしてやれば補完が効く
     - globalなgemはまず`yard gems`
     - `yard config --gem-install-yri`しておけば新しいgem入れた時に自動でやってくれる
+    - デフォルトのsettingはこれ(https://solargraph.org/guides/configuration)
 
 ## iceberg (ANSI)
 ! special
