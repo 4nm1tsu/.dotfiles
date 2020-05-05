@@ -67,7 +67,9 @@ export MAIL=hokada@student.42tokyo.jp
 export USER=hokada
 alias norminette=$HOME/.norminette/norminette.rb
 
-export PATH=$HOME/.composer/vendor/bin:$PATH
+if type "exa" > /dev/null 2>&1; then
+    export PATH=$(composer config --global --absolute home)/vendor/bin:$PATH
+fi
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/nh/install/games:$PATH
