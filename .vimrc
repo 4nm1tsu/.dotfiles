@@ -356,6 +356,9 @@ set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\
 set updatetime=100
 
 let g:ale_linters = {
+    \ 'c': [],
+    \ 'cpp': [],
+    \ 'php': ['phpcs', 'php', 'phpstan'],
     \ 'python': [],
     \ 'ruby': [],
     \ }
@@ -369,8 +372,8 @@ let g:ale_cpp_clang_options = "-std=c++14 -Wall"
 let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
 "eslint,phpcsは特に設定しなくてもローカルのものが動く
 ".gitが存在すればphpstanはローカルで動く
-let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo phpstan; fi; fi')
-let g:ale_php_phpstan_level = 4
+let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo -n phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo -n phpstan; fi; fi')
+"let g:ale_php_phpstan_level = 4
 "エラー間の移動
 nmap <silent> [a <Plug>(ale_previous_wrap)
 nmap <silent> ]a <Plug>(ale_next_wrap)
