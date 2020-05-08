@@ -127,6 +127,8 @@ augroup vimrc-42
     autocmd!
     autocmd BufNewFile,BufRead ~/42tokyo/* set noexpandtab
 augroup END
+"goのときはハードタブに
+au BufNewFile,BufRead *.go set noexpandtab
 set tabstop=4 " 画面上でタブ文字が占める幅
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent " 改行時に前の行のインデントを継続する
@@ -362,6 +364,11 @@ let g:ale_linters = {
     \ 'php': ['phpcs', 'php', 'phpstan'],
     \ 'python': [],
     \ 'ruby': [],
+    \ 'go': ['golangci-lint'],
+    \ }
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+    \ 'go': ['gofmt', 'goimports'],
     \ }
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''

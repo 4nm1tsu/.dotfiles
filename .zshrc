@@ -89,6 +89,14 @@ if type "rbenv" > /dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+if type "goenv" > /dev/null 2>&1; then
+    eval "$(goenv init -)"
+    export PATH="$GOROOT/bin:$PATH"
+    export PATH="$PATH:$GOPATH/bin"
+fi
+
 #openssl for compiler
 export PATH=/usr/local/opt/openssl/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
