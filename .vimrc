@@ -66,14 +66,14 @@ endif
 filetype on
 filetype plugin indent on
 
-"c/c++/javaインデント設定
-augroup vimrc
-    " 以前の autocmd コマンドをクリア
-    autocmd!
-
-    " C/C++/Java 言語系のファイルタイプが設定されたら cindent モードを有効にする
-    autocmd FileType c,cpp,java  setl cindent
-augroup END
+""c/c++/javaインデント設定
+"augroup vimrc
+"    " 以前の autocmd コマンドをクリア
+"    autocmd!
+"
+"    " C/C++/Java 言語系のファイルタイプが設定されたら cindent モードを有効にする
+"    autocmd FileType c,cpp,java  setl cindent
+"augroup END
 
 "行番号表示
 set number
@@ -123,17 +123,25 @@ endif
 " タブ・インデント
 "----------------------------------------------------------
 set expandtab " タブ入力を複数の空白入力に置き換える
-augroup vimrc-42
-    autocmd!
-    autocmd BufNewFile,BufRead ~/42tokyo/* set noexpandtab
-augroup END
-"goのときはハードタブに
-au BufNewFile,BufRead *.go set noexpandtab
 set tabstop=4 " 画面上でタブ文字が占める幅
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 set shiftwidth=4 " smartindentで増減する幅
+"c,cppのインデント幅デフォルトは2
+augroup c
+    autocmd!
+    autocmd BufNewFile,BufRead *.c,*.cpp setl softtabstop=2
+    autocmd BufNewFile,BufRead *.c,*.cpp setl shiftwidth=2
+augroup END
+
+augroup vimrc-42
+    autocmd!
+    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set noexpandtab
+    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set tabstop=2
+augroup END
+"goのときはハードタブに
+au BufNewFile,BufRead *.go set noexpandtab
 
 "数行余裕を持たせてスクロールする
 :set scrolloff=7
