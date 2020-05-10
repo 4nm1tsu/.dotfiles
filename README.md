@@ -36,6 +36,10 @@
     - `yard config --gem-install-yri`しておけば新しいgem入れた時に自動でやってくれる
     - デフォルトのsettingはこれ(https://solargraph.org/guides/configuration)
 
+## anyenv
+- git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+    - `anyenv update`で*envのupdateができるようになる
+
 ## iceberg (ANSI)
 ! special
 *.foreground:   #c6c8d1
