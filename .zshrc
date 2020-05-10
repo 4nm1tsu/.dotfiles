@@ -97,6 +97,16 @@ if type "goenv" > /dev/null 2>&1; then
     export PATH="$PATH:$GOPATH/bin"
 fi
 
+export PATH="$HOME/.phpenv/bin:$PATH"
+if type "phpenv" > /dev/null 2>&1; then
+    eval "$(phpenv init -)"
+fi
+
+export PATH="$HOME/.anyenv/bin:$PATH"
+if type "anyenv" > /dev/null 2>&1; then
+    eval "$(anyenv init - --no-rehash)"
+fi
+
 #openssl for compiler
 export PATH=/usr/local/opt/openssl/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
