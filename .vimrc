@@ -376,7 +376,7 @@ let g:ale_linters = {
     \ 'ruby': [],
     \ 'go': ['golangci-lint'],
     \ }
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_fixers = {
     \ 'go': ['gofmt', 'goimports'],
     \ 'php': ['php_cs_fixer'],
@@ -418,7 +418,8 @@ nmap <silent> [ds :split \| :LspTypeDefinition <CR>
 nmap <silent> [dv :vsplit \| :LspTypeDefinition <CR>
 nmap <silent> <C-h> :LspHover <CR>
 nmap <silent> <Space>r :LspReferences <CR>
-nmap <silent> <Space>f :LspDocumentFormat <CR>
+nmap <silent> <Space>f :LspDocumentFormat<CR>
+nmap <silent> <Space>F :ALEFix<CR>
 vmap <silent> <Space>f :LspDocumentRangeFormat <CR>
 
 "git-fugitive
