@@ -16,3 +16,6 @@
 
 [core]
     excludesfile = ~/.gitignore
+# git config --global credential.helper storeで認証情報を~/.git-credentialsに保存
+[credential]
+	helper = store
