@@ -411,11 +411,11 @@ let g:lsp_signs_hint = {'text': ''}
 nnoremap <silent> ]e  :LspNextError<CR>
 nnoremap <silent> [e  :LspPreviousError<CR>
 nmap <silent> ]dd :LspDefinition <CR>
-nmap <silent> ]ds :split \| :LspDefinition <CR>
-nmap <silent> ]dv :vsplit \| :LspDefinition <CR>
+nmap <silent> ]ds :leftabove LspDefinition <CR>
+nmap <silent> ]dv :rightbelow vertical LspDefinition <CR>
 nmap <silent> [dd :LspTypeDefinition <CR>
-nmap <silent> [ds :split \| :LspTypeDefinition <CR>
-nmap <silent> [dv :vsplit \| :LspTypeDefinition <CR>
+nmap <silent> [ds :leftabove LspTypeDefinition <CR>
+nmap <silent> [dv :rightbelow vertical LspTypeDefinition <CR>
 nmap <silent> <C-h> :LspHover <CR>
 nmap <silent> <Space>r :LspReferences <CR>
 nmap <silent> <Space>f :LspDocumentFormat<CR>
