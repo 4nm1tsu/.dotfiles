@@ -291,13 +291,14 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 
 "iterm2でhighlightが効かなかったり、bracketsが消えない場合に対応
-augroup nerdtreeconcealbrackets
-      autocmd!
-      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
-      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
-      autocmd FileType nerdtree setlocal conceallevel=3
-      autocmd FileType nerdtree setlocal concealcursor=nvic
-augroup END
+"nerd-syntax-highlightが効かなくなったのでコメントアウト
+"augroup nerdtreeconcealbrackets
+"      autocmd!
+"      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+"      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
+"      autocmd FileType nerdtree setlocal conceallevel=3
+"      autocmd FileType nerdtree setlocal concealcursor=nvic
+"augroup END
 
 function! ToggleNERDTreeFind()
     if g:NERDTree.IsOpen()
