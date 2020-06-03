@@ -352,7 +352,9 @@ let g:NERDTreeShowIgnoredStatus = 1
 
 "nerdtree-syntax-highlighting
 "let g:NERDTreeHighlightFolders = 1 "完全一致を使用してフォルダーアイコンの強調表示を有効にします
-let g:NERDTreeLimitedSyntax = 1
+"let g:NERDTreeLimitedSyntax = 1
+let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F" " sets the color for folders that did not match any rule
+let g:WebDevIconsDefaultFileSymbolColor = "689FB6" " sets the color for files that did not match any rule
 
 "devicons
 set encoding=UTF-8
@@ -362,8 +364,8 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let NERDTreeDirArrowExpandable = "\u00a0"
 let NERDTreeDirArrowCollapsible = "\u00a0"
 let NERDTreeNodeDelimiter = "\x07"
-let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-let g:DevIconsDefaultFolderOpenSymbol = ''
+"let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+"let g:DevIconsDefaultFolderOpenSymbol = ''
 set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\ %=\ %P%)
 
 "git-gutter
