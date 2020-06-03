@@ -364,6 +364,8 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let NERDTreeDirArrowExpandable = "\u00a0"
 let NERDTreeDirArrowCollapsible = "\u00a0"
 let NERDTreeNodeDelimiter = "\x07"
+"for indetation alignment
+let g:indentLine_fileTypeExclude = ["nerdtree"]
 "let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 "let g:DevIconsDefaultFolderOpenSymbol = ''
 set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\ %=\ %P%)
