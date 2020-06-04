@@ -20,6 +20,7 @@
 - rg
 - hexyl
 - vtop(npm)
+- bashtop
 - fzf
 - tmux (2.5~)
 - diff-so-fancy(npm)
