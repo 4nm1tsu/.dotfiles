@@ -519,3 +519,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 "        \ }}}
 "        \ })
 "endif
+
+"modifyOtherKeysの問題で制御文字4;2mが出るのを抑制
+let &t_TI = ""
+let &t_TE = ""
