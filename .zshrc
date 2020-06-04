@@ -77,30 +77,31 @@ export TERM='xterm-256color'
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:$PATH"
-if type "pyenv" > /dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# rbenv PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-if type "rbenv" > /dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-if type "goenv" > /dev/null 2>&1; then
-    eval "$(goenv init -)"
-    export PATH="$GOROOT/bin:$PATH"
-    export PATH="$PATH:$GOPATH/bin"
-fi
-
-export PATH="$HOME/.phpenv/bin:$PATH"
-if type "phpenv" > /dev/null 2>&1; then
-    eval "$(phpenv init -)"
-fi
+#export PYENV_ROOT="${HOME}/.pyenv"
+#export PATH="${PYENV_ROOT}/bin:$PATH"
+#if type "pyenv" > /dev/null 2>&1; then
+#    eval "$(pyenv init -)"
+#fi
+#
+## rbenv PATH
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#if type "rbenv" > /dev/null 2>&1; then
+#    eval "$(rbenv init -)"
+#fi
+#
+#GOENV_DISABLE_GOPATH=1
+#export GOENV_ROOT="$HOME/.goenv"
+#export PATH="$GOENV_ROOT/bin:$PATH"
+#if type "goenv" > /dev/null 2>&1; then
+#    eval "$(goenv init -)"
+#    export PATH="$GOROOT/bin:$PATH"
+#    export PATH="$PATH:$GOPATH/bin"
+#fi
+#
+#export PATH="$HOME/.phpenv/bin:$PATH"
+#if type "phpenv" > /dev/null 2>&1; then
+#    eval "$(phpenv init -)"
+#fi
 
 export PATH="$HOME/.anyenv/bin:$PATH"
 if type "anyenv" > /dev/null 2>&1; then
