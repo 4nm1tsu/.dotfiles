@@ -377,7 +377,7 @@ set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\
 set updatetime=100
 
 let g:ale_linters = {
-    \ 'c': [],
+    \ 'c': ['gcc'],
     \ 'cpp': [],
     \ 'php': ['phpcs', 'php', 'phpstan'],
     \ 'python': [],
@@ -395,8 +395,10 @@ let g:ale_sign_info = ''
 let g:ale_sign_style_error = ''
 let g:ale_sign_style_warning = ''
 let g:ale_php_phpcs_standard = 'PSR12'
+let g:ale_c_clang_options = "-std=c11 -Wall -Werror -Wextra"
+let g:ale_c_gcc_options = "-std=c11 -Wall -Werror -Wextra"
 let g:ale_cpp_clang_options = "-std=c++14 -Wall -Werror -Wextra"
-let g:ale_cpp_gcc_options = "-std=c++14 -Wall"
+let g:ale_cpp_gcc_options = "-std=c++14 -Wall -Werror -Wextra"
 "eslint,phpcsは特に設定しなくてもローカルのものが動く
 ".gitが存在すればphpstanはローカルで動く
 let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo -n phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo -n phpstan; fi; fi')
