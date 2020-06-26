@@ -138,7 +138,9 @@ augroup END
 augroup vimrc-42
     autocmd!
     autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set noexpandtab
-    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set tabstop=2
+    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set tabstop=4
+    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set softtabstop=4
+    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set shiftwidth=4
 augroup END
 "goのときはハードタブに
 au BufNewFile,BufRead *.go set noexpandtab
