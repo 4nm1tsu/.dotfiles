@@ -7,6 +7,8 @@ OPTIONS=lit_corridor
 
 OPTIONS=menucolors
 
+OPTIONS=hitpointbar
+
 MENUCOLOR="blessed"=cyan&bold
 MENUCOLOR="cursed"=orange&bold
 MENUCOLOR="uncursed"=green
