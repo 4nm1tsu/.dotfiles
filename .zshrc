@@ -122,6 +122,9 @@ export PATH="$HOME/.symfony/bin:$PATH"
 #poetry
 export PATH=${HOME}/.poetry/bin:${PATH}
 
+export PATH="/usr/local/sbin:$PATH"
+alias brew="env PATH=${PATH//Users/username/.anyenv/envs/phpenv/shims:} brew"
+
 ### End of chunk by myself
 
 ### Added by Zinit's installer
