@@ -105,6 +105,11 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export PATH="$HOME/.anyenv/bin:$PATH"
 if type "anyenv" > /dev/null 2>&1; then
+    export GOENV_DISABLE_GOPATH=1
+    export GOPATH=$HOME/go
+    export GOBIN=$GOPATH/bin
+    export PATH=$PATH:$GOPATH/bin
+
     eval "$(anyenv init - --no-rehash)"
 fi
 
