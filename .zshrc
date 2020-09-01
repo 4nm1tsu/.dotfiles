@@ -63,8 +63,6 @@ fi
 alias xclip='xclip -sel clip'
 
 #for42
-export MAIL=hokada@student.42tokyo.jp
-export USER=hokada
 alias norminette=$HOME/.norminette/norminette.rb
 
 if type "exa" > /dev/null 2>&1; then
