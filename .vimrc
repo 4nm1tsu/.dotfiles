@@ -198,6 +198,7 @@ if dein#load_state('~/.cache/dein')
               \'prabirshrestha/vim-lsp',
               \'thomasfaingnaert/vim-lsp-snippets',]})
 "  call dein#add('honza/vim-snippets', { 'depends': 'SirVer/ultisnips' })
+  call dein#add('previm/previm')
   call dein#add('alvan/vim-closetag')
   call dein#add('Yggdroot/indentLine')
   call dein#add('cocopon/iceberg.vim')
@@ -532,3 +533,10 @@ let &t_TE = ""
 
 "markdown
 let g:vim_markdown_conceal=0
+
+"previm
+if has('linux')
+    let g:previm_open_cmd="google-chrome"
+elseif has('mac')
+    let g:previm_open_cmd="open /Applications/Google\ Chrome.app"
+endif
