@@ -37,6 +37,9 @@
     - `yard config --gem-install-yri`しておけば新しいgem入れた時に自動でやってくれる
     - デフォルトのsettingはこれ(https://solargraph.org/guides/configuration)
 
+## ale
+- golangci-lintはgo getじゃなくて各環境にあったbinaryをinstall
+
 ## anyenv
 - git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
     - `anyenv update`で*envのupdateができるようになる
