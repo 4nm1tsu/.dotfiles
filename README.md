@@ -41,6 +41,7 @@
 - golangci-lintはgo getじゃなくて各環境にあったbinaryをinstall
 
 ## previm
+- `~/.cache/dein/repos/github.com/previm/previm/preview/_/index.html`
 - `~/.cache/dein/.cache/.vimrc/.dein/preview/_/index.html`
     - in `<head></head>`
     ```html
@@ -50,6 +51,7 @@
     <!-- END -->
     <style>
     ```
+- `~/.cache/dein/repos/github.com/previm/previm/preview/_/js/previm.js`
 - `~/.cache/dein/.cache/.vimrc/.dein/preview/_/js/previm.js`
     - in `function loadPreview()`
     ```js
