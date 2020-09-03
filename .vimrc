@@ -203,6 +203,7 @@ if dein#load_state('~/.cache/dein')
               \'thomasfaingnaert/vim-lsp-snippets',]})
 "  call dein#add('honza/vim-snippets', { 'depends': 'SirVer/ultisnips' })
   call dein#add('previm/previm')
+  call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('alvan/vim-closetag')
   call dein#add('Yggdroot/indentLine')
   call dein#add('cocopon/iceberg.vim')
@@ -545,3 +546,18 @@ if has('linux')
 elseif has('mac')
     let g:previm_open_cmd="open -a safari"
 endif
+
+"vim-table-mode
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
