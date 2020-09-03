@@ -40,6 +40,28 @@
 ## ale
 - golangci-lintはgo getじゃなくて各環境にあったbinaryをinstall
 
+## previm
+- `~/.cache/dein/.cache/.vimrc/.dein/preview/_/index.html`
+    - in `<head></head>`
+    ```html
+    <link type="text/css" href="../_/css/lib/mermaid.min.css" rel="stylesheet" media="all" />
+    <!-- START -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <!-- END -->
+    <style>
+    ```
+- `~/.cache/dein/.cache/.vimrc/.dein/preview/_/js/previm.js`
+    - in `function loadPreview()`
+    ```js
+      autoScroll('body', beforePageYOffset);
+      style_header();
+      // START
+      MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]] } });
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+      autoScroll('body');
+      // END
+    ```
+
 ## anyenv
 - git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
     - `anyenv update`で*envのupdateができるようになる
