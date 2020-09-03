@@ -537,8 +537,13 @@ let &t_TI = ""
 let &t_TE = ""
 
 "markdown
-let g:vim_markdown_conceal=0
+"Tex記法のみconcealする場合
 let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+
+"全てconcealしない場合
+"let g:vim_markdown_conceal=0
+"let g:vim_markdown_conceal_code_blocks = 0
 
 "previm
 if has('linux')
