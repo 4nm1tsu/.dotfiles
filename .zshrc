@@ -65,9 +65,6 @@ alias xclip='xclip -sel clip'
 #for42
 alias norminette=$HOME/.norminette/norminette.rb
 
-if type "exa" > /dev/null 2>&1; then
-    export PATH=$(composer config --global --absolute home)/vendor/bin:$PATH
-fi
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/nh/install/games:$PATH
