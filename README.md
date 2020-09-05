@@ -67,7 +67,7 @@
 ## anyenv
 - git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
     - `anyenv update`で*envのupdateができるようになる
-    - `goenv rehash`で~/go/{version}下のgo getしたbinaryのパスが通る(pathは`~/.anyenv/envs/goenv/shims`に通ってる`)
+    - `goenv rehash`で~/go/{version}下のgo getしたbinaryのパスが通る(pathは`~/.anyenv/envs/goenv/shims`に通ってる)
 
 ## iceberg (ANSI)
 ! special
