@@ -459,6 +459,8 @@ nnoremap <Space>gm :Gmerge
 "fzf
 nnoremap <silent> <C-f> :Files<CR>
 "ファイル名が指定されなかったらfzf起動できるようにしたい
+"escでタブが閉じるのが遅いので追加
+autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 "vista
 let g:vista_default_executive = 'vim_lsp'
