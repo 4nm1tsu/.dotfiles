@@ -25,6 +25,7 @@
 - tmux (2.5~)
 - diff-so-fancy(npm)
 - tig
+- jq
 
 ## lsp
 - 各lspのsettingの書き方は（どのlinterをonにするとか）lsp clientに依存する(https://github.com/prabirshrestha/vim-lsp/wiki/Servers)
