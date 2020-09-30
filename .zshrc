@@ -42,7 +42,7 @@ else
     echo "'fd' is not installed."
 fi
 if type "procs" > /dev/null 2>&1; then
-    alias ps='procs'
+    #alias ps='procs'
 else
     echo "'procs' is not installed."
 fi
