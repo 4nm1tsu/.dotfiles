@@ -40,6 +40,8 @@
 
 ## ale
 - golangci-lintはgo getじゃなくて各環境にあったbinaryをinstall
+- norminette:`gem install --user --pre norminette`
+    - pluginインストール後に`bash install.sh`(norminette.vimのシンボリックリンクを貼る)
 
 ## previm
 - `~/.cache/dein/repos/github.com/previm/previm/preview/_/index.html`
