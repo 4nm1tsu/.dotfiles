@@ -207,6 +207,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Yggdroot/indentLine')
   call dein#add('cocopon/iceberg.vim')
   call dein#add('pbondoer/vim-42header')
+  call dein#add('embear/vim-localvimrc')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   call dein#add('sheerun/vim-polyglot')
 "  if !has('nvim')
@@ -580,3 +581,6 @@ inoreabbrev <expr> <bar><bar>
 inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+"localvimrc
+let g:localvimrc_ask=0

@@ -63,7 +63,7 @@ fi
 alias xclip='xclip -sel clip'
 
 #for42
-alias norminette=$HOME/.norminette/norminette.rb
+#alias norminette=$HOME/.norminette/norminette.rb
 
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
