@@ -396,6 +396,7 @@ set statusline=%f\ %{WebDevIconsGetFileTypeSymbol()}\ %h%w%m%r\ %=%(%l,%c%V\ %Y\
 set updatetime=100
 
 let g:ale_linters = {
+    \ 'html': ['eslint'],
     \ 'c': ['gcc'],
     \ 'cpp': [],
     \ 'php': ['phpcs', 'php', 'phpstan'],
@@ -407,6 +408,7 @@ let g:ale_fix_on_save = 0
 let g:ale_fixers = {
     \ 'go': ['gofmt', 'goimports'],
     \ 'php': ['php_cs_fixer'],
+    \ 'javascript': ['eslint'],
     \ }
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
