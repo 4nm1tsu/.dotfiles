@@ -135,17 +135,6 @@ augroup c
     autocmd BufNewFile,BufRead *.c,*.cpp setl shiftwidth=2
 augroup END
 
-augroup vimrc-42
-    autocmd!
-    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set noexpandtab
-    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set tabstop=4
-    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set softtabstop=4
-    autocmd BufNewFile,BufRead ~/42tokyo/*/*.c set shiftwidth=4
-augroup END
-"42header
-let g:hdr42user="hokada"
-let g:hdr42mail="hokada@student.42tokyo.jp"
-
 "goのときはハードタブに
 au BufNewFile,BufRead *.go set noexpandtab
 

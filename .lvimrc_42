@@ -1,2 +1,11 @@
 let g:ale_linters['c'] = ['gcc', 'norminette']
 let g:ale_linters['h'] = ['gcc', 'norminette']
+
+set noexpandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+"42header
+let g:hdr42user="hokada"
+let g:hdr42mail="hokada@student.42tokyo.jp"
