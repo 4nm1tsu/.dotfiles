@@ -573,4 +573,3 @@ inoreabbrev <expr> __
 
 "localvimrc
 let g:localvimrc_ask=0
-let g:localvimrc_name=['.lvimrc', '.lvimrc_42']
