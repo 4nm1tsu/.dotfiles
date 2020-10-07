@@ -27,7 +27,15 @@ ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/repos/github.com/w0rp/ale
 if [ $? -ne 0 ]; then
   failed=1
 fi
-ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/c
+ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/c/
+if [ $? -ne 0 ]; then
+  failed=1
+fi
+ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/repos/github.com/w0rp/ale/ale_linters/cpp/norminette.vim
+if [ $? -ne 0 ]; then
+  failed=1
+fi
+ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/cpp/norminette.vim
 if [ $? -ne 0 ]; then
   failed=1
 fi
