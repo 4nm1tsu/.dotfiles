@@ -8,7 +8,7 @@ do
   [ ${f} = ".git" ] && continue
   [ ${f} = ".gitignore" ] && continue
   if [[ ${f} =~ .*42$ ]]; then
-    ln -snfv ${DOT_DIRECTORY}/${f} ${FT_DIRECTORY}/${f}
+    ln -snfv ${DOT_DIRECTORY}/${f} ${FT_DIRECTORY}/${f/_42/}
   elif [ ${f} = '.lvimrc' ]; then
     ln -snfv ${DOT_DIRECTORY}/${f} ${FT_DIRECTORY}/${f}
   else

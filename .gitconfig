@@ -12,7 +12,7 @@
 	name = Hibiki Okada
 #version 2.13.0 or later
 [includeIf "gitdir:~/42tokyo/"]
-	path = ~/42tokyo/.gitconfig_42
+	path = ~/42tokyo/.gitconfig
 
 [core]
     excludesfile = ~/.gitignore
