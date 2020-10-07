@@ -396,6 +396,7 @@ let g:ale_linters = {
     \ }
 let g:ale_fix_on_save = 0
 let g:ale_fixers = {
+    \ 'c': ['clang-format'],
     \ 'go': ['gofmt', 'goimports'],
     \ 'php': ['php_cs_fixer'],
     \ 'javascript': ['eslint'],
