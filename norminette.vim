@@ -33,7 +33,7 @@ function! ale_linters#c#norminette#Opscript(buffer, lines) abort
 			call add(l:output, {
             \   'lnum': str2nr(l:match[3]),
 			\   'col': l:match[5] is# '' ? 0 : str2nr(l:match[5]),
-            \   'type': l:match[1] is# 'Error' ? 'E' : 'W',
+            \   'type': 'W',
             \   'text': l:match[0],
             \})
         endif
