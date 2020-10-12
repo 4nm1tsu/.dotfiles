@@ -4,3 +4,8 @@ hi! LspWarningText ctermbg=235 ctermfg=216 guibg=#1e2132 guifg=#e2a478
 hi! LspInformationText ctermbg=235 ctermfg=234 guibg=#1e2132 guifg=#d4d5db
 hi! LspHintText ctermbg=235 ctermfg=110 guibg=#1e2132 guifg=#84a0c6
 
+hi ALEInfoSign ctermbg=253 ctermfg=234 guibg=#dcdfe7 guifg=#9dedd2
+hi LspErrorText ctermbg=253 ctermfg=203 guibg=#dcdfe7 guifg=#e27878
+hi LspWarningText ctermbg=253 ctermfg=216 guibg=#dcdfe7 guifg=#e2a478
+hi LspInformationText ctermbg=253 ctermfg=234 guibg=#dcdfe7 guifg=#9dedd2
+hi LspHintText ctermbg=253 ctermfg=110 guibg=#dcdfe7 guifg=#84a0c6
