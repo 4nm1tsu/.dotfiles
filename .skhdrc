@@ -88,9 +88,15 @@ ctrl + alt - 3  : yabai -m display --focus 3
 # send window to monitor and follow focus
 ctrl + cmd - x  : yabai -m window --display recent && yabai -m display --focus recent
 ctrl + cmd - j  : yabai -m window --display prev && yabai -m display --focus prev
-ctrl + cmd - p  : yabai -m window --space prev && yabai -m space --focus prev 
+ctrl + cmd - p  : wid="$(yabai -m query --windows --window | jq -r '.id')" \
+&& yabai -m window "${wid}" --space prev \
+&& yabai -m space --focus prev \
+&& yabai -m window --focus "${wid}"
 ctrl + cmd - k  : yabai -m window --display next && yabai -m display --focus next
-ctrl + cmd - n  : yabai -m window --space next && yabai -m space --focus next 
+ctrl + cmd - n  :  wid="$(yabai -m query --windows --window | jq -r '.id')" \
+&& yabai -m window "${wid}" --space next \
+&& yabai -m space --focus next \
+&& yabai -m window --focus "${wid}"
 ctrl + cmd - 1  : yabai -m window --display 1 && yabai -m display --focus 1
 ctrl + cmd - 2  : yabai -m window --display 2 && yabai -m display --focus 2
 ctrl + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
