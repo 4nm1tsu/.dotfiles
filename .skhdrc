@@ -34,13 +34,13 @@ shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+# shift + cmd - n : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
-shift + alt - n : yabai -m space --create && \
+shift + cmd - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                 yabai -m space --focus "${index}"
 
@@ -79,16 +79,18 @@ cmd + shift - 0 : yabai -m space --focus 10 || skhd -k "ctrl + alt + cmd - 0"
 
 # focus monitor
 ctrl + alt - x  : yabai -m display --focus recent
-ctrl + alt - z  : yabai -m display --focus prev
-ctrl + alt - c  : yabai -m display --focus next
+ctrl + alt - j  : yabai -m display --focus prev
+ctrl + alt - k  : yabai -m display --focus next
 ctrl + alt - 1  : yabai -m display --focus 1
 ctrl + alt - 2  : yabai -m display --focus 2
 ctrl + alt - 3  : yabai -m display --focus 3
 
 # send window to monitor and follow focus
 ctrl + cmd - x  : yabai -m window --display recent && yabai -m display --focus recent
-ctrl + cmd - z  : yabai -m window --display prev && yabai -m display --focus prev
-ctrl + cmd - c  : yabai -m window --display next && yabai -m display --focus next
+ctrl + cmd - j  : yabai -m window --display prev && yabai -m display --focus prev
+ctrl + cmd - p  : yabai -m window --space prev && yabai -m space --focus prev 
+ctrl + cmd - k  : yabai -m window --display next && yabai -m display --focus next
+ctrl + cmd - n  : yabai -m window --space next && yabai -m space --focus next 
 ctrl + cmd - 1  : yabai -m window --display 1 && yabai -m display --focus 1
 ctrl + cmd - 2  : yabai -m window --display 2 && yabai -m display --focus 2
 ctrl + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
@@ -112,11 +114,11 @@ shift + cmd - w : yabai -m window --resize top:0:20
 shift + cmd - d : yabai -m window --resize right:-20:0
 
 # set insertion point in focused container
-ctrl + alt - h : yabai -m window --insert west
-ctrl + alt - j : yabai -m window --insert south
-ctrl + alt - k : yabai -m window --insert north
-ctrl + alt - l : yabai -m window --insert east
-ctrl + alt - i : yabai -m window --insert stack
+#ctrl + alt - h : yabai -m window --insert west
+#ctrl + alt - j : yabai -m window --insert south
+#ctrl + alt - k : yabai -m window --insert north
+#ctrl + alt - l : yabai -m window --insert east
+#ctrl + alt - i : yabai -m window --insert stack
 
 # rotate tree
 alt - r : yabai -m space --rotate 90
@@ -158,3 +160,6 @@ alt - p : yabai -m window --toggle border && \
 
 # change layout of desktop
 ctrl + alt - a : yabai -m space --
+
+cmd + shift - t: open -n /Applications/iTerm.app
+cmd + shift - c: open -n /Applications/Google\ Chrome.app
