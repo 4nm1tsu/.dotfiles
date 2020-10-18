@@ -40,9 +40,6 @@ set cursorline
 "  endfunction
 "augroup END
 
-"起動時メッセージ出さない
-set shortmess+=I
-
 "横のスクロールを細かく
 set sidescroll=1
 
@@ -574,3 +571,6 @@ inoreabbrev <expr> __
 
 "localvimrc
 let g:localvimrc_ask=0
+
+"起動時メッセージ出さない
+set shortmess+=I
