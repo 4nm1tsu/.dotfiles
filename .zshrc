@@ -212,3 +212,11 @@ man() {
                 LESS_TERMCAP_us=$(printf "\e[1;35m") \
                 man "$@"
 }
+
+function ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/local/bin/ranger $@
+    else
+        exit
+    fi
+}
