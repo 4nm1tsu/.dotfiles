@@ -398,6 +398,7 @@ let g:ale_fixers = {
     \ 'go': ['gofmt', 'goimports'],
     \ 'php': ['php_cs_fixer'],
     \ 'javascript': ['eslint'],
+    \ 'sql': ['sqlfmt'],
     \ }
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
@@ -409,6 +410,7 @@ let g:ale_c_clang_options = "-std=c11 -Wall -Werror -Wextra"
 let g:ale_c_gcc_options = "-std=c11 -Wall -Werror -Wextra"
 let g:ale_cpp_clang_options = "-std=c++14 -Wall -Werror -Wextra"
 let g:ale_cpp_gcc_options = "-std=c++14 -Wall -Werror -Wextra"
+let g:ale_sql_sqlfmt_options = '-u'
 "eslint,phpcsは特に設定しなくてもローカルのものが動く
 ".gitが存在すればphpstanはローカルで動く
 let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo -n phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo -n phpstan; fi; fi')
