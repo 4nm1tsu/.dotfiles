@@ -1,3 +1,7 @@
+if &compatible
+  set nocompatible
+endif
+
 "起動時にカーソル形状を問い合わせるシーケンスが出ないようにする（for mac "iterm2）
 set t_RC=
 
@@ -145,70 +149,138 @@ set clipboard+=unnamed
 "backspaceを有効に
 set backspace=indent,eol,start
 
-" deinの設定
-if &compatible
-  set nocompatible
-endif
-" dein自体の自動インストール
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-let &runtimepath = s:dein_repo_dir .",". &runtimepath
+"" deinの設定
+"" dein自体の自動インストール
+"let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+"let s:dein_dir = s:cache_home . '/dein'
+"let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+"if !isdirectory(s:dein_repo_dir)
+"  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+"endif
+"let &runtimepath = s:dein_repo_dir .",". &runtimepath
+"
+"if dein#load_state('~/.cache/dein')
+"  call dein#begin('~/.cache/dein')
+"
+"  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+"  call dein#add('itchyny/lightline.vim')
+"  call dein#add('cohama/lexima.vim')
+"  call dein#add('embear/vim-localvimrc')
+"  call dein#add('w0rp/ale')
+"  call dein#add('scrooloose/nerdtree')
+"  call dein#add('Xuyuanp/nerdtree-git-plugin')
+"  call dein#add('ryanoasis/vim-devicons')
+"  call dein#add('airblade/vim-gitgutter')
+"  call dein#add('sheerun/vim-polyglot')
+"  call dein#add('tpope/vim-fugitive')
+"  call dein#add('gorodinskiy/vim-coloresque')
+"  call dein#add('mattn/emmet-vim')
+"  call dein#add('prabirshrestha/async.vim')
+"  call dein#add('prabirshrestha/vim-lsp', { 'depends': 'async.vim' })
+"  call dein#add('mattn/vim-lsp-settings')
+"  call dein#add('prabirshrestha/asyncomplete.vim')
+"  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+"  call dein#add('prabirshrestha/asyncomplete-file.vim')
+"  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+"  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+"  call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
+"  call dein#add('SirVer/ultisnips')
+"  call dein#add('thomasfaingnaert/vim-lsp-snippets')
+"  call dein#add('thomasfaingnaert/vim-lsp-ultisnips', { 'depends': [
+"              \'prabirshrestha/vim-lsp',
+"              \'thomasfaingnaert/vim-lsp-snippets',]})
+""  call dein#add('honza/vim-snippets', { 'depends': 'SirVer/ultisnips' })
+""  call dein#add('previm/previm')
+"  call dein#add('dhaiibfiukkiu/previm')
+"  call dein#add('dhruvasagar/vim-table-mode')
+"  call dein#add('alvan/vim-closetag')
+"  call dein#add('Yggdroot/indentLine')
+"  call dein#add('cocopon/iceberg.vim')
+"  call dein#add('pbondoer/vim-42header')
+"  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+""  if !has('nvim')
+""    call dein#add('roxma/nvim-yarp')
+""    call dein#add('roxma/vim-hug-neovim-rpc')
+""  endif
+"
+"  call dein#end()
+"  call dein#save_state()
+"endif
+"" 不足プラグインの自動インストール
+"if has('vim_starting') && dein#check_install()
+"  call dein#install()
+"endif
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('cohama/lexima.vim')
-  call dein#add('embear/vim-localvimrc')
-  call dein#add('w0rp/ale')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-  call dein#add('ryanoasis/vim-devicons')
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('sheerun/vim-polyglot')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('gorodinskiy/vim-coloresque')
-  call dein#add('mattn/emmet-vim')
-  call dein#add('prabirshrestha/async.vim')
-  call dein#add('prabirshrestha/vim-lsp', { 'depends': 'async.vim' })
-  call dein#add('mattn/vim-lsp-settings')
-  call dein#add('prabirshrestha/asyncomplete.vim')
-  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-  call dein#add('prabirshrestha/asyncomplete-file.vim')
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
-  call dein#add('SirVer/ultisnips')
-  call dein#add('thomasfaingnaert/vim-lsp-snippets')
-  call dein#add('thomasfaingnaert/vim-lsp-ultisnips', { 'depends': [
-              \'prabirshrestha/vim-lsp',
-              \'thomasfaingnaert/vim-lsp-snippets',]})
-"  call dein#add('honza/vim-snippets', { 'depends': 'SirVer/ultisnips' })
-"  call dein#add('previm/previm')
-  call dein#add('dhaiibfiukkiu/previm')
-  call dein#add('dhruvasagar/vim-table-mode')
-  call dein#add('alvan/vim-closetag')
-  call dein#add('Yggdroot/indentLine')
-  call dein#add('cocopon/iceberg.vim')
-  call dein#add('pbondoer/vim-42header')
-  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-"  if !has('nvim')
-"    call dein#add('roxma/nvim-yarp')
-"    call dein#add('roxma/vim-hug-neovim-rpc')
-"  endif
-
-  call dein#end()
-  call dein#save_state()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" 不足プラグインの自動インストール
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/lightline.vim'
+Plug 'cohama/lexima.vim'
+Plug 'embear/vim-localvimrc'
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'mattn/emmet-vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'SirVer/ultisnips'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'dhaiibfiukkiu/previm'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'alvan/vim-closetag'
+Plug 'Yggdroot/indentLine'
+Plug 'cocopon/iceberg.vim'
+Plug 'pbondoer/vim-42header'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+"" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+"Plug 'junegunn/vim-easy-align'
+"
+"" Any valid git URL is allowed
+"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+"
+"" Multiple Plug commands can be written in a single line using | separators
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"
+"" On-demand loading
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"
+"" Using a non-default branch
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"
+"" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+"Plug 'fatih/vim-go', { 'tag': '*' }
+"
+"" Plugin options
+"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"
+"" Plugin outside ~/.vim/plugged with post-update hook
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"
+"" Unmanaged plugin (manually installed and updated)
+"Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+call plug#end()
 
 colorscheme iceberg
 syntax on

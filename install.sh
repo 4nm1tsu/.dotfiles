@@ -23,22 +23,26 @@ if [ $failed -eq 0 ]; then
 fi
 
 failed=0
-ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/repos/github.com/w0rp/ale/ale_linters/c/
+#ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/repos/github.com/w0rp/ale/ale_linters/c/
+ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.vim/plugged/ale/ale_linters/c
 if [ $? -ne 0 ]; then
   failed=1
 fi
-ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/c/
+#ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/c/
+#ln -snfv ${DOT_DIRECTORY}/norminette.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/c/
+#if [ $? -ne 0 ]; then
+#  failed=1
+#fi
+#ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/repos/github.com/w0rp/ale/ale_linters/cpp/norminette.vim
+ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.vim/plugged/ale/ale_linters/cpp/norminette.vim
 if [ $? -ne 0 ]; then
   failed=1
 fi
-ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/repos/github.com/w0rp/ale/ale_linters/cpp/norminette.vim
-if [ $? -ne 0 ]; then
-  failed=1
-fi
-ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/cpp/norminette.vim
-if [ $? -ne 0 ]; then
-  failed=1
-fi
+#ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/cpp/norminette.vim
+#ln -snfv ${DOT_DIRECTORY}/norminette_cpp.vim ~/.cache/dein/.cache/.vimrc/.dein/ale_linters/cpp/norminette.vim
+#if [ $? -ne 0 ]; then
+#  failed=1
+#fi
 if [ $failed -eq 0 ]; then
   echo $(tput setaf 4)Deploy norminette.vim complete!. ✔︎$(tput sgr0)
 fi
