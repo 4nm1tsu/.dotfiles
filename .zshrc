@@ -23,11 +23,11 @@ compinit
 
 #代替コマンドのエイリアス
 if type "exa" > /dev/null 2>&1; then
-    alias ll='exa -labgh --icons'
+    alias ll='exa -labgh --icons --color-scale'
     alias la='exa -abgh --icons'
     alias ls='exa -bgh --icons'
     alias lt='exa -T --icons'
-    alias lg='exa -labgh --icons --git'
+    alias lg='exa -labgh --icons --git --color-scale'
 else
     echo "'exa' is not installed."
 fi
