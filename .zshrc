@@ -142,6 +142,7 @@ autoload -Uz _zinit
 
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light romkatv/powerlevel10k
+zplugin light zsh-users/zsh-completions
 zplugin load zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
