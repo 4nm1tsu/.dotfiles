@@ -529,6 +529,8 @@ nnoremap <Space>gd :Gvdiff<CR>
 nnoremap <Space>gr :Grebase -i<CR>
 nnoremap <Space>gg :Ggrep
 nnoremap <Space>gm :Gmerge
+"GitGutter
+nnoremap <Space>gu :GitGutterUndoHunk<CR>
 
 "fzf
 nnoremap <silent> <C-f> :Files<CR>
