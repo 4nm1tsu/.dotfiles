@@ -32,7 +32,7 @@ else
     echo "'exa' is not installed."
 fi
 if type "bat" > /dev/null 2>&1; then
-    alias cat='bat'
+    #alias cat='bat'
 else
     echo "'bat' is not installed."
 fi
@@ -47,7 +47,7 @@ else
     echo "'procs' is not installed."
 fi
 if type "rg" > /dev/null 2>&1; then
-    alias grep='rg'
+    #alias grep='rg'
 else
     echo "'ripgrep(rg)' is not installed."
 fi
