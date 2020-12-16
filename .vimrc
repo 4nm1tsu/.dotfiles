@@ -651,3 +651,11 @@ let g:localvimrc_ask=0
 
 "起動時メッセージ出さない
 set shortmess+=I
+
+"時刻によってbackground colorを変更
+let g:time_to_set_background = str2nr(strftime("%H%M%S"))
+if (g:time_to_set_background >= 70000 && g:time_to_set_background < 160000)
+    set background=light
+else
+    set background=dark
+endif
