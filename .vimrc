@@ -14,35 +14,6 @@ nmap <silent><C-j> :tabprevious<CR>
 
 "行番号のハイライト
 set cursorline
-"augroup vimrc-auto-cursorline
-"  autocmd!
-"  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
-"  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
-"  autocmd WinEnter * call s:auto_cursorline('WinEnter')
-"  autocmd WinLeave * call s:auto_cursorline('WinLeave')
-"
-"  let s:cursorline_lock = 0
-"  function! s:auto_cursorline(event)
-"    if a:event ==# 'WinEnter'
-"      setlocal cursorline
-"      let s:cursorline_lock = 2
-"    elseif a:event ==# 'WinLeave'
-"      setlocal nocursorline
-"    elseif a:event ==# 'CursorMoved'
-"      if s:cursorline_lock
-"        if 1 < s:cursorline_lock
-"          let s:cursorline_lock = 1
-"        else
-"          setlocal nocursorline
-"          let s:cursorline_lock = 0
-"        endif
-"      endif
-"    elseif a:event ==# 'CursorHold'
-"      setlocal cursorline
-"      let s:cursorline_lock = 1
-"    endif
-"  endfunction
-"augroup END
 
 "横のスクロールを細かく
 set sidescroll=1
@@ -66,15 +37,6 @@ endif
 " ファイルタイプ検出を有効にする
 filetype on
 filetype plugin indent on
-
-""c/c++/javaインデント設定
-"augroup vimrc
-"    " 以前の autocmd コマンドをクリア
-"    autocmd!
-"
-"    " C/C++/Java 言語系のファイルタイプが設定されたら cindent モードを有効にする
-"    autocmd FileType c,cpp,java  setl cindent
-"augroup END
 
 "行番号表示
 " set number
@@ -106,19 +68,19 @@ set wildmenu "コマンドモードのタブ補完
 
 "ペースト時、インデントが崩れないようにする    let &t_SI .=
 if &term =~ "xterm"
-let &t_ti .= "\e[?2004h"
-let &t_te .= "\e[?2004l"
-let &pastetoggle = "\e[201~"
+    let &t_ti .= "\e[?2004h"
+    let &t_te .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
 
-function XTermPasteBegin(ret)
-    set paste
-    return a:ret
-endfunction
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
 
-noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-cnoremap <special> <Esc>[200~ <nop>
-cnoremap <special> <Esc>[201~ <nop>
+    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    cnoremap <special> <Esc>[200~ <nop>
+    cnoremap <special> <Esc>[201~ <nop>
 endif
 
 "----------------------------------------------------------
@@ -149,68 +111,7 @@ set clipboard+=unnamed
 "backspaceを有効に
 set backspace=indent,eol,start
 
-"" deinの設定
-"" dein自体の自動インストール
-"let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-"let s:dein_dir = s:cache_home . '/dein'
-"let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-"if !isdirectory(s:dein_repo_dir)
-"  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-"endif
-"let &runtimepath = s:dein_repo_dir .",". &runtimepath
-"
-"if dein#load_state('~/.cache/dein')
-"  call dein#begin('~/.cache/dein')
-"
-"  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-"  call dein#add('itchyny/lightline.vim')
-"  call dein#add('cohama/lexima.vim')
-"  call dein#add('embear/vim-localvimrc')
-"  call dein#add('w0rp/ale')
-"  call dein#add('scrooloose/nerdtree')
-"  call dein#add('Xuyuanp/nerdtree-git-plugin')
-"  call dein#add('ryanoasis/vim-devicons')
-"  call dein#add('airblade/vim-gitgutter')
-"  call dein#add('sheerun/vim-polyglot')
-"  call dein#add('tpope/vim-fugitive')
-"  call dein#add('gorodinskiy/vim-coloresque')
-"  call dein#add('mattn/emmet-vim')
-"  call dein#add('prabirshrestha/async.vim')
-"  call dein#add('prabirshrestha/vim-lsp', { 'depends': 'async.vim' })
-"  call dein#add('mattn/vim-lsp-settings')
-"  call dein#add('prabirshrestha/asyncomplete.vim')
-"  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-"  call dein#add('prabirshrestha/asyncomplete-file.vim')
-"  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-"  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-"  call dein#add('liuchengxu/vista.vim', { 'depends': 'prabirshrestha/vim-lsp' })
-"  call dein#add('SirVer/ultisnips')
-"  call dein#add('thomasfaingnaert/vim-lsp-snippets')
-"  call dein#add('thomasfaingnaert/vim-lsp-ultisnips', { 'depends': [
-"              \'prabirshrestha/vim-lsp',
-"              \'thomasfaingnaert/vim-lsp-snippets',]})
-""  call dein#add('honza/vim-snippets', { 'depends': 'SirVer/ultisnips' })
-""  call dein#add('previm/previm')
-"  call dein#add('dhaiibfiukkiu/previm')
-"  call dein#add('dhruvasagar/vim-table-mode')
-"  call dein#add('alvan/vim-closetag')
-"  call dein#add('Yggdroot/indentLine')
-"  call dein#add('cocopon/iceberg.vim')
-"  call dein#add('pbondoer/vim-42header')
-"  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-""  if !has('nvim')
-""    call dein#add('roxma/nvim-yarp')
-""    call dein#add('roxma/vim-hug-neovim-rpc')
-""  endif
-"
-"  call dein#end()
-"  call dein#save_state()
-"endif
-"" 不足プラグインの自動インストール
-"if has('vim_starting') && dein#check_install()
-"  call dein#install()
-"endif
-
+"plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -251,46 +152,20 @@ Plug 'cocopon/iceberg.vim'
 Plug 'pbondoer/vim-42header'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-"" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-"Plug 'junegunn/vim-easy-align'
-"
-"" Any valid git URL is allowed
-"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-"
-"" Multiple Plug commands can be written in a single line using | separators
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"
-"" On-demand loading
-"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-"
-"" Using a non-default branch
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-"
-"" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-"Plug 'fatih/vim-go', { 'tag': '*' }
-"
-"" Plugin options
-"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-"
-"" Plugin outside ~/.vim/plugged with post-update hook
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"
-"" Unmanaged plugin (manually installed and updated)
-"Plug '~/my-prototype-plugin'
-
 " Initialize plugin system
 call plug#end()
 
 colorscheme iceberg
 syntax on
-set bg=dark
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 set termguicolors
+
+"popup透過
 if has('nvim')
     set pumblend=20
 endif
+
 "if !has('nvim')
 "    set term=xterm-256color
 "endif
@@ -340,13 +215,13 @@ function! MyGitGutter()
   return join(ret, ' ')
 endfunction
 
-  function! MyFiletype()
+function! MyFiletype()
     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-  endfunction
-  
-  function! MyFileformat()
+endfunction
+
+function! MyFileformat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-  endfunction
+endfunction
 
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
@@ -370,16 +245,6 @@ let g:NERDTreeMapUpdirKeepOpen='u'
 let NERDTreeWinSize=40
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
-
-"iterm2でhighlightが効かなかったり、bracketsが消えない場合に対応
-"nerd-syntax-highlightが効かなくなったのでコメントアウト
-"augroup nerdtreeconcealbrackets
-"      autocmd!
-"      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
-"      autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
-"      autocmd FileType nerdtree setlocal conceallevel=3
-"      autocmd FileType nerdtree setlocal concealcursor=nvic
-"augroup END
 
 function! ToggleNERDTreeFind()
     if g:NERDTree.IsOpen()
@@ -430,14 +295,12 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Ignored"   : "!",
     \ "Unknown"   : "?"
     \ }
-"let g:NERDTreeShowIgnoredStatus = 1 "deprecated
+
 let g:NERDTreeGitStatusShowIgnored = 1
 
 "nerdtree-syntax-highlighting
-"let g:NERDTreeHighlightFolders = 1 "完全一致を使用してフォルダーアイコンの強調表示を有効にします
-"let g:NERDTreeLimitedSyntax = 1
-let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F" " sets the color for folders that did not match any rule
-let g:WebDevIconsDefaultFileSymbolColor = "689FB6" " sets the color for files that did not match any rule
+let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F"
+let g:WebDevIconsDefaultFileSymbolColor = "689FB6"
 
 "devicons
 set encoding=UTF-8
@@ -529,6 +392,7 @@ nnoremap <Space>gd :Gvdiff<CR>
 nnoremap <Space>gr :Grebase -i<CR>
 nnoremap <Space>gg :Ggrep
 nnoremap <Space>gm :Gmerge
+
 "GitGutter
 nnoremap <Space>gu :GitGutterUndoHunk<CR>
 
@@ -590,25 +454,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
-
-"pylsのlinter
-"if executable('pyls')
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pyls',
-"        \ 'cmd': {server_info->['pyls']},
-"        \ 'whitelist': ['python'],
-"        \ 'workspace_config': {'pyls': {'plugins': {
-"        \ 'pydocstyle': {'enabled': v:false},
-"        \ 'pylint': {'enabled': v:true},
-"        \ 'flake8': {'enabled': v:true},
-"        \ 'pycodestyle': {'enabled': v:false},
-"        \ 'autopep8': {'enabled': v:false},
-"        \ 'yapf': {'enabled': v:false},
-"        \ 'pyflakes': {'enabled': v:false},
-"        \ 'mccabe': {'enabled': v:false},
-"        \ }}}
-"        \ })
-"endif
 
 "modifyOtherKeysの問題で制御文字4;2mが出るのを抑制
 let &t_TI = ""
