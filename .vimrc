@@ -142,7 +142,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'cocopon/iceberg.vim'
 Plug 'pbondoer/vim-42header'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'neoclide/coc.nvim', {'branch': 'relearse'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
 
 " Initialize plugin system
 call plug#end()
