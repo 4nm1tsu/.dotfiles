@@ -335,6 +335,9 @@ let g:ale_fixers = {
     \ 'javascript': ['eslint'],
     \ 'sql': ['sqlfmt'],
     \ }
+" virtualtextにエラー表示
+let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_prefix = '>>'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_sign_info = ''
@@ -361,6 +364,7 @@ let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 "バーチャルテキストとしてエラーなどを表示
 let g:lsp_virtual_text_enabled = 0
+let g:lsp_virtual_text_prefix = '>'
 let g:lsp_signs_error = {'text': ''}
 let g:lsp_signs_warning = {'text': ''}
 let g:lsp_signs_information = {'text': ''}
