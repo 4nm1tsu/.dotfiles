@@ -146,6 +146,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
