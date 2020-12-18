@@ -51,13 +51,10 @@ if type "rg" > /dev/null 2>&1; then
 else
     echo "'ripgrep(rg)' is not installed."
 fi
-#if type "nvim" > /dev/null 2>&1; then
-#    alias vim='nvim'
-#    alias vi='nvim'
-#fi
-#if type "gomi" > /dev/null 2>&1; then
-#    alias rm='gomi'
-#fi
+if type "nvim" > /dev/null 2>&1; then
+    alias vim='nvim'
+    alias vi='nvim'
+fi
 
 #xclipのエイリアス
 alias xclip='xclip -sel clip'
