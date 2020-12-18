@@ -18,6 +18,10 @@ do
     fi
   fi
 done
+ln -snfv ${DOT_DIRECTORY}/coc-settings.json ~/.vim/coc-settings.json
+if [ $? -ne 0 ]; then
+  failed=1
+fi
 if [ $failed -eq 0 ]; then
   echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 fi

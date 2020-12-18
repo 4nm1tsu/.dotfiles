@@ -15,7 +15,8 @@
   hi CocHintSign ctermbg=235 ctermfg=110 guibg=#1e2132 guifg=#84a0c6
   hi CocHintFloat ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
   hi CocHintHighlight cterm=underline gui=underline ctermbg=NONE ctermfg=110 guibg=NONE guifg=#84a0c6
-  hi CocHighlightText cterm=underline gui=underline ctermbg=235 ctermfg=NONE guibg=#616370 guifg=NONE
+  hi CocHighlightText cterm=underline gui=underline ctermbg=235 ctermfg=NONE guibg=#3c4063 guifg=NONE
+  hi lspReference cterm=underline gui=underline ctermbg=235 ctermfg=NONE guibg=#3c4063 guifg=NONE
 
   hi ALEInfoSign ctermbg=253 ctermfg=25 guibg=#dcdfe7 guifg=#2d539e
   hi LspErrorText ctermbg=253 ctermfg=125 guibg=#dcdfe7 guifg=#cc517a
@@ -35,3 +36,4 @@
   hi CocHintFloat ctermbg=NONE ctermfg=64 guibg=NONE guifg=#668e3d
   hi CocHintHighlight cterm=underline gui=underline ctermbg=NONE ctermfg=64 guibg=NONE guifg=#668e3d
   hi CocHighlightText cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#c7c8cf guifg=NONE
+  hi lspReference cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#c7c8cf guifg=NONE
