@@ -97,6 +97,7 @@ augroup c
     autocmd!
     autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl softtabstop=2
     autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl shiftwidth=2
+    autocmd FileType dbui setlocal shiftwidth=2
 augroup END
 
 "goのときはハードタブに
