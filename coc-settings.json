@@ -3,4 +3,6 @@
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
+    "translator.toLang": "ja",
+    "translator.enableHover": true
 }
