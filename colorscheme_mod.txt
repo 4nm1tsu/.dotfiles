@@ -28,8 +28,8 @@
   hi CocWarningFloat ctermbg=NONE ctermfg=130 guibg=NONE guifg=#c57339
   hi CocWarningHighlight cterm=underline gui=underline ctermbg=NONE ctermfg=130 guibg=NONE guifg=#c57339
   hi LspInformationText ctermbg=253 ctermfg=25 guibg=#dcdfe7 guifg=#2d539e
-  hi CocInforSign ctermbg=253 ctermfg=25 guibg=#dcdfe7 guifg=#2d539e
-  hi CocInforFloat ctermbg=NONE ctermfg=25 guibg=NONE guifg=#2d539e
+  hi CocInfoSign ctermbg=253 ctermfg=25 guibg=#dcdfe7 guifg=#2d539e
+  hi CocInfoFloat ctermbg=NONE ctermfg=25 guibg=NONE guifg=#2d539e
   hi CocInfoHighlight cterm=underline gui=underline ctermbg=NONE ctermfg=25 guibg=NONE guifg=#2d539e
   hi LspHintText ctermbg=253 ctermfg=64 guibg=#dcdfe7 guifg=#668e3d
   hi CocHintSign ctermbg=253 ctermfg=64 guibg=#dcdfe7 guifg=#668e3d
