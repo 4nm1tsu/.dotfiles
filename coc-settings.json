@@ -4,5 +4,6 @@
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
     "translator.toLang": "ja",
-    "translator.enableHover": true
+    "translator.enableHover": true,
+    "translator.engines": ["google"]
 }
