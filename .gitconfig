@@ -1,21 +1,28 @@
 [alias]
-    tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
-    me   = !git config --get-regexp user
-    lg   = log --decorate --oneline --graph
+  tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+  me   = !git config --get-regexp user
+  lg   = log --decorate --oneline --graph
 
 [diff]
-    algorithm = histogram
+  algorithm = histogram
 #[include]
 #	path = ~/.gitconfig_shared
 [user]
-	email = 4617016@ed.tus.ac.jp
-	name = Hibiki Okada
+  email = 4617016@ed.tus.ac.jp
+  name = Hibiki Okada
 #version 2.13.0 or later
 [includeIf "gitdir:~/42tokyo/"]
-	path = ~/42tokyo/.gitconfig
+  path = ~/42tokyo/.gitconfig
 
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
+  editor = nvim
 # git config --global credential.helper storeで認証情報を~/.git-credentialsに保存
 [credential]
-	helper = store
+  helper = store
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvimdiff"]
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
