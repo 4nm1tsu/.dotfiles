@@ -376,8 +376,8 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyls', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-translator']
-"'coc-word'
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyls', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets']
+"'coc-word', 'coc-translator'
 
 " TextEdit might fail if hidden is not set.
 set hidden
