@@ -320,7 +320,6 @@ let g:ale_linters = {
     \ 'c': ['gcc'],
     \ 'cpp': [],
     \ 'php': ['phpcs', 'php', 'phpstan'],
-    \ 'python': [],
     \ 'ruby': [],
     \ 'go': ['golangci-lint'],
     \ }
@@ -328,6 +327,7 @@ let g:ale_fix_on_save = 0
 let g:ale_fixers = {
     \ 'go': ['gofmt', 'goimports'],
     \ 'php': ['php_cs_fixer'],
+    \ 'python': ['autopep8', 'black', 'isort'],
     \ 'javascript': ['eslint'],
     \ 'sql': ['sqlfmt'],
     \ }
