@@ -35,5 +35,5 @@
   hi CocHintSign ctermbg=253 ctermfg=64 guibg=#dcdfe7 guifg=#668e3d
   hi CocHintFloat ctermbg=NONE ctermfg=64 guibg=NONE guifg=#668e3d
   hi CocHintHighlight cterm=underline gui=underline ctermbg=NONE ctermfg=64 guibg=NONE guifg=#668e3d
-  hi CocHighlightText cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#c7c8cf guifg=NONE
-  hi lspReference cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#c7c8cf guifg=NONE
+  hi CocHighlightText cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#d5d9f5 guifg=NONE
+  hi lspReference cterm=underline gui=underline ctermbg=253 ctermfg=NONE guibg=#d5d9f5 guifg=NONE
