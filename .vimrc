@@ -380,7 +380,6 @@ let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'c
 "'coc-word', 'coc-translator'
 
 "coc-highlight
-autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
 
 " TextEdit might fail if hidden is not set.
@@ -395,7 +394,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -423,7 +422,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+" Use <c-space> to trigger completion. "上のTABの設定で十分 
 "if has('nvim')
 "    inoremap <silent><expr> <c-space> coc#refresh()
 "else
@@ -464,7 +463,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Space>n <Plug>(coc-rename)
 
 " Formatting selected code.
 nmap <Space>f  <Plug>(coc-format)
