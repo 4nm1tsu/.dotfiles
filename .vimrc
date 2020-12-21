@@ -660,3 +660,6 @@ if (g:time_to_set_background >= 70000 && g:time_to_set_background < 160000)
 else
     set background=dark
 endif
+
+"自動改行させない
+autocmd FileType * setlocal textwidth=0
