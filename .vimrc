@@ -376,8 +376,12 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets']
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight']
 "'coc-word', 'coc-translator'
+
+"coc-highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
 
 " TextEdit might fail if hidden is not set.
 set hidden
