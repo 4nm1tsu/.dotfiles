@@ -125,8 +125,8 @@ Plug 'itchyny/lightline.vim'
 "Plug 'cohama/lexima.vim'
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -142,7 +142,7 @@ Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
 Plug 'cocopon/iceberg.vim'
 Plug 'pbondoer/vim-42header'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
@@ -226,91 +226,91 @@ set showmode " 現在のモードを表示
 set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
 
-""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
-autocmd StdinReadPre * let s:std_in=1
-""ファイル名が指定されなかったらNERDTreeを起動
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-""NERDTreeを表示するコマンドを設定する
-"map <C-n> :NERDTreeToggle<CR>
-map <silent><C-n> :call ToggleNERDTreeFind()<CR>
-
-"uをUの動作にremap
-let g:NERDTreeMapUpdirKeepOpen='u'
-
-let NERDTreeWinSize=40
-let NERDTreeQuitOnOpen=1
-let NERDTreeMinimalUI=1
-
-function! ToggleNERDTreeFind()
-    if g:NERDTree.IsOpen()
-        execute ':NERDTreeClose'
-    else
-        "無名バッファ
-        if @% == '' && s:GetBufByte() == 0
-            execute ':NERDTreeToggle'
-        "すでにファイルを開いている
-        else
-            execute ':NERDTreeFind'
-        endif
-    endif
-endfunction
-"標準入力にも対応
-function! s:GetBufByte()
-    let byte = line2byte(line('$') + 1)
-    if byte == -1
-        return 0
-    else
-        return byte - 1
-    endif
-endfunction
-
-"nerdtree-git-plugin
-"let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "",
-"    \ "Staged"    : "",
-"    \ "Untracked" : "",
-"    \ "Renamed"   : "",
-"    \ "Unmerged"  : "",
-"    \ "Deleted"   : "",
-"    \ "Dirty"     : "",
-"    \ "Clean"     : "",
-"    \ "Ignored"   : "",
-"    \ "Unknown"   : ""
+"""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
+"autocmd StdinReadPre * let s:std_in=1
+"""ファイル名が指定されなかったらNERDTreeを起動
+""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+""他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"""NERDTreeを表示するコマンドを設定する
+""map <C-n> :NERDTreeToggle<CR>
+"map <silent><C-n> :call ToggleNERDTreeFind()<CR>
+"
+""uをUの動作にremap
+"let g:NERDTreeMapUpdirKeepOpen='u'
+"
+"let NERDTreeWinSize=40
+"let NERDTreeQuitOnOpen=1
+"let NERDTreeMinimalUI=1
+"
+"function! ToggleNERDTreeFind()
+"    if g:NERDTree.IsOpen()
+"        execute ':NERDTreeClose'
+"    else
+"        "無名バッファ
+"        if @% == '' && s:GetBufByte() == 0
+"            execute ':NERDTreeToggle'
+"        "すでにファイルを開いている
+"        else
+"            execute ':NERDTreeFind'
+"        endif
+"    endif
+"endfunction
+""標準入力にも対応
+"function! s:GetBufByte()
+"    let byte = line2byte(line('$') + 1)
+"    if byte == -1
+"        return 0
+"    else
+"        return byte - 1
+"    endif
+"endfunction
+"
+""nerdtree-git-plugin
+""let g:NERDTreeIndicatorMapCustom = {
+""    \ "Modified"  : "",
+""    \ "Staged"    : "",
+""    \ "Untracked" : "",
+""    \ "Renamed"   : "",
+""    \ "Unmerged"  : "",
+""    \ "Deleted"   : "",
+""    \ "Dirty"     : "",
+""    \ "Clean"     : "",
+""    \ "Ignored"   : "",
+""    \ "Unknown"   : ""
+""    \ }
+""    deprecated
+"let g:NERDTreeGitStatusIndicatorMapCustom = {
+"    \ "Modified"  : "~",
+"    \ "Staged"    : "+",
+"    \ "Untracked" : "*",
+"    \ "Renamed"   : "»",
+"    \ "Unmerged"  : "=",
+"    \ "Deleted"   : "-",
+"    \ "Dirty"     : "×",
+"    \ "Clean"     : "ø",
+"    \ "Ignored"   : "!",
+"    \ "Unknown"   : "?"
 "    \ }
-"    deprecated
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "~",
-    \ "Staged"    : "+",
-    \ "Untracked" : "*",
-    \ "Renamed"   : "»",
-    \ "Unmerged"  : "=",
-    \ "Deleted"   : "-",
-    \ "Dirty"     : "×",
-    \ "Clean"     : "ø",
-    \ "Ignored"   : "!",
-    \ "Unknown"   : "?"
-    \ }
-
-let g:NERDTreeGitStatusShowIgnored = 1
-
-"nerdtree-syntax-highlighting
-let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F"
-let g:WebDevIconsDefaultFileSymbolColor = "689FB6"
-
-"devicons
-set encoding=UTF-8
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let NERDTreeDirArrowExpandable = "\u00a0"
-let NERDTreeDirArrowCollapsible = "\u00a0"
-let NERDTreeNodeDelimiter = "\x07"
-"for indetation alignment
-let g:indentLine_fileTypeExclude = ["nerdtree"]
-"let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-"let g:DevIconsDefaultFolderOpenSymbol = ''
+"
+"let g:NERDTreeGitStatusShowIgnored = 1
+"
+""nerdtree-syntax-highlighting
+"let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F"
+"let g:WebDevIconsDefaultFileSymbolColor = "689FB6"
+"
+""devicons
+"set encoding=UTF-8
+"let g:webdevicons_conceal_nerdtree_brackets = 1
+"let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+"let g:DevIconsEnableFoldersOpenClose = 1
+"let NERDTreeDirArrowExpandable = "\u00a0"
+"let NERDTreeDirArrowCollapsible = "\u00a0"
+"let NERDTreeNodeDelimiter = "\x07"
+""for indetation alignment
+"let g:indentLine_fileTypeExclude = ["nerdtree"]
+""let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+""let g:DevIconsDefaultFolderOpenSymbol = ''
 
 "git-gutter
 set updatetime=100
@@ -376,8 +376,64 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight']
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-css', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-xml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer']
 "'coc-word', 'coc-translator'
+
+"coc-explorer
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '~/.config/coc',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
+" Use preset argument to open it
+"nmap <space>ed :CocCommand explorer --preset .vim<CR>
+"nmap <space>ef :CocCommand explorer --preset floating<CR>
+"nmap <space>ec :CocCommand explorer --preset cocConfig<CR>
+"nmap <space>eb :CocCommand explorer --preset buffer<CR>
+nmap <silent><c-n> :CocCommand explorer
+    \ --toggle
+    \ --sources=buffer-,file+
+    \ --width 40
+    \ --preset floatingLeftside
+    \ <CR>
+
+" List all presets
+"nmap <space>el :CocList explPresets
 
 "coc-highlight
 nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
