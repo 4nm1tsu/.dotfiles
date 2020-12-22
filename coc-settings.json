@@ -3,7 +3,7 @@
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
-    "translator.toLang": "ja",
-    "translator.enableHover": true,
-    "translator.engines": ["google"]
+    "explorer.icon.enableNerdfont": true,
+    "explorer.icon.enableVimDevicons": true,
+    "explorer.previewAction.onHover": "labeling"
 }
