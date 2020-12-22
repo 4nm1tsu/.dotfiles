@@ -20,6 +20,8 @@
 # git config --global credential.helper storeで認証情報を~/.git-credentialsに保存
 [credential]
   helper = store
+[merge]
+  tool = nvimdiff
 [diff]
   tool = nvimdiff
 [difftool "nvimdiff"]
