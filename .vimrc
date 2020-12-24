@@ -684,10 +684,10 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:tex_conceal=''
 
 "previm
-if has('linux')
-    let g:previm_open_cmd="google-chrome"
-elseif has('mac')
+if has('macunix')
     let g:previm_open_cmd="open -a safari"
+elseif has('unix')
+    let g:previm_open_cmd="google-chrome"
 endif
 let g:previm_enable_realtime=1
 
