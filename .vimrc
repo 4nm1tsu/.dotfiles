@@ -163,10 +163,6 @@ if has('nvim')
     set pumblend=20
 endif
 
-"if !has('nvim')
-"    set term=xterm-256color
-"endif
-
 "'gitbranch'は長くなるので非推奨
 "lightLineの設定
 let g:lightline = {
@@ -226,95 +222,10 @@ set showmode " 現在のモードを表示
 set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
 
-"""ファイル名が指定されてVIMが起動した場合はNERDTreeを表示しない
-"autocmd StdinReadPre * let s:std_in=1
-"""ファイル名が指定されなかったらNERDTreeを起動
-""autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-""他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"""NERDTreeを表示するコマンドを設定する
-""map <C-n> :NERDTreeToggle<CR>
-"map <silent><C-n> :call ToggleNERDTreeFind()<CR>
-"
-""uをUの動作にremap
-"let g:NERDTreeMapUpdirKeepOpen='u'
-"
-"let NERDTreeWinSize=40
-"let NERDTreeQuitOnOpen=1
-"let NERDTreeMinimalUI=1
-"
-"function! ToggleNERDTreeFind()
-"    if g:NERDTree.IsOpen()
-"        execute ':NERDTreeClose'
-"    else
-"        "無名バッファ
-"        if @% == '' && s:GetBufByte() == 0
-"            execute ':NERDTreeToggle'
-"        "すでにファイルを開いている
-"        else
-"            execute ':NERDTreeFind'
-"        endif
-"    endif
-"endfunction
-""標準入力にも対応
-"function! s:GetBufByte()
-"    let byte = line2byte(line('$') + 1)
-"    if byte == -1
-"        return 0
-"    else
-"        return byte - 1
-"    endif
-"endfunction
-"
-""nerdtree-git-plugin
-""let g:NERDTreeIndicatorMapCustom = {
-""    \ "Modified"  : "",
-""    \ "Staged"    : "",
-""    \ "Untracked" : "",
-""    \ "Renamed"   : "",
-""    \ "Unmerged"  : "",
-""    \ "Deleted"   : "",
-""    \ "Dirty"     : "",
-""    \ "Clean"     : "",
-""    \ "Ignored"   : "",
-""    \ "Unknown"   : ""
-""    \ }
-""    deprecated
-"let g:NERDTreeGitStatusIndicatorMapCustom = {
-"    \ "Modified"  : "~",
-"    \ "Staged"    : "+",
-"    \ "Untracked" : "*",
-"    \ "Renamed"   : "»",
-"    \ "Unmerged"  : "=",
-"    \ "Deleted"   : "-",
-"    \ "Dirty"     : "×",
-"    \ "Clean"     : "ø",
-"    \ "Ignored"   : "!",
-"    \ "Unknown"   : "?"
-"    \ }
-"
-"let g:NERDTreeGitStatusShowIgnored = 1
-"
-""nerdtree-syntax-highlighting
-"let g:WebDevIconsDefaultFolderSymbolColor = "F5C06F"
-"let g:WebDevIconsDefaultFileSymbolColor = "689FB6"
-"
-""devicons
-"set encoding=UTF-8
-"let g:webdevicons_conceal_nerdtree_brackets = 1
-"let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-"let g:DevIconsEnableFoldersOpenClose = 1
-"let NERDTreeDirArrowExpandable = "\u00a0"
-"let NERDTreeDirArrowCollapsible = "\u00a0"
-"let NERDTreeNodeDelimiter = "\x07"
-""for indetation alignment
-"let g:indentLine_fileTypeExclude = ["nerdtree"]
-""let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-""let g:DevIconsDefaultFolderOpenSymbol = ''
-
 "git-gutter
 set updatetime=100
 
+"ale
 let g:ale_linters = {
     \ 'html': ['eslint'],
     \ 'c': ['gcc'],
@@ -352,27 +263,6 @@ let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo
 "エラー間の移動
 nmap <silent> [a <Plug>(ale_previous_wrap)
 nmap <silent> ]a <Plug>(ale_next_wrap)
-"ale
-
-"バーチャルテキストとしてエラーなどを表示
-"let g:lsp_virtual_text_enabled = 0
-"let g:lsp_virtual_text_prefix = '>'
-"let g:lsp_signs_error = {'text': ''}
-"let g:lsp_signs_warning = {'text': ''}
-"let g:lsp_signs_information = {'text': ''}
-"let g:lsp_signs_hint = {'text': ''}
-"nnoremap <silent> ]e  :LspNextError<CR>
-"nnoremap <silent> [e  :LspPreviousError<CR>
-"nmap <silent> ]dd :LspDefinition <CR>
-"nmap <silent> ]ds :leftabove LspDefinition <CR>
-"nmap <silent> ]dv :rightbelow vertical LspDefinition <CR>
-"nmap <silent> [dd :LspTypeDefinition <CR>
-"nmap <silent> [ds :leftabove LspTypeDefinition <CR>
-"nmap <silent> [dv :rightbelow vertical LspTypeDefinition <CR>
-"nmap <silent> <C-h> :LspHover <CR>
-"nmap <silent> <Space>r :LspReferences <CR>
-"nmap <silent> <Space>f :LspDocumentFormat<CR>
-"vmap <silent> <Space>f :LspDocumentRangeFormat <CR>
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
@@ -629,46 +519,6 @@ let g:vista_default_executive = 'coc'
 let g:vista_sidebar_sidth = 80
 let g:vista_echo_cursor = 0
 nnoremap <silent> <Space>v :Vista!!<CR>
-
-"let g:vista_icon_indent = ["󳄀󳄂 ", "󳄁󳄂 "]
-"let g:vista#renderer#icons = {
-"            \ 'func':           "\Uff794",
-"            \ 'function':       "\Uff794",
-"            \ 'functions':      "\Uff794",
-"            \ 'var':            "\Uff71b",
-"            \ 'variable':       "\Uff71b",
-"            \ 'variables':      "\Uff71b",
-"            \ 'const':          "\Uff8ff",
-"            \ 'constant':       "\Uff8ff",
-"            \ 'method':         "\Uff6a6",
-"            \ 'package':        "\Ufe612",
-"            \ 'packages':       "\Ufe612",
-"            \ 'enum':           "\Uff8bc",
-"            \ 'enumerator':     "\Uff8bc",
-"            \ 'module':         "\Uff668",
-"            \ 'modules':        "\Uff668",
-"            \ 'type':           "\Uff779",
-"            \ 'typedef':        "\Uff779",
-"            \ 'types':          "\Uff779",
-"            \ 'field':          "\Uff93d",
-"            \ 'fields':         "\Uff93d",
-"            \ 'macro':          "\Uff8a3",
-"            \ 'macros':         "\Uff8a3",
-"            \ 'map':            "\Uffb44",
-"            \ 'class':          "\Uff9a9",
-"            \ 'augroup':        "\Uffb44",
-"            \ 'struct':         "\Uffb44",
-"            \ 'union':          "\Uffacd",
-"            \ 'member':         "\Uffa55",
-"            \ 'target':         "\Uff893",
-"            \ 'property':       "\Uffab6",
-"            \ 'interface':      "\Uffa52",
-"            \ 'namespace':      "\Uff954",
-"            \ 'subroutine':     "\Uff915",
-"            \ 'implementation': "\Uff87a",
-"            \ 'typeParameter':  "\Uff950",
-"            \ 'default':        "\Uff923"
-"            \ }
 
 "modifyOtherKeysの問題で制御文字4;2mが出るのを抑制
 let &t_TI = ""
