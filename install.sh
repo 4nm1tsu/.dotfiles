@@ -18,7 +18,7 @@ do
     fi
   fi
 done
-ln -snfv ${DOT_DIRECTORY}/coc-settings.json ~/.vim/coc-settings.json
+ln -snfv ${DOT_DIRECTORY}/coc-settings.json $XDG_CONFIG_HOME/nvim/coc-settings.json
 if [ $? -ne 0 ]; then
   failed=1
 fi
