@@ -29,7 +29,7 @@ colors:
     cyan:    '#b6d8de'
     white:   '#e9ebf5'
 font:
-  size: 15
+  size: 12
   normal:
     family: Cica Nerd Font
     style: Regular
@@ -39,6 +39,4 @@ font:
   italic:
     family: Cica Nerd Font
     style: Regular
-window:
-  decorations: "none"
 background_opacity: 0.8

@@ -66,3 +66,4 @@ export PATH=~/.composer/vendor/bin:/usr/local/opt/openssl/bin:/Users/hibiki/.rbe
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+source "$HOME/.cargo/env"
