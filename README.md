@@ -75,12 +75,12 @@
 ## iceberg (ANSI)
 ! special
 *.foreground:   #c6c8d1
-*.background:   #121319
+*.background:   #161821
 *.cursorColor:  #c6c8d1
 
 ! black
-*.color0:       #161722
-*.color8:       #373757
+*.color0:       #272c42
+*.color8:       #3d425b
 
 ! red
 *.color1:       #e27878
@@ -107,8 +107,8 @@
 *.color14:      #b6d8de
 
 ! white
-*.color7:       #d0d2db
-*.color15:      #e9ebf5
+*.color7:       #6b7089
+*.color15:      #c6c8d1
 
 ## for Linux(Debian)
 cp ./fonts.conf ~/.config/fontconfig/fonts.conf
