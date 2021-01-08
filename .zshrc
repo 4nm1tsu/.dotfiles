@@ -101,8 +101,6 @@ if type "anyenv" > /dev/null 2>&1; then
     export GOPATH=$HOME/go
     export GOBIN=$GOPATH/bin
     export PATH=$PATH:$GOPATH/bin
-    # globalインストールはglobalで使ってるnodeで
-    export PATH=$PATH:`npm bin -g`
 
     eval "$(anyenv init - --no-rehash)"
 fi
