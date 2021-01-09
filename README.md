@@ -75,12 +75,12 @@
 ## iceberg (ANSI)
 ! special
 *.foreground:   #c6c8d1
-*.background:   #161821
+*.background:   #121319
 *.cursorColor:  #c6c8d1
 
 ! black
-*.color0:       #272c42
-*.color8:       #3d425b
+*.color0:       #161722
+*.color8:       #373757
 
 ! red
 *.color1:       #e27878
@@ -107,10 +107,23 @@
 *.color14:      #b6d8de
 
 ! white
-*.color7:       #6b7089
-*.color15:      #c6c8d1
+*.color7:       #d0d2db
+*.color15:      #e9ebf5
 
 ## for Linux(Debian)
 cp ./fonts.conf ~/.config/fontconfig/fonts.conf
 fc-cache
 reboot
+
+## conky
+`conky-colors --theme=wine --lang=en --cpu=4 --network --wlan=0 --hd=default  --nvidia --hd=default --proc=10 --nodata --dark`
+- GPU2DClockFreqsをGPUCurrentClockFreqsに書き換え(https://github.com/NVIDIA/nvidia-settings/blob/master/src/parse.c)
+  - その後パイプラインでcut -d ',' -f 1でGPUClockだけ取得
+- wlan0をnmcli dev statusの結果に書き換え
+- own_window_type dock とすればshow desktopしても消えない
+- desktop sessionからからのセッションで開始を選択(もしくはconkyを除外)
+```
+#!/bin/bash
+sleep 3
+/usr/bin/conky -c /home/hibiki/.conkycolors/conkyrc&
+```
