@@ -127,3 +127,28 @@ reboot
 sleep 3
 /usr/bin/conky -c /home/hibiki/.conkycolors/conkyrc&
 ```
+
+## pulseaudio
+`/etc/pulse/default.pa`の`load-module module-switch-on-port-available`をコメントアウト
+> https://askubuntu.com/questions/1199496/sound-breaking-on-wakeup-from-sleep
+
+## steam
+基本的にppaで
+公式からインストールすることもできるが、i386(32bit)版が結局はいらないのでppaのほうがらく
+事前にdebパッケージでインストールしている場合はsudo nvidia-uninstallで消せます
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo dpkg --add-architecture i386
+sudo dpkg --print-foreignarchitecture #→i386が出ることを確認
+dpkg -l #とかして、事前にnvidia関係のパッケージが入っていないことを確認する
+```
+そうでないとi386版がインストールされない
+`sudo apt install nvidia-driver-455`
+
+断片的な情報は手に入るが、適当にやるとGUIが起動しなくなったりしてだるい
+libgl-mesa-dri libgl-mesa-glxしてしまったときとか
+
+> https://github.com/ValveSoftware/steam-for-linux/issues/7382
+> https://askubuntu.com/questions/206283/how-can-i-uninstall-a-nvidia-driver-completely
+
+アプリがコンポジターをブロックすることを許可しない→steamのゲーム起動中に描画がしょぼくなる
