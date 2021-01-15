@@ -516,7 +516,7 @@ autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 "vista
 let g:vista_default_executive = 'coc'
-let g:vista_sidebar_sidth = 80
+let g:vista_sidebar_width = 40
 let g:vista_echo_cursor = 0
 nnoremap <silent> <Space>v :Vista!!<CR>
 
