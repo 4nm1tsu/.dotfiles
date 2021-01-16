@@ -71,6 +71,7 @@
 - git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
     - `anyenv update`で*envのupdateができるようになる
     - `goenv rehash`で~/go/{version}下のgo getしたbinaryのパスが通る(pathは`~/.anyenv/envs/goenv/shims`に通ってる)
+    - `nodenv rehash`なら`~/.anyenv/envs/nodenv/shims`
 
 ## iceberg (ANSI)
 ! special
@@ -129,7 +130,8 @@ sleep 3
 ```
 
 ## pulseaudio
-`/etc/pulse/default.pa`の`load-module module-switch-on-port-available`をコメントアウト
+`pulseaudio -k`でリセット
+`/etc/pulse/default.pa`の`load-module module-switch-on-port-available`をコメントアウト?
 > https://askubuntu.com/questions/1199496/sound-breaking-on-wakeup-from-sleep
 
 ## steam
