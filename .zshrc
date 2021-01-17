@@ -36,16 +36,16 @@ if type "bat" > /dev/null 2>&1; then
 else
     echo "'bat' is not installed."
 fi
-if type "fd" > /dev/null 2>&1; then
-    #alias find='fd'
-else
-    echo "'fd' is not installed."
-fi
-if type "procs" > /dev/null 2>&1; then
-    #alias ps='procs'
-else
-    echo "'procs' is not installed."
-fi
+#if type "fd" > /dev/null 2>&1; then
+#    #alias find='fd'
+#else
+#    echo "'fd' is not installed."
+#fi
+#if type "procs" > /dev/null 2>&1; then
+#    #alias ps='procs'
+#else
+#    echo "'procs' is not installed."
+#fi
 if type "rg" > /dev/null 2>&1; then
     #alias grep='rg'
 else
