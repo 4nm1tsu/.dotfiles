@@ -50,6 +50,18 @@ fi
 if [ $failed -eq 0 ]; then
   echo $(tput setaf 4)Deploy norminette.vim complete!. ✔︎$(tput sgr0)
 fi
-#ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-#ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
-#echo $(tput setaf 4)neovim config file linkage complete!. ✔︎$(tput sgr0)
+
+failed=0
+ln -snfv ~/.vim $XDG_CONFIG_HOME/nvim
+if [ $? -ne 0 ]; then
+  failed=1
+fi
+
+ln -snfv ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+if [ $? -ne 0 ]; then
+  failed=1
+fi
+
+if [ $failed -eq 0 ]; then
+  echo $(tput setaf 3)neovim config file linkage complete!. ✔︎$(tput sgr0)
+fi
