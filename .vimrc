@@ -148,7 +148,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'nvim-treesitter/nvim-treesitter'
 
 " Initialize plugin system
 call plug#end()
@@ -574,16 +574,16 @@ set shortmess+=I
 "自動改行させない
 autocmd FileType * setlocal textwidth=0
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    disable = {
-    }
-  },
-  indent = {
-    enable = true,
-  },
-  ensure_installed = 'maintained',
-}
-EOF
+"lua <<EOF
+"require'nvim-treesitter.configs'.setup {
+"  highlight = {
+"    enable = true,
+"    disable = {
+"    }
+"  },
+"  indent = {
+"    enable = true,
+"  },
+"  ensure_installed = 'maintained',
+"}
+"EOF
