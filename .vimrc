@@ -1,3 +1,4 @@
+
 if &compatible
   set nocompatible
 endif
@@ -112,6 +113,8 @@ set clipboard+=unnamed
 "backspaceを有効に
 set backspace=indent,eol,start
 
+set termguicolors
+
 "plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -140,7 +143,8 @@ Plug 'dhaiibfiukkiu/previm'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
-Plug 'dhaiibfiukkiu/iceberg.vim'
+"Plug 'dhaiibfiukkiu/iceberg.vim'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'pbondoer/vim-42header'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -153,11 +157,11 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 " Initialize plugin system
 call plug#end()
 
-colorscheme iceberg
+let g:tokyonight_style = 'storm'
+colorscheme tokyonight 
 syntax on
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-set termguicolors
 
 "popup透過
 if has('nvim')
@@ -167,7 +171,7 @@ endif
 "'gitbranch'は長くなるので非推奨
 "lightLineの設定
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
+      \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'gitstatus', 'filename', 'modified' ] ]
