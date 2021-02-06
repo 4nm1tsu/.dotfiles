@@ -41,6 +41,9 @@ font:
     style: Regular
 background_opacity: 1.0
 
+scrolling:
+    history: 10000
+
 schemes:
   # Tokyo Night theme, based on both:
   #   https://github.com/ghifarit53/tokyonight-vim
