@@ -1,8 +1,8 @@
-" Author: Joe <r29jk10@gmail.com>
-" Description: norminette linter for C files.
+" Author: hokada <hokada@student.42tokyo.jp>
+" Description: norminette linter for C++ files.
 
 call ale#Set('cpp_norminette_executable', 'norminette')
-call ale#Set('cpp_norminette_options', '')
+call ale#Set('cpp_norminette_options', ' -d')
 
 function! ale_linters#cpp#norminette#GetExecutable(buffer) abort
     return ale#Var(a:buffer, 'cpp_norminette_executable')
@@ -18,23 +18,22 @@ endfunction
 function! ale_linters#cpp#norminette#Opscript(buffer, lines) abort
     " Look for lines like the following.
     "
-    " Error (line 27): multiple empty lines
-    let l:pattern = '\v^(Norme|Error|Warning)( \(line (\d+)(, col (\d+))?\))?\:(.+)$'
+    " hoge.c: KO!
+    "	SPACE_BEFORE_FUNC    (line:   3, col:   4):     space before function name
+	let l:pattern = '\v^\t*(([a-zA-Z]|_|\.)+)(\ *\(line:\ *(\d+),\ *col:\ *(\d+)\))?:\t*(.+)$'
     let l:output = []
 	let l:curr_file = ''
 	let l:lel = ale#util#GetMatches(a:lines, l:pattern)
 
     for l:match in ale#util#GetMatches(a:lines, l:pattern)
-		if l:match[1] == "Norme"
-			let l:curr_file = l:match[6]
-		endif
-		" if ale#path#IsBufferPath(a:buffer, l:curr_file) && l:match[1] == "Error"
-		if l:match[1] == "Error" || l:match[1] == "Warning"
+		if !l:match[4]
+			let l:curr_file = l:match[1]
+		else
 			call add(l:output, {
-            \   'lnum': str2nr(l:match[3]),
-			\   'col': l:match[5] is# '' ? 0 : str2nr(l:match[5]),
+            \   'lnum': str2nr(l:match[4]),
+			\   'col': str2nr(l:match[5]),
             \   'type': 'W',
-            \   'text': l:match[0],
+            \   'text': l:match[6],
             \})
         endif
     endfor
