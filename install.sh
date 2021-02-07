@@ -65,3 +65,5 @@ fi
 if [ $failed -eq 0 ]; then
   echo $(tput setaf 3)neovim config file linkage complete!. ✔︎$(tput sgr0)
 fi
+
+sed -i -e "s/call s:HL('CocHighlightText', s:palette.none, s:palette.bg1)/call s:HL('CocHighlightText', s:palette.none, s:palette.bg4)/g" ~/.vim/plugged/tokyonight-vim/colors/tokyonight.vim
