@@ -67,3 +67,4 @@ if [ $failed -eq 0 ]; then
 fi
 
 sed -i -e "s/call s:HL('CocHighlightText', s:palette.none, s:palette.bg1)/call s:HL('CocHighlightText', s:palette.none, s:palette.bg4)/g" ~/.vim/plugged/tokyonight-vim/colors/tokyonight.vim
+sed -i -e "s/'bg+': \['bg', 'CursorLine', 'CursorColumn'\],/'bg+': \['bg', 'MatchParen', 'CursorColumn'\],/g" ~/.vim/plugged/tokyonight-vim/colors/tokyonight.vim
