@@ -143,7 +143,7 @@ Plug 'dhaiibfiukkiu/previm'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
-"Plug 'dhaiibfiukkiu/iceberg.vim'
+Plug 'dhaiibfiukkiu/iceberg.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'pbondoer/vim-42header'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -158,7 +158,7 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 call plug#end()
 
 let g:tokyonight_style = 'storm'
-colorscheme tokyonight 
+colorscheme iceberg
 syntax on
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
@@ -171,7 +171,7 @@ endif
 "'gitbranch'は長くなるので非推奨
 "lightLineの設定
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
+      \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'gitstatus', 'filename', 'modified' ] ]
@@ -364,7 +364,7 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <C-n>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -382,8 +382,8 @@ endfunction
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
