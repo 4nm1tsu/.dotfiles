@@ -101,6 +101,9 @@ augroup c
     autocmd FileType dbui setlocal shiftwidth=2
 augroup END
 
+".s拡張子をnasmとして読み込み
+autocmd BufNewFile,BufRead *.s set filetype=nasm
+
 "goのときはハードタブに
 au BufNewFile,BufRead *.go set noexpandtab
 
