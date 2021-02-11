@@ -364,7 +364,6 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <C-n>
       \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
