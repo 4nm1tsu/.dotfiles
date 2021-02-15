@@ -1,8 +1,3 @@
-
-if &compatible
-  set nocompatible
-endif
-
 "起動時にカーソル形状を問い合わせるシーケンスが出ないようにする（for mac "iterm2）
 set t_RC=
 
