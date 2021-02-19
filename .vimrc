@@ -141,6 +141,7 @@ Plug 'dhaiibfiukkiu/previm'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'dhaiibfiukkiu/iceberg.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'pbondoer/vim-42header'
@@ -578,6 +579,9 @@ set shortmess+=I
 
 "自動改行させない
 autocmd FileType * setlocal textwidth=0
+
+"indentLine
+let g:indentLine_char='▏'
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
