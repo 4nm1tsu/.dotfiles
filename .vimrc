@@ -581,7 +581,14 @@ set shortmess+=I
 autocmd FileType * setlocal textwidth=0
 
 "indentLine
+"let g:indentLine_defaultGroup='Whitespace'
 let g:indentLine_char='▏'
+let g:indent_blankline_space_char=' '
+let g:indent_blankline_char='▏'
+"let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
+"
+"set list
+"set listchars+=tab:▏\ 
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
