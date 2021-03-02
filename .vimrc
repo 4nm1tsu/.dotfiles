@@ -297,7 +297,7 @@ let g:coc_explorer_global_presets = {
 \   'floatingLeftside': {
 \     'position': 'floating',
 \     'floating-position': 'left-center',
-\     'floating-width': 50,
+\     'floating-width': 60,
 \     'open-action-strategy': 'sourceWindow',
 \   },
 \   'floatingRightside': {
