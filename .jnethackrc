@@ -9,9 +9,6 @@ OPTIONS=menucolors
 
 OPTIONS=hitpointbar
 
-OPTIONS=perm_invent
-OPTIONS=windowtype:curses
-
 MENUCOLOR="blessed"=cyan&bold
 MENUCOLOR="cursed"=orange&bold
 MENUCOLOR="uncursed"=green
