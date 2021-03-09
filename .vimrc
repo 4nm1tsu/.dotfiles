@@ -5,8 +5,8 @@ set t_RC=
 nmap <silent><Space>t :tabe<CR>
 nmap <silent><Space>j :-tabmove<CR>
 nmap <silent><Space>k :+tabmove<CR>
-nmap <silent><C-k> :tabnext<CR>
-nmap <silent><C-j> :tabprevious<CR>
+nmap <silent><C-n> :tabnext<CR>
+nmap <silent><C-p> :tabprevious<CR>
 
 "行番号のハイライト
 set cursorline
