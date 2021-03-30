@@ -584,7 +584,7 @@ autocmd FileType * setlocal textwidth=0
 let g:indent_blankline_space_char=' '
 let g:indent_blankline_char='▏'
 let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer', 'fzf']
-let g:indent_blankline_char_highlight = 'Comment'
+let g:indent_blankline_char_highlight_list = ['Comment']
 "let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
 
 lua <<EOF
