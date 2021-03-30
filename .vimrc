@@ -152,6 +152,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'honza/vim-snippets'
 
 " Initialize plugin system
 call plug#end()
@@ -586,6 +587,31 @@ let g:indent_blankline_char='▏'
 let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer', 'fzf']
 let g:indent_blankline_char_highlight_list = ['Comment']
 "let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
+
+"coc-snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet. 選択したテキストをスニペットに埋め込み
+"vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <C-x>  <Plug>(coc-convert-snippet)
+
+" tabで確定(enter一発で改行したい)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-tab>'
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
