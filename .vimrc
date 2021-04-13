@@ -139,7 +139,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'dhaiibfiukkiu/previm'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'alvan/vim-closetag'
 "Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'dhaiibfiukkiu/iceberg.vim'
