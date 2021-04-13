@@ -597,11 +597,11 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Use <leader>x for convert visual selected code to snippet
 xmap <C-x>  <Plug>(coc-convert-snippet)
 
-" tabで確定(enter一発で改行したい)
-inoremap <silent><expr> <TAB>
+" C-lで確定(enter一発で改行したい)←tabだと副作用が大きい
+inoremap <silent><expr> <C-l>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ "\<TAB>"
+      \ "\<C-l>"
 "      \ <SID>check_back_space() ? "\<TAB>" :
 "      \ coc#refresh()
 
