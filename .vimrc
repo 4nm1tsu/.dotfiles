@@ -165,7 +165,7 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
 "popup透過
 if has('nvim')
-    set pumblend=20
+    set pumblend=0
 endif
 
 "'gitbranch'は長くなるので非推奨
