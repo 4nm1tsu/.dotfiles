@@ -503,6 +503,9 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+"coc-markdownlint
+autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocAction('runCommand', 'markdownlint.fixAll')<CR>
+
 "coc-fzf
 nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
 nnoremap <silent><nowait> <space>d :<C-u>CocFzfList diagnostics --current-buf<CR>
