@@ -270,7 +270,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer', 'coc-tsserver', 'coc-vetur']
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer', 'coc-tsserver', 'coc-vetur']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
 
 "coc-explorer
@@ -328,6 +328,15 @@ nmap <silent><c-n> :CocCommand explorer
 
 " List all presets
 "nmap <space>el :CocList explPresets
+
+"coc-html
+let g:coc_filetype_map = {
+  \ 'htmldjango': 'html',
+  \ 'blade': 'html',
+  \ 'twig': 'html',
+  \ 'html.twig': 'html',
+  \ 'jst': 'html',
+  \ }
 
 "coc-highlight
 nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
