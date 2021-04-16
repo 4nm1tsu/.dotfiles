@@ -329,15 +329,6 @@ nmap <silent><c-n> :CocCommand explorer
 " List all presets
 "nmap <space>el :CocList explPresets
 
-"coc-html
-let g:coc_filetype_map = {
-  \ 'htmldjango': 'html',
-  \ 'blade': 'html',
-  \ 'twig': 'html',
-  \ 'html.twig': 'html',
-  \ 'jst': 'html',
-  \ }
-
 "coc-highlight
 nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
 
