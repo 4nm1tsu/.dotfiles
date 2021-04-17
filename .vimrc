@@ -175,18 +175,31 @@ let g:lightline = {
       \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'gitstatus', 'filename', 'modified' ] ]
+      \             [ 'readonly', 'gitstatus', 'filename', 'method', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'gitstatus': 'MyGitGutter',
       \   'filetype' : 'MyFiletype',
       \   'fileformtat' : 'MyFileformat',
+      \   'method' : 'NearestMethodOrFunction',
       \ },
       \ 'tab_component_function': {
       \   'tabnum': 'LightlineWebDevIcons',
       \ }
       \ }
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 function! LightlineWebDevIcons(n)
   let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
