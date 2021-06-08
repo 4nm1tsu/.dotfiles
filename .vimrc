@@ -108,7 +108,7 @@ au BufNewFile,BufRead *.go set noexpandtab
 :set scrolloff=7
 
 "クリップボードをつかえるようにする
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 "backspaceを有効に
 set backspace=indent,eol,start
@@ -166,6 +166,7 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
 "popup透過
 if has('nvim')
+    "透過すると補完のアイコン右半分にに文字が被る
     set pumblend=0
 endif
 
