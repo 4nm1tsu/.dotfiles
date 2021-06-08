@@ -32,4 +32,4 @@
   template = ~/.commit_template.txt
 [filter "gitignore"]
   smudge = cat
-  clean = "sed '/gitignore$/'d"
+  clean = "sed -e '/gitignore$/'d -e '/gitignore_start/,/gitignore_end/'d"
