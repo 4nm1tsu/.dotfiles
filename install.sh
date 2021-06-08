@@ -23,7 +23,7 @@ if [ $? -ne 0 ]; then
   failed=1
 fi
 if [ $failed -eq 0 ]; then
-  echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
+  echo $(tput setaf 2)Deploy dotfiles complete! ✔︎$(tput sgr0)
 fi
 
 failed=0
@@ -48,7 +48,7 @@ fi
 #  failed=1
 #fi
 if [ $failed -eq 0 ]; then
-  echo $(tput setaf 4)Deploy norminette.vim complete!. ✔︎$(tput sgr0)
+  echo $(tput setaf 4)Deploy norminette.vim complete! ✔︎$(tput sgr0)
 fi
 
 failed=0
@@ -63,7 +63,7 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ $failed -eq 0 ]; then
-  echo $(tput setaf 3)neovim config file linkage complete!. ✔︎$(tput sgr0)
+  echo $(tput setaf 3)neovim config file linkage complete! ✔︎$(tput sgr0)
 fi
 
 sed -i -e "s/call s:HL('CocHighlightText', s:palette.none, s:palette.bg1)/call s:HL('CocHighlightText', s:palette.none, s:palette.bg4)/g" ~/.vim/plugged/tokyonight-vim/colors/tokyonight.vim
