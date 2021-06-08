@@ -190,10 +190,9 @@ let g:lightline = {
       \ }
 
 function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
+  return winwidth('.') > 90 ? get(b:, 'vista_nearest_method_or_function', '') : ''
 endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
+"set statusline+=%{NearestMethodOrFunction()}
 
 " By default vista.vim never run if you don't call it explicitly.
 "
