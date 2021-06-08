@@ -30,3 +30,6 @@
   cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
 [commit]
   template = ~/.commit_template.txt
+[filter "gitignore"]
+  smudge = cat
+  clean = "sed '/gitignore$/'d"
