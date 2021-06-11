@@ -97,14 +97,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export PATH="$HOME/.anyenv/bin:$PATH"
 if type "anyenv" > /dev/null 2>&1; then
-    # === #1906 pyenv v1.2.27
-    export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-    if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
-    fi
-    # ===
     export GOENV_DISABLE_GOPATH=1
     export GOPATH=$HOME/go
     export GOBIN=$GOPATH/bin
