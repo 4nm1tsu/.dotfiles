@@ -139,7 +139,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'dhaiibfiukkiu/previm'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -558,14 +558,6 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:tex_conceal=''
-
-"previm
-if has('macunix')
-    let g:previm_open_cmd="open -a safari"
-elseif has('unix')
-    let g:previm_open_cmd="google-chrome"
-endif
-let g:previm_enable_realtime=1
 
 "vim-table-mode
 function! s:isAtStartOfLine(mapping)
