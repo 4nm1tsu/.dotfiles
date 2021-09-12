@@ -517,18 +517,18 @@ nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
 nnoremap <silent><nowait> <space>d :<C-u>CocFzfList diagnostics --current-buf<CR>
 
 "git-fugitive
-nnoremap <Space>gs :tab sp<CR>:Gstatus<CR>:only<CR>
+nnoremap <Space>gs :tab sp<CR>:Git<CR>:only<CR>
 nnoremap <Space>ga :Gwrite<CR>
-nnoremap <Space>gc :Gcommit<CR>
-nnoremap <Space>gb :Gblame<CR>
+nnoremap <Space>gc :Git commit<CR>
+nnoremap <Space>gb :Git blame<CR>
 nnoremap <Space>gl :Git log<CR>
-nnoremap <Space>gh :tab sp<CR>:0Glog<CR>
-nnoremap <Space>gp :Gpush<CR>
-nnoremap <Space>gf :Gfetch<CR>
+"nnoremap <Space>gh :tab sp<CR>:0Gclog<CR>
+nnoremap <Space>gp :Git push<CR>
+nnoremap <Space>gf :Git fetch<CR>
 nnoremap <Space>gd :Gvdiff<CR>
-nnoremap <Space>gr :Grebase -i<CR>
+nnoremap <Space>gr :Git rebase -i<CR>
 nnoremap <Space>gg :Ggrep
-nnoremap <Space>gm :Gmerge
+nnoremap <Space>gm :Git merge
 
 "GitGutter
 nnoremap <Space>gu :GitGutterUndoHunk<CR>
