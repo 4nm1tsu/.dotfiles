@@ -126,11 +126,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
 "Plug 'cohama/lexima.vim'
+Plug 'nvim-lua/plenary.nvim' " for telescope
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons' " for telescope
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
@@ -151,7 +154,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'antoinemadec/coc-fzf'
+Plug 'antoinemadec/coc-fzf' " cocListの結果をfzfに噛ませる
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
 
@@ -534,11 +537,31 @@ nnoremap <Space>gm :Git merge
 nnoremap <Space>gu :GitGutterUndoHunk<CR>
 
 "fzf
-nnoremap <silent> <C-f> :Files<CR>
-autocmd! FileType fzf tnoremap <buffer> <C-f> <c-c>
+"nnoremap <silent> <C-f> :Files<CR>
+"autocmd! FileType fzf tnoremap <buffer> <C-f> <c-c>
 "ファイル名が指定されなかったらfzf起動できるようにしたい
 "escでタブが閉じるのが遅いので追加
-autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+"autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+
+"telescope
+nnoremap <silent> <C-f> <cmd>Telescope find_files<cr>
+nnoremap <silent> <Space>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"esc一回で抜ける
+lua <<EOF
+local actions = require("telescope.actions")
+
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    },
+})
+EOF
 
 "vista
 let g:vista_default_executive = 'coc'
