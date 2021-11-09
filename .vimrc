@@ -544,8 +544,8 @@ nnoremap <Space>gu :GitGutterUndoHunk<CR>
 "autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 "telescope
-nnoremap <silent> <C-f> <cmd>Telescope find_files<cr>
-nnoremap <silent> <Space>g <cmd>Telescope live_grep<cr>
+nnoremap <silent> <C-f> <cmd>Telescope find_files layout_config={"prompt_position":"top"}<cr>
+nnoremap <silent> <Space>g <cmd>Telescope live_grep layout_config={"prompt_position":"top"}<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "esc一回で抜ける
@@ -559,6 +559,7 @@ require("telescope").setup({
                 ["<esc>"] = actions.close,
             },
         },
+        sorting_strategy = "ascending",
     },
 })
 EOF
