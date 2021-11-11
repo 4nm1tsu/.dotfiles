@@ -17,6 +17,10 @@ export SAVEHIST=100000
 setopt hist_ignore_dups
 # 開始と終了を記録
 setopt EXTENDED_HISTORY
+# historyの共有
+setopt share_history
+# 余分な空白を削除
+setopt hist_reduce_blanks
 
 autoload -Uz compinit
 compinit
@@ -138,6 +142,7 @@ autoload -Uz _zinit
 ### End of Zinit installer's chunk
 
 zplugin light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zplugin light romkatv/powerlevel10k
 zplugin light zsh-users/zsh-completions
 zplugin load zsh-users/zsh-syntax-highlighting
