@@ -164,6 +164,7 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'antoinemadec/coc-fzf' " cocListの結果をfzfに噛ませる
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
+Plug 'Xuyuanp/scrollbar.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -180,6 +181,12 @@ if has('nvim')
     set pumblend=0
 endif
 
+augroup ScrollbarInit
+  autocmd!
+  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+augroup end
 
 "lualine
 lua <<EOF
