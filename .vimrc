@@ -208,71 +208,6 @@ require'lualine'.setup {
 }
 EOF
 
-""'gitbranch'は長くなるので非推奨
-""lightLineの設定
-"let g:lightline = {
-"      \ 'colorscheme': 'iceberg',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ],
-"      \             [ 'readonly', 'gitstatus', 'filename', 'method', 'modified' ] ]
-"      \ },
-"      \ 'component_function': {
-"      \   'gitbranch': 'FugitiveHead',
-"      \   'gitstatus': 'MyGitGutter',
-"      \   'filetype' : 'MyFiletype',
-"      \   'fileformtat' : 'MyFileformat',
-"      \   'method' : 'NearestMethodOrFunction',
-"      \ },
-"      \ 'tab_component_function': {
-"      \   'tabnum': 'LightlineWebDevIcons',
-"      \ }
-"      \ }
-"
-"function! NearestMethodOrFunction() abort
-"  return winwidth('.') > 90 ? get(b:, 'vista_nearest_method_or_function', '') : ''
-"endfunction
-""set statusline+=%{NearestMethodOrFunction()}
-"
-"" By default vista.vim never run if you don't call it explicitly.
-""
-"" If you want to show the nearest function in your statusline automatically,
-"" you can add the following line to your vimrc
-"autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-"
-"function! LightlineWebDevIcons(n)
-"  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-"  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
-"endfunction
-"
-"function! MyGitGutter()
-"  if ! exists('*GitGutterGetHunkSummary')
-"        \ || ! get(g:, 'gitgutter_enabled', 0)
-"        \ || winwidth('.') <= 90
-"    return ''
-"  endif
-"  let symbols = [
-"        \ g:gitgutter_sign_added . '',
-"        \ g:gitgutter_sign_modified . '',
-"        \ g:gitgutter_sign_removed . ''
-"        \ ]
-"  let hunks = GitGutterGetHunkSummary()
-"  let ret = []
-"  for i in [0, 1, 2]
-"    if hunks[i] > 0
-"      call add(ret, symbols[i] . hunks[i])
-"    endif
-"  endfor
-"  return join(ret, ' ')
-"endfunction
-"
-"function! MyFiletype()
-"    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-"endfunction
-"
-"function! MyFileformat()
-"    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-"endfunction
-
 "ステータスラインの設定
 set laststatus=2 " ステータスラインを常に表示
 set showmode " 現在のモードを表示
@@ -424,18 +359,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion. "上のTABの設定で十分 
-"if has('nvim')
-"    inoremap <silent><expr> <c-space> coc#refresh()
-"else
-"    inoremap <silent><expr> <c-r> coc#refresh()
-"endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
@@ -579,7 +502,8 @@ nnoremap <Space>gu :GitGutterUndoHunk<CR>
 "autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 "telescope
-nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr>
+"nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr> " hidden=trueいれないほうがいいかも
+nnoremap <silent> <C-f> <cmd>Telescope find_files layout_config={"prompt_position":"top"}<cr>
 nnoremap <silent> <Space>g <cmd>Telescope live_grep layout_config={"prompt_position":"top"}<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
