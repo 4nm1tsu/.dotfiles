@@ -14,6 +14,10 @@ set cursorline
 "横のスクロールを細かく
 set sidescroll=1
 
+"バッファ移動
+nnoremap <silent>gb :bnext<CR>
+nnoremap <silent>gB :bprev<CR>
+
 "nomalに戻る時の遅延をなくす
 "set ttimeoutlen=50
 
@@ -176,6 +180,7 @@ if has('nvim')
 endif
 
 
+"lualine
 lua <<EOF
 require'lualine'.setup {
   options = {
@@ -203,7 +208,14 @@ require'lualine'.setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {'buffers'},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'tabs'}
+  },
   extensions = {}
 }
 EOF
