@@ -131,7 +131,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
-Plug 'nvim-lua/plenary.nvim' " for telescope
+Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'embear/vim-localvimrc'
@@ -140,7 +140,8 @@ Plug 'w0rp/ale'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons' " for telescope
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
+"Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Plug 'gorodinskiy/vim-coloresque'
@@ -470,22 +471,91 @@ autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocActi
 nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
 nnoremap <silent><nowait> <space>d :<C-u>CocFzfList diagnostics --current-buf<CR>
 
+"gitsigns
+lua <<EOF
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  keymaps = {
+    -- Default keymap options
+    noremap = true,
+
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+
+    ['n <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    ['v <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <space>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    ['n <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    ['v <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <space>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    ['n <space>gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    ['n <space>gB'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+    ['n <space>gA'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
+    ['n <space>gU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
+
+    -- Text objects
+    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+  },
+  watch_gitdir = {
+    interval = 1000,
+    follow_files = true
+  },
+  attach_to_untracked = true,
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = false,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 150,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter_opts = {
+    relative_time = false
+  },
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  max_file_length = 40000,
+  preview_config = {
+    -- Options passed to nvim_open_win
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1
+  },
+  yadm = {
+    enable = false
+  },
+}
+EOF
+
 "git-fugitive
-nnoremap <Space>gs :tab sp<CR>:Git<CR>:only<CR>
-nnoremap <Space>ga :Gwrite<CR>
-nnoremap <Space>gc :Git commit<CR>
+"nnoremap <Space>gs :tab sp<CR>:Git<CR>:only<CR>
+"nnoremap <Space>ga :Gwrite<CR>
+"nnoremap <Space>gc :Git commit<CR>
 nnoremap <Space>gb :Git blame<CR>
-nnoremap <Space>gl :Git log<CR>
+"nnoremap <Space>gl :Git log<CR>
 "nnoremap <Space>gh :tab sp<CR>:0Gclog<CR>
-nnoremap <Space>gp :Git push<CR>
-nnoremap <Space>gf :Git fetch<CR>
+"nnoremap <Space>gp :Git push<CR>
+"nnoremap <Space>gf :Git fetch<CR>
 nnoremap <Space>gd :Gvdiff<CR>
-nnoremap <Space>gr :Git rebase -i<CR>
-nnoremap <Space>gg :Ggrep
-nnoremap <Space>gm :Git merge
+"nnoremap <Space>gr :Git rebase -i<CR>
+"nnoremap <Space>gg :Ggrep
+"nnoremap <Space>gm :Git merge
 
 "GitGutter
-nnoremap <Space>gu :GitGutterUndoHunk<CR>
+"nnoremap <Space>gu :GitGutterUndoHunk<CR>
 
 "fzf
 "nnoremap <silent> <C-f> :Files<CR>
