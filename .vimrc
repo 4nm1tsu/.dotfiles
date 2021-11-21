@@ -119,6 +119,9 @@ set backspace=indent,eol,start
 
 set termguicolors
 
+"ale
+let g:ale_disable_lsp = 1
+
 "plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
