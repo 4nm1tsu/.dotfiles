@@ -153,7 +153,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'dhaiibfiukkiu/iceberg.vim'
+Plug '4nm1tsu/iceberg.vim'
 "Plug 'ghifarit53/tokyonight-vim'
 Plug 'pbondoer/vim-42header'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
