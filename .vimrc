@@ -121,6 +121,7 @@ set termguicolors
 
 "ale
 let g:ale_disable_lsp = 1
+let g:ale_sign_highlight_linenrs = 1
 
 "plug
 if empty(glob('~/.vim/autoload/plug.vim'))
