@@ -243,39 +243,19 @@ set updatetime=100
 
 "ale
 let g:ale_linters = {
-    \ 'html': ['eslint'],
-    \ 'c': ['gcc'],
-    \ 'cpp': [],
-    \ 'php': ['phpcs', 'php', 'phpstan'],
-    \ 'ruby': [],
-    \ 'go': ['golangci-lint'],
     \ }
-let g:ale_fix_on_save = 0
 let g:ale_fixers = {
-    \ 'go': ['gofmt', 'goimports'],
-    \ 'php': ['php_cs_fixer'],
-    \ 'python': ['autopep8', 'black', 'isort'],
-    \ 'javascript': ['eslint'],
-    \ 'sql': ['sqlfmt'],
     \ }
+
 " virtualtextにエラー表示
 let g:ale_virtualtext_cursor = 1
+let g:ale_fix_on_save = 0
 let g:ale_virtualtext_prefix = '>'
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_sign_info = ''
 let g:ale_sign_style_error = ''
 let g:ale_sign_style_warning = ''
-let g:ale_php_phpcs_standard = 'PSR12'
-let g:ale_c_clang_options = "-std=c11 -Wall -Werror -Wextra"
-let g:ale_c_gcc_options = "-std=c11 -Wall -Werror -Wextra"
-let g:ale_cpp_clang_options = "-std=c++14 -Wall -Werror -Wextra"
-let g:ale_cpp_gcc_options = "-std=c++14 -Wall -Werror -Wextra"
-let g:ale_sql_sqlfmt_options = '-u'
-"eslint,phpcsは特に設定しなくてもローカルのものが動く
-".gitが存在すればphpstanはローカルで動く
-let g:ale_php_phpstan_executable = system('if ! type git &> /dev/null; then echo -n phpstan; else PSE=`git rev-parse --show-toplevel 2> /dev/null`/vendor/bin/phpstan; if [ -x "$PSE" ]; then echo -n $PSE; else echo -n phpstan; fi; fi')
-"let g:ale_php_phpstan_level = 4
 "エラー間の移動
 nmap <silent> [a <Plug>(ale_previous_wrap)
 nmap <silent> ]a <Plug>(ale_next_wrap)
