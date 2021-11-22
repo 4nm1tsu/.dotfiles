@@ -634,6 +634,7 @@ inoreabbrev <expr> __
 
 "localvimrc
 let g:localvimrc_ask=0
+let g:localvimrc_sandbox = 0
 
 "起動時メッセージ出さない
 set shortmess+=I
