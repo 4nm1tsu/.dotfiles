@@ -242,6 +242,7 @@ set ruler " ステータスラインの右側にカーソルの現在位置を�
 set updatetime=100
 
 "ale
+let g:ale_linters_explicit=1
 let g:ale_linters = {
     \ }
 let g:ale_fixers = {
