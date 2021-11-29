@@ -3,10 +3,8 @@ set t_RC=
 
 "tab間の移動
 nmap <silent><Space>t :tabe<CR>
-nmap <silent><Space>j :-tabmove<CR>
-nmap <silent><Space>k :+tabmove<CR>
-nmap <silent><C-k> :tabnext<CR>
-nmap <silent><C-j> :tabprevious<CR>
+nmap <silent><Space>j :tabprevious<CR>
+nmap <silent><Space>k :tabnext<CR>
 
 "行番号のハイライト
 set cursorline
