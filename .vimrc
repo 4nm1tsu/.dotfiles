@@ -264,6 +264,9 @@ nmap <silent> <Space>F :ALEFix<CR>
 let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer', 'coc-tsserver', 'coc-vetur']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
 
+"signatuer表示
+inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
+
 "coc-explorer
 let g:coc_explorer_global_presets = {
 \   '.vim': {
