@@ -34,5 +34,6 @@
         "typeParameter": "\uf278",
         "default": "\uf29c"
     },
-    "html.autoClosingTags": true
+    "html.autoClosingTags": true,
+    "snippets.userSnippetsDirectory": "~/.dotfiles/snippets"
 }
