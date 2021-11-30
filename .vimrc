@@ -172,6 +172,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'Pocco81/DAPInstall.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'theHamsta/nvim-dap-virtual-text'
 
 " Initialize plugin system
 call plug#end()
@@ -768,6 +769,10 @@ local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 for _, debugger in ipairs(dbg_list) do
 	dap_install.config(debugger)
 end
+EOF
+
+lua <<EOF
+require("nvim-dap-virtual-text").setup()
 EOF
 
 "telescope-dap
