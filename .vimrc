@@ -638,6 +638,17 @@ let g:indent_blankline_char='▏'
 let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer', 'fzf']
 let g:indent_blankline_char_highlight_list = ['Comment']
 "let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
+lua <<EOF
+vim.opt.list = true
+-- vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = false,
+}
+EOF
 
 "markdown-preview.nvim
 " set to 1, nvim will open the preview window after entering the markdown buffer
