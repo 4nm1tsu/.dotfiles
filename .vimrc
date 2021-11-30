@@ -130,6 +130,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+"Plug 'tpope/vim-scriptease'
 "Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
@@ -167,6 +168,10 @@ Plug 'antoinemadec/coc-fzf' " cocListの結果をfzfに噛ませる
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
 Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'Pocco81/DAPInstall.nvim'
+Plug 'nvim-telescope/telescope-dap.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -462,7 +467,7 @@ autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocActi
 
 "coc-fzf
 nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
-nnoremap <silent><nowait> <space>d :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent><nowait> <space>e :<C-u>CocFzfList diagnostics --current-buf<CR>
 
 "gitsigns
 lua <<EOF
@@ -733,6 +738,45 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-tab>'
 
+"nvim-dap
+lua << EOF
+require('dap')
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='NONE', numhl='NONE'})
+vim.fn.sign_define('DapStopped', {text='', texthl='DapStopped', linehl='NONE', numhl='NONE'})
+vim.fn.sign_define('DapLogPoint', {text='', texthl='DapLogPoint', linehl='NONE', numhl='NONE'})
+vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='DapBreakpointRejected', linehl='NONE', numhl='NONE'})
+EOF
+nnoremap <silent><space>db <cmd>lua require"dap".toggle_breakpoint()<CR>
+nnoremap <silent><space>dc <cmd>lua require"dap".continue()<CR>
+
+"dapui
+lua << EOF
+require("dapui").setup()
+EOF
+nnoremap <silent><space>du <cmd>lua require"dapui".toggle()<CR>
+
+"dapinstall
+lua << EOF
+local dap_install = require("dap-install")
+
+dap_install.setup({
+	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+    verbosely_call_debuggers = true,
+})
+
+local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
+for _, debugger in ipairs(dbg_list) do
+	dap_install.config(debugger)
+end
+EOF
+
+"telescope-dap
+lua << EOF
+require('telescope').setup()
+require('telescope').load_extension('dap')
+EOF
+
+"treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
