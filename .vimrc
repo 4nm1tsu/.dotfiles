@@ -158,6 +158,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug '4nm1tsu/iceberg.vim'
 "Plug 'ghifarit53/tokyonight-vim'
+"Plug 'kyazdani42/blue-moon'
 Plug 'pbondoer/vim-42header'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
