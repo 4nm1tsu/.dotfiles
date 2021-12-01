@@ -787,12 +787,13 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = {
-      'php',
+        'php',
     }
   },
   indent = {
     enable = false,
   },
   ensure_installed = 'maintained',
+  additional_vim_regex_highlighting = false,
 }
 EOF
