@@ -35,5 +35,6 @@
         "default": "\uf29c"
     },
     "html.autoClosingTags": true,
-    "snippets.userSnippetsDirectory": "~/.dotfiles/snippets"
+    "snippets.userSnippetsDirectory": "~/.dotfiles/snippets",
+    "yank.enableCompletion": false
 }
