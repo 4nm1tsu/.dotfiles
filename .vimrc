@@ -750,6 +750,7 @@ vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='DapBreakpointRe
 EOF
 nnoremap <silent><space>db <cmd>lua require"dap".toggle_breakpoint()<CR>
 nnoremap <silent><space>dc <cmd>lua require"dap".continue()<CR>
+nnoremap <silent><space>ds <cmd>lua require"dap".disconnect()<CR>
 nnoremap <silent><C-j> <cmd>lua require"dap".step_over()<CR>
 nnoremap <silent><C-k> <cmd>lua require"dap".step_out()<CR>
 nnoremap <silent><C-l> <cmd>lua require"dap".step_into()<CR>
