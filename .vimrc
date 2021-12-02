@@ -742,7 +742,16 @@ let g:coc_snippet_prev = '<S-tab>'
 
 "nvim-dap
 lua << EOF
-require('dap')
+local dap = require('dap')
+dap.defaults.fallback.force_external_terminal = true
+
+dap.defaults.fallback.terminal_win_cmd = 'belowright new'
+
+dap.defaults.fallback.external_terminal = {
+    -- command = '/usr/bin/alacritty';
+    command = 'alacritty';
+    args = {'-e'};
+}
 vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='NONE', numhl='NONE'})
 vim.fn.sign_define('DapStopped', {text='', texthl='DapStopped', linehl='NONE', numhl='NONE'})
 vim.fn.sign_define('DapLogPoint', {text='', texthl='DapLogPoint', linehl='NONE', numhl='NONE'})
