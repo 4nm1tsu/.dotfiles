@@ -243,9 +243,6 @@ set showmode " 現在のモードを表示
 set showcmd " 打ったコマンドをステータスラインの下に表示
 set ruler " ステータスラインの右側にカーソルの現在位置を表示する
 
-"git-gutter
-set updatetime=100
-
 "ale
 let g:ale_linters_explicit=1
 let g:ale_linters = {
