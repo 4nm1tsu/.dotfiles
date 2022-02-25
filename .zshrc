@@ -35,69 +35,18 @@ if type "exa" > /dev/null 2>&1; then
 else
     echo "'exa' is not installed."
 fi
-if type "bat" > /dev/null 2>&1; then
-    #alias cat='bat'
-else
-    echo "'bat' is not installed."
-fi
-#if type "fd" > /dev/null 2>&1; then
-#    #alias find='fd'
-#else
-#    echo "'fd' is not installed."
-#fi
-#if type "procs" > /dev/null 2>&1; then
-#    #alias ps='procs'
-#else
-#    echo "'procs' is not installed."
-#fi
 if type "rg" > /dev/null 2>&1; then
     #alias grep='rg'
 else
     echo "'ripgrep(rg)' is not installed."
 fi
-#if type "nvim" > /dev/null 2>&1; then
-#    alias vim='nvim'
-#    alias vi='nvim'
-#fi
 
 #xclipのエイリアス
 alias xclip='xclip -sel clip'
 
-#for42
-#alias norminette=$HOME/.norminette/norminette.rb
-
 export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/anaconda3/bin:$PATH
-export PATH=$HOME/nh/install/games:$PATH
-#export TERM='xterm-256color'
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
-
-#export PYENV_ROOT="${HOME}/.pyenv"
-#export PATH="${PYENV_ROOT}/bin:$PATH"
-#if type "pyenv" > /dev/null 2>&1; then
-#    eval "$(pyenv init -)"
-#fi
-#
-## rbenv PATH
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#if type "rbenv" > /dev/null 2>&1; then
-#    eval "$(rbenv init -)"
-#fi
-#
-#GOENV_DISABLE_GOPATH=1
-#export GOENV_ROOT="$HOME/.goenv"
-#export PATH="$GOENV_ROOT/bin:$PATH"
-#if type "goenv" > /dev/null 2>&1; then
-#    eval "$(goenv init -)"
-#    export PATH="$GOROOT/bin:$PATH"
-#    export PATH="$PATH:$GOPATH/bin"
-#fi
-#
-#export PATH="$HOME/.phpenv/bin:$PATH"
-#if type "phpenv" > /dev/null 2>&1; then
-#    eval "$(phpenv init -)"
-#fi
 
 export PATH="$HOME/.anyenv/bin:$PATH"
 if type "anyenv" > /dev/null 2>&1; then
@@ -127,25 +76,6 @@ export PATH="/usr/local/sbin:$PATH"
 alias brew="env PATH=${PATH//Users/username/.anyenv/envs/phpenv/shims:} brew"
 
 ### End of chunk by myself
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
-
-zplugin light zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-zplugin light romkatv/powerlevel10k
-zplugin light zsh-users/zsh-completions
-zplugin load zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -223,3 +153,32 @@ function ranger() {
         exit
     fi
 }
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-completions
+zinit load zsh-users/zsh-syntax-highlighting
