@@ -14,7 +14,7 @@
         "constant": "\uf8ff constant",
         "struct": "\ufb44 struct",
         "class": "\uf0e8 class",
-        "interface": "\ufa52 interface",
+        "interface": "\ufa52interface",
         "text": "\ue612 text",
         "enum": "\uf435 enum",
         "enumMember": "\uf02b enumMember",
