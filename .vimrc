@@ -156,8 +156,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
-"Plug '4nm1tsu/iceberg.vim'
-Plug 'ghifarit53/tokyonight-vim'
+Plug '4nm1tsu/iceberg.vim'
+"Plug 'ghifarit53/tokyonight-vim'
 "Plug 'kyazdani42/blue-moon'
 Plug 'pbondoer/vim-42header'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -178,14 +178,14 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 " Initialize plugin system
 call plug#end()
 
-"colorscheme iceberg
+colorscheme iceberg
 
-let g:tokyonight_style = 'storm'
-colorscheme tokyonight
-hi! link DiagnosticError ALEErrorSign
-hi! link DiagnosticWarning ALEWarningSign
-hi! link DiagnosticInfo ALEInfoSign
-hi! link DiagnosticHint Label
+"let g:tokyonight_style = 'storm'
+"colorscheme tokyonight
+"hi! link DiagnosticError ALEErrorSign
+"hi! link DiagnosticWarning ALEWarningSign
+"hi! link DiagnosticInfo ALEInfoSign
+"hi! link DiagnosticHint Label
 
 syntax on
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
