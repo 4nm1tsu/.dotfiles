@@ -53,3 +53,7 @@ long long COM(int n, int k) {
   return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
 }
 endsnippet
+
+snippet priority_queue
+std::priority_queue<${1:T}, vector<${1:T}>, greater<${1:T}>> ${2};
+endsnippet
