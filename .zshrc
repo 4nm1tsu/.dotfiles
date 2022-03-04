@@ -41,6 +41,9 @@ else
     echo "'ripgrep(rg)' is not installed."
 fi
 
+# ac-library
+export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
+
 #xclipのエイリアス
 alias xclip='xclip -sel clip'
 
