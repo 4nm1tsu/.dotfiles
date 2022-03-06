@@ -7,12 +7,14 @@ fi
 
 ### added by myself
 #history
-# 履歴ファイルの保存先
-export HISTFILE=${HOME}/.zsh_history
-# メモリに保存される履歴の件数
-export HISTSIZE=1000
-# 履歴ファイルに保存される履歴の件数
-export SAVEHIST=100000
+if [[ -z $TMUX ]]; then
+    # 履歴ファイルの保存先
+    export HISTFILE=${HOME}/.zsh_history
+    # メモリに保存される履歴の件数
+    export HISTSIZE=1000
+    # 履歴ファイルに保存される履歴の件数
+    export SAVEHIST=100000
+fi
 # 重複を記録しない
 setopt hist_ignore_dups
 # 開始と終了を記録
@@ -42,40 +44,59 @@ else
 fi
 
 # ac-library
-export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
+if [[ -z $TMUX ]]; then
+    export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
+fi
 
 #xclipのエイリアス
 alias xclip='xclip -sel clip'
 
-export PATH=$HOME/.cargo/bin:$PATH
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+if [[ -z $TMUX ]]; then
+    # cargo
+    export PATH=$HOME/.cargo/bin:$PATH
+    # XDG_BASE_DIRECTORY
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_CACHE_HOME="$HOME/.cache"
+fi
 
-export PATH="$HOME/.anyenv/bin:$PATH"
+# anyenv
+if [[ -z $TMUX ]]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+fi
 if type "anyenv" > /dev/null 2>&1; then
-    export GOENV_DISABLE_GOPATH=1
-    export GOPATH=$HOME/go
-    export GOBIN=$GOPATH/bin
-    export PATH=$PATH:$GOPATH/bin
+    if [[ -z $TMUX ]]; then
+        export GOENV_DISABLE_GOPATH=1
+        export GOPATH=$HOME/go
+        export GOBIN=$GOPATH/bin
+        export PATH=$PATH:$GOPATH/bin
+    fi
 
     eval "$(anyenv init - --no-rehash)"
 fi
 
 #openssl for compiler
-export PATH=/usr/local/opt/openssl/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
-export CPATH=/usr/local/opt/openssl/include:$CPATH
-export LDFLAGS=-L/usr/local/opt/openssl/lib
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
+if [[ -z $TMUX ]]; then
+    export PATH=/usr/local/opt/openssl/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$LD_LIBRARY_PATH
+    export CPATH=/usr/local/opt/openssl/include:$CPATH
+    export LDFLAGS=-L/usr/local/opt/openssl/lib
+    export CPPFLAGS=-I/usr/local/opt/openssl/include
+    export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
 
 #symfony
-export PATH="$HOME/.symfony/bin:$PATH"
+if [[ -z $TMUX ]]; then
+    export PATH="$HOME/.symfony/bin:$PATH"
+fi
 
 #poetry
-export PATH=${HOME}/.poetry/bin:${PATH}
+if [[ -z $TMUX ]]; then
+    export PATH=${HOME}/.poetry/bin:${PATH}
+fi
 
-export PATH="/usr/local/sbin:$PATH"
+if [[ -z $TMUX ]]; then
+    export PATH="/usr/local/sbin:$PATH"
+fi
 alias brew="env PATH=${PATH//Users/username/.anyenv/envs/phpenv/shims:} brew"
 
 ### End of chunk by myself
@@ -90,13 +111,15 @@ bindkey -v
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if type "fzf" > /dev/null 2>&1; then
-    if type "bat" > /dev/null 2>&1; then
-        export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
-    else
-        export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'head -100 {}'"
-    fi
-    if type "rg" > /dev/null 2>&1; then
-        export  FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+    if [[ -z $TMUX ]]; then
+        if type "bat" > /dev/null 2>&1; then
+            export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
+        else
+            export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'head -100 {}'"
+        fi
+        if type "rg" > /dev/null 2>&1; then
+            export  FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+        fi
     fi
 else
     echo "'fzf' is not installed."
@@ -107,11 +130,11 @@ alias -g B='`git branch --all | grep -v HEAD | fzf -m --preview "" | sed "s/.* /
 alias -g F='`fzf`'
 #cd
 fcd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m --preview 'ls -al {} | head -200') &&
-  cd "$dir"
-}
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune \
+        -o -type d -print 2> /dev/null | fzf +m --preview 'ls -al {} | head -200') &&
+        cd "$dir"
+    }
 
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
@@ -119,35 +142,35 @@ _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always 
 
 # fcoc_preview - checkout git commit with previews
 fcoc() {
-  local commit
-  commit=$( glNoGraph |
-    fzf --no-sort --reverse --tiebreak=index --no-multi \
+    local commit
+    commit=$( glNoGraph |
+        fzf --no-sort --reverse --tiebreak=index --no-multi \
         --ansi --preview="$_viewGitLogLine" ) &&
-  git checkout $(echo "$commit" | sed "s/ .*//")
-}
+        git checkout $(echo "$commit" | sed "s/ .*//")
+    }
 
 # fshow_preview - git commit browser with previews
 fshow() {
     glNoGraph |
         fzf --no-sort --reverse --tiebreak=index --no-multi \
-            --ansi --preview="$_viewGitLogLine" \
-                --header "enter to view, alt-y to copy hash" \
-                --bind "enter:execute:$_viewGitLogLine   | less -R" \
-                --bind "alt-y:execute:$_gitLogLineToHash | xclip"
-			}
+        --ansi --preview="$_viewGitLogLine" \
+        --header "enter to view, alt-y to copy hash" \
+        --bind "enter:execute:$_viewGitLogLine   | less -R" \
+        --bind "alt-y:execute:$_gitLogLineToHash | xclip"
+    }
 
 # man page culorize
 man() {
-        env \
-                LESS_TERMCAP_mb=$(printf "\e[1;94m") \
-                LESS_TERMCAP_md=$(printf "\e[1;94m") \
-                LESS_TERMCAP_me=$(printf "\e[0m") \
-                LESS_TERMCAP_se=$(printf "\e[0m") \
-                LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-                LESS_TERMCAP_ue=$(printf "\e[0m") \
-                LESS_TERMCAP_us=$(printf "\e[1;35m") \
-                man "$@"
-}
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;94m") \
+        LESS_TERMCAP_md=$(printf "\e[1;94m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;35m") \
+        man "$@"
+    }
 
 function ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
