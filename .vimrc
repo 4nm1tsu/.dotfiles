@@ -168,7 +168,7 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'antoinemadec/coc-fzf' " cocListの結果をfzfに噛ませる
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
-Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'dstein64/nvim-scrollview'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'Pocco81/DAPInstall.nvim'
@@ -197,23 +197,8 @@ if has('nvim')
     set pumblend=20
 endif
 
-"scrollbar
-augroup ScrollbarInit
-  autocmd!
-  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-augroup end
-let g:scrollbar_shape = {
-            \ 'head': '▏',
-            \ 'body': '▏',
-            \ 'tail': '▏',
-            \ }
-let g:scrollbar_highlight = {
-            \ 'head': 'Normal',
-            \ 'body': 'Normal',
-            \ 'tail': 'Normal',
-            \ }
+"nvim-scrollview
+hi! link ScrollView Pmenu
 
 "lualine
 lua <<EOF
