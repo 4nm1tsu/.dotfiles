@@ -1,4 +1,7 @@
 {
+    "colors.filetypes": [
+        "*"
+    ],
     "diagnostic.errorSign": "",
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
