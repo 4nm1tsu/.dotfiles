@@ -205,5 +205,6 @@ int main() {
 
 を`acc config-dir`出力下に保存
 
-`acc config default-template cpp`でグローバルのコンフィグ設定可能
-
+`acc config default-template cpp`
+`acc config default-test-dirname-format test`
+でグローバルのコンフィグ設定可能
