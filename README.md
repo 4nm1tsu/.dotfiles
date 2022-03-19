@@ -176,6 +176,22 @@ libgl-mesa-dri libgl-mesa-glxしてしまったときとか
 アプリがコンポジターをブロックすることを許可しない→steamのゲーム起動中に描画がしょぼくなる
 
 ## acc
+
+- template.json
+
+```json
+{
+ "task": {
+  "program": [
+   "main.cpp"
+  ],
+  "submit": "main.cpp"
+ }
+}
+```
+
+- main.cpp
+
 ```cpp
 #include <atcoder/all>
 #include <bits/stdc++.h>
@@ -186,4 +202,8 @@ typedef long long ll;
 int main() {
 }
 ```
-を`~/.config/atcoder-cli-nodejs/cpp`下に`main.cpp`として保存
+
+を`acc config-dir`出力下に保存
+
+`acc config default-template cpp`でグローバルのコンフィグ設定可能
+
