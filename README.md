@@ -175,3 +175,15 @@ libgl-mesa-dri libgl-mesa-glxしてしまったときとか
 
 アプリがコンポジターをブロックすることを許可しない→steamのゲーム起動中に描画がしょぼくなる
 
+## acc
+```cpp
+#include <atcoder/all>
+#include <bits/stdc++.h>
+using namespace atcoder;
+using namespace std;
+typedef long long ll;
+
+int main() {
+}
+```
+を`~/.config/atcoder-cli-nodejs/cpp`下に`main.cpp`として保存
