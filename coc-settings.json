@@ -8,7 +8,7 @@
     "diagnostic.hintSign": "",
     "explorer.icon.enableNerdfont": true,
     "explorer.previewAction.onHover": "labeling",
-    "clangd.path": "/home/hibiki/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
     "coc.preferences.extensionUpdateCheck": "daily",
     "suggest.completionItemKindLabels": {
         "function": "\uf794 function",
