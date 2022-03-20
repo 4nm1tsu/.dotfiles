@@ -208,3 +208,12 @@ int main() {
 `acc config default-template cpp`
 `acc config default-test-dirname-format test`
 でグローバルのコンフィグ設定可能
+
+### Tips. <bits/stdc++.h> on mac
+gcc -vしたときのインクルードパスに
+```
+-I/usr/local/Cellar/gcc/11.2.0_3/bin/../lib/gcc/11/gcc/x86_64-apple-darwin19/11/include
+-I/usr/local/Cellar/gcc/11.2.0_3/bin/../lib/gcc/11/gcc/x86_64-apple-darwin19/11/include-fixed
+```
+が含まれるが、上のパスをcompile_commands.txtに含めると
+clangdがbuiltin_functionありませんよ的なエラーを吐いてだるい
