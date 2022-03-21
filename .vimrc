@@ -179,13 +179,13 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 call plug#end()
 
 colorscheme iceberg
+hi! link DiagnosticError ALEErrorSign
+hi! link DiagnosticWarning ALEWarningSign
+hi! link DiagnosticInfo ALEInfoSign
+hi! link DiagnosticHint Label
 
 "let g:tokyonight_style = 'storm'
 "colorscheme tokyonight
-"hi! link DiagnosticError ALEErrorSign
-"hi! link DiagnosticWarning ALEWarningSign
-"hi! link DiagnosticInfo ALEInfoSign
-"hi! link DiagnosticHint Label
 
 syntax on
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
