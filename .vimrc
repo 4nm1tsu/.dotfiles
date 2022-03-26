@@ -268,7 +268,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer', 'coc-tsserver', 'coc-vetur']
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-explorer', 'coc-tsserver', 'coc-vetur', 'coc-lightbulb']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
 
 "signatuer表示
@@ -470,6 +470,9 @@ autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocActi
 "coc-fzf
 nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
 nnoremap <silent><nowait> <space>e :<C-u>CocFzfList diagnostics --current-buf<CR>
+
+"coc-lightbulb
+hi! link LightBulbVirtualText ALEWarningSign
 
 "gitsigns
 lua <<EOF
