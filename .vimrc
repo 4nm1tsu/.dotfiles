@@ -174,6 +174,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'Pocco81/DAPInstall.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'rcarriga/nvim-notify'
 
 " Initialize plugin system
 call plug#end()
