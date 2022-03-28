@@ -9,7 +9,8 @@ font:
   italic:
     family: Cica Nerd Font
     style: Regular
-background_opacity: 1.0
+window:
+  opacity: 0.95
 
 scrolling:
     history: 10000
