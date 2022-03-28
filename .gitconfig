@@ -14,16 +14,28 @@
 [includeIf "gitdir:~/42tokyo/"]
   path = ~/42tokyo/.gitconfig
 
+[interactive]
+  diffFilter = delta --color-only # git-delta
+
 [core]
+  pager = delta # git-delta
   excludesfile = ~/.gitignore
   editor = nvim
+
+[delta]
+  navigate = true # git-delta # use n and N to move between diff sections
+  line-numbers = true # git-delta
+  side-by-side = true
+
 # git config --global credential.helper storeで認証情報を~/.git-credentialsに保存
 [credential]
   helper = store
 [merge]
   tool = nvimdiff
+  conflictstyle = diff3 # git-delta
 [diff]
   tool = nvimdiff
+  colorMoved = default
 [difftool "nvimdiff"]
   cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 [mergetool "nvimdiff"]
