@@ -30,6 +30,8 @@
 - diff-so-fancy(npm)
 - tig
 - jq
+- git-delta
+- grex
 
 ## lsp
 
