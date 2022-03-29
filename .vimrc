@@ -418,11 +418,13 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <silent><Space>a  <Plug>(coc-codeaction-selected)
-nmap <silent><Space>a  <Plug>(coc-codeaction-selected)
+"xmap <silent><Space>a  <Plug>(coc-codeaction-selected)
+"nmap <silent><Space>a  <Plug>(coc-codeaction-selected)
+"#2914
+nmap <silent><Space>a <Plug>(coc-codeaction-cursor)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <silent><Space>ac  <Plug>(coc-codeaction)
+"nmap <silent><Space>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <Space>qf  <Plug>(coc-fix-current)
 
