@@ -798,6 +798,7 @@ EOF
 "telescope-dap
 lua << EOF
 require('telescope').setup()
+require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
 EOF
 
