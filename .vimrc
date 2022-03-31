@@ -380,8 +380,8 @@ nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> ]d <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> ]t <Plug>(coc-type-definition)
+nmap <silent> ]i <Plug>(coc-implementation)
 nmap <silent> <Space>r <Plug>(coc-references)
 nmap <silent><C-h> :call CocActionAsync('doHover')<CR>
 
