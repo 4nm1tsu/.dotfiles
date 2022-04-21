@@ -8,7 +8,7 @@
 #[include]
 #	path = ~/.gitconfig_shared
 [user]
-  email = 4617016@alumni.tus.ac.jp
+  email = hibiki.128627.mell@gmail.com
   name = Hibiki Okada
 #version 2.13.0 or later
 [includeIf "gitdir:~/42tokyo/"]
