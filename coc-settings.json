@@ -42,5 +42,6 @@
     },
     "html.autoClosingTags": true,
     "snippets.userSnippetsDirectory": "~/.dotfiles/snippets",
-    "yank.enableCompletion": false
+    "yank.enableCompletion": false,
+    "codeLens.enable": true
 }
