@@ -177,6 +177,7 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-notify'
 Plug 'jsborjesson/vim-uppercase-sql'
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'kevinhwang91/nvim-hlslens'
 
 " Initialize plugin system
 call plug#end()
