@@ -175,6 +175,7 @@ Plug 'Pocco81/DAPInstall.nvim', {'commit': '24923c3', 'branch': 'dev'}
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-notify'
+Plug 'jsborjesson/vim-uppercase-sql'
 
 " Initialize plugin system
 call plug#end()
