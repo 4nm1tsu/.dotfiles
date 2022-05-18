@@ -593,6 +593,20 @@ require("telescope").setup({
             },
         },
         sorting_strategy = "ascending",
+        layout_strategy = "flex",
+        layout_config = {
+            flex = {
+                flip_columns = 161, -- half 27" monitor, scientifically calculated
+            },
+            horizontal = {
+                preview_cutoff = 0,
+                preview_width = { padding = 27 },
+            },
+            vertical = {
+                preview_cutoff = 0,
+                preview_height = { padding = 7 },
+            },
+        },
     },
 })
 EOF
