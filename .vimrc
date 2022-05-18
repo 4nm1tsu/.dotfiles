@@ -179,6 +179,7 @@ Plug 'jsborjesson/vim-uppercase-sql'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
+Plug 'danymat/neogen'
 
 " Initialize plugin system
 call plug#end()
@@ -935,6 +936,17 @@ require("scrollbar").setup({
         search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
     },
 })
+EOF
+
+"neogen
+lua <<  EOF
+require('neogen').setup {
+    enabled = true,             --if you want to disable Neogen
+    input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
+    -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
+}
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<space>N", ":lua require('neogen').generate()<CR>", opts)
 EOF
 
 "treesitter
