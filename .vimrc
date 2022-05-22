@@ -180,6 +180,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'danymat/neogen'
+Plug 'windwp/nvim-ts-autotag'
 
 " Initialize plugin system
 call plug#end()
@@ -961,6 +962,11 @@ require('neogen').setup {
 }
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<space>N", ":lua require('neogen').generate()<CR>", opts)
+EOF
+
+"nvim-ts-autotag
+lua << EOF
+require('nvim-ts-autotag').setup()
 EOF
 
 "treesitter
