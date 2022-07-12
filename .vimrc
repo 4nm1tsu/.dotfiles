@@ -481,7 +481,8 @@ nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
 nnoremap <silent><nowait> <space>e :<C-u>CocFzfList diagnostics --current-buf<CR>
 
 "coc-lightbulb
-hi! link LightBulbVirtualText ALEWarningSign
+"hi! link LightBulbDefaultVirtualText ALEWarningSign
+"hi! link LightBulbDefaultSign ALEWarningSign
 
 "gitsigns
 lua <<EOF
