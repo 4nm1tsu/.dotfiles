@@ -12,7 +12,6 @@
     "clangd.checkUpdates": true,
     "clangd.inlayHints.enable": false,
     "coc.preferences.extensionUpdateCheck": "daily",
-    "lightbulb.virtualText": "ﯧ",
     "suggest.completionItemKindLabels": {
         "function": "\uf794",
         "method": "\uf6a6",
