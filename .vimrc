@@ -201,7 +201,7 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 "popup透過
 if has('nvim')
     "透過すると補完のアイコン右半分にに文字が被る
-    set pumblend=20
+    set pumblend=0
 endif
 
 "nvim-scrollview
