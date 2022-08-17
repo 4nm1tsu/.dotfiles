@@ -39,6 +39,7 @@
         "typeParameter": "\uf84c",
         "default": "\uf29c"
     },
+    "suggest.noselect": true,
     "html.autoClosingTags": true,
     "snippets.userSnippetsDirectory": "~/.dotfiles/snippets",
     "yank.enableCompletion": false,
