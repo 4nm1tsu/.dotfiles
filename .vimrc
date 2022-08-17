@@ -370,11 +370,12 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <C-n>
-      \ pumvisible() ? "\<C-n>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<C-n>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -412,7 +413,7 @@ nmap <Space>n <Plug>(coc-rename)
 
 " Formatting selected code.
 nmap <Space>f  <Plug>(coc-format)
-vmap <Space>f  <Plug>(coc-format-selected)
+xmap <Space>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -752,10 +753,8 @@ imap <C-l> <Plug>(coc-snippets-expand)
 xmap <C-x>  <Plug>(coc-convert-snippet)
 
 " C-lで確定(enter一発で改行したい)←tabだと副作用が大きい
-inoremap <silent><expr> <C-l>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ "\<C-l>"
+inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "      \ <SID>check_back_space() ? "\<TAB>" :
 "      \ coc#refresh()
 
