@@ -181,6 +181,7 @@ Plug 'kevinhwang91/nvim-hlslens'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'danymat/neogen'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'unblevable/quick-scope'
 
 " Initialize plugin system
 call plug#end()
@@ -968,6 +969,11 @@ EOF
 lua << EOF
 require('nvim-ts-autotag').setup()
 EOF
+
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F']
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 "treesitter
 lua <<EOF
