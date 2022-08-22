@@ -142,7 +142,7 @@ Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons' " for telescope
+Plug 'kyazdani42/nvim-web-devicons' " for telescope, bufferline
 Plug 'lewis6991/gitsigns.nvim'
 "Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -183,6 +183,7 @@ Plug 'danymat/neogen'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'unblevable/quick-scope'
 Plug 'folke/todo-comments.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
 " Initialize plugin system
 call plug#end()
@@ -1034,6 +1035,24 @@ require("todo-comments").setup {
         },
     }
 EOF
+
+" bufferline
+lua <<EOF
+vim.opt.termguicolors = true
+require("bufferline").setup{
+options = {
+        diagnostics = "coc",
+    }
+}
+EOF
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>]b :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+" nnoremap <silent><mymap> :BufferLineMoveNext<CR>
+" nnoremap <silent><mymap> :BufferLineMovePrev<CR>
 
 "treesitter
 lua <<EOF
