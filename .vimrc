@@ -1041,14 +1041,18 @@ lua <<EOF
 vim.opt.termguicolors = true
 require("bufferline").setup{
 options = {
-        diagnostics = "coc",
+    diagnostics = "coc",
+    --    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+    --    local icon = level:match("error") and " " or " "
+    --    return " " .. icon .. count
+    --    end
     }
 }
 EOF
 " These commands will navigate through buffers in order regardless of which mode you are using
 " e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCyclePrev<CR>
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
 
 " These commands will move the current buffer backwards or forwards in the bufferline
 " nnoremap <silent><mymap> :BufferLineMoveNext<CR>
