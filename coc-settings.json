@@ -39,7 +39,7 @@
         "typeParameter": "\uf84c",
         "default": "\uf29c"
     },
-    "suggest.noselect": true,
+    /*"suggest.noselect": true,*/ // デフォルトで補完の1つめの項目を選択しない
     "html.autoClosingTags": true,
     "snippets.userSnippetsDirectory": "~/.dotfiles/snippets",
     "yank.enableCompletion": false,
