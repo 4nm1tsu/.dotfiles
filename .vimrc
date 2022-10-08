@@ -184,6 +184,8 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'unblevable/quick-scope'
 Plug 'folke/todo-comments.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'MunifTanjim/nui.nvim' "for neo-tree
 
 " Initialize plugin system
 call plug#end()
@@ -284,6 +286,9 @@ let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'c
 "signatuer表示
 inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
+"neo-tree
+nmap <silent><c-n> :NeoTreeFloatToggle<cr>
+
 "coc-explorer
 let g:coc_explorer_global_presets = {
 \   '.vim': {
@@ -330,12 +335,13 @@ let g:coc_explorer_global_presets = {
 "nmap <space>ef :CocCommand explorer --preset floating<CR>
 "nmap <space>ec :CocCommand explorer --preset cocConfig<CR>
 "nmap <space>eb :CocCommand explorer --preset buffer<CR>
-nmap <silent><c-n> :CocCommand explorer
-    \ --toggle
-    \ --sources=buffer-,file+
-    \ --width 40
-    \ --preset floatingLeftside
-    \ <CR>
+
+"nmap <silent><c-n> :CocCommand explorer
+"    \ --toggle
+"    \ --sources=buffer-,file+
+"    \ --width 40
+"    \ --preset floatingLeftside
+"    \ <CR>
 
 " List all presets
 "nmap <space>el :CocList explPresets
