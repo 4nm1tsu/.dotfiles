@@ -288,6 +288,17 @@ inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
 "neo-tree
 nmap <silent><c-n> :NeoTreeFloatToggle<cr>
+lua <<EOF
+require("neo-tree").setup({
+filesystem = {
+    bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+    cwd_target = {
+        sidebar = "tab",   -- sidebar is when position = left or right
+        current = "window" -- current is when position = current
+        },
+    }
+})
+EOF
 
 "coc-explorer
 let g:coc_explorer_global_presets = {
