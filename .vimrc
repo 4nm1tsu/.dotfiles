@@ -296,7 +296,12 @@ filesystem = {
         sidebar = "tab",   -- sidebar is when position = left or right
         current = "window" -- current is when position = current
         },
-    }
+    },
+    window = {
+        mappings = {
+            ["<esc>"] = "close_window",
+        },
+    },
 })
 EOF
 
