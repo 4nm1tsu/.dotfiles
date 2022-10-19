@@ -783,6 +783,9 @@ inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
 "      \ <SID>check_back_space() ? "\<TAB>" :
 "      \ coc#refresh()
 
+" キャンセルはデフォルトでC-e
+" inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
