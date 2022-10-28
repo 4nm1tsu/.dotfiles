@@ -12,6 +12,9 @@ set cursorline
 "横のスクロールを細かく
 set sidescroll=1
 
+" 折り返さない
+set nowrap
+
 "バッファ移動
 nnoremap <silent>gb :bnext<CR>
 nnoremap <silent>gB :bprev<CR>
