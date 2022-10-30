@@ -290,7 +290,7 @@ let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'c
 inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
 "neo-tree
-nmap <silent><c-n> :NeoTreeFloatToggle<cr>
+nmap <silent><c-n> :Neotree toggle float reveal_force_cwd <cr>
 lua <<EOF
 require("neo-tree").setup({
 filesystem = {
