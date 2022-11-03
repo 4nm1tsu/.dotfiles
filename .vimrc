@@ -54,6 +54,8 @@ set smartcase
 "set noignorecase " 検索パターンに大文字小文字を区別する
 "set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
 set hlsearch " 検索結果をハイライト
+ " ESC2回でハイライト消す
+nnoremap <Esc><Esc> :nohl<CR>
 
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動が可能になる
 set number " 行番号を表示
