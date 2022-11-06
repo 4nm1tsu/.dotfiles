@@ -115,7 +115,7 @@ au BufNewFile,BufRead *.go set noexpandtab
 :set scrolloff=7
 
 "クリップボードをつかえるようにする
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 
 "backspaceを有効に
 set backspace=indent,eol,start
