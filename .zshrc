@@ -47,7 +47,12 @@ fi
 if [[ -z $TMUX ]]; then
     export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$HOME/ac-library"
 fi
-alias G='g++ -g -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion -Wno-sign-conversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fstack-protector-all -fsanitize=address,undefined ./main.cpp'
+
+function G() {
+    [[ $1 ]] && filename=$1 || filename="main.cpp"
+    command g++ -g -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion -Wno-sign-conversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fstack-protector-all -fsanitize=address,undefined ./$filename
+}
+
 
 #xclipのエイリアス
 alias xclip='xclip -sel clip'
