@@ -13,7 +13,7 @@ set cursorline
 set sidescroll=1
 
 " 折り返さない
-set nowrap
+" set nowrap
 
 "バッファ移動
 nnoremap <silent>gb :bnext<CR>
@@ -61,10 +61,10 @@ set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次�
 set number " 行番号を表示
 
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
-nnoremap j gj
-nnoremap k gk
-nnoremap <down> gj
-nnoremap <up> gk
+" nnoremap j gj
+" nnoremap k gk
+" nnoremap <down> gj
+" nnoremap <up> gk
 
 set showmatch " 括弧の対応関係を一瞬表示する
 source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する(タグジャンプ)
