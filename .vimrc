@@ -194,7 +194,7 @@ Plug 'folke/todo-comments.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
-Plug 'folke/noice.nvim'
+"Plug 'folke/noice.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -315,9 +315,9 @@ filesystem = {
 EOF
 
 " noice.nvim
-lua <<EOF
-require("noice").setup()
-EOF
+"lua <<EOF
+"require("noice").setup()
+"EOF
 
 "coc-explorer
 let g:coc_explorer_global_presets = {
