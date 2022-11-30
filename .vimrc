@@ -1013,7 +1013,7 @@ require('neogen').setup {
     -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
 }
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<space>N", ":lua require('neogen').generate()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<space>G", ":lua require('neogen').generate()<CR>", opts)
 EOF
 
 "nvim-ts-autotag
