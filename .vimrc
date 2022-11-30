@@ -195,6 +195,7 @@ Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
 "Plug 'folke/noice.nvim'
+Plug 'rafamadriz/friendly-snippets'
 
 " Initialize plugin system
 call plug#end()
