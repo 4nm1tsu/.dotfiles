@@ -186,6 +186,7 @@ Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
 "Plug 'folke/noice.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'yioneko/nvim-yati'
+Plug 'MTDL9/vim-log-highlighting'
 
 " Initialize plugin system
 call plug#end()
