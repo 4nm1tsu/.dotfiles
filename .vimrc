@@ -95,24 +95,13 @@ endif
 " タブ・インデント
 "----------------------------------------------------------
 set expandtab " タブ入力を複数の空白入力に置き換える
-set tabstop=4 " 画面上でタブ文字が占める幅
-set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set tabstop=2 " 画面上でタブ文字が占める幅(この値のみ変更)
 set cindent
-set shiftwidth=4 " smartindentで増減する幅
-
-"インデント幅デフォルト2
-augroup c
-    autocmd!
-    autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl softtabstop=2
-    autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl shiftwidth=2
-    autocmd FileType dbui setlocal shiftwidth=2
-augroup END
+set shiftwidth=0 " smartindentで増減する幅(0の場合tabstopに従う)
+set softtabstop=-1 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅(負の場合shiftwidthに従う)
 
 ".s拡張子をnasmとして読み込み
 autocmd BufNewFile,BufRead *.s set filetype=nasm
-
-"goのときはハードタブに
-au BufNewFile,BufRead *.go set noexpandtab
 
 "数行余裕を持たせてスクロールする
 :set scrolloff=7
@@ -153,7 +142,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons' " for telescope, bufferline
 Plug 'lewis6991/gitsigns.nvim'
 "Plug 'airblade/vim-gitgutter'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
@@ -196,6 +185,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
 "Plug 'folke/noice.nvim'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'yioneko/nvim-yati'
 
 " Initialize plugin system
 call plug#end()
@@ -1107,6 +1097,25 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 " nnoremap <silent><mymap> :BufferLineMoveNext<CR>
 " nnoremap <silent><mymap> :BufferLineMovePrev<CR>
 
+"インデント
+augroup c
+    autocmd!
+    "autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl tabstop=2
+    "
+    "au FileType c,cpp setl tabstop=2
+    "au FileType dbui setl tabstop=2
+    "au FileType json,jsonc setl tabstop=2 " shiftwidth=2
+    "au FileType markdown setl tabstop=2
+    au FileType go set noexpandtab tabstop=2
+    au FileType python set tabstop=4
+augroup END
+
+"markdownのインデント幅(デフォルト4)を無視
+let g:markdown_recommended_style = 0
+
+"pythonのデフォルト設定無視 :h ft-python-plugin
+let g:python_recommended_style = 0
+
 "treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -1116,8 +1125,23 @@ require'nvim-treesitter.configs'.setup {
         'php',
     }
   },
-  indent = {
+  yati = {
     enable = true,
+    -- Disable by languages, see `Supported languages`
+    disable = { "python" },
+
+    -- Whether to enable lazy mode (recommend to enable this if bad indent happens frequently)
+    default_lazy = true,
+
+    -- Determine the fallback method used when we cannot calculate indent by tree-sitter
+    --   "auto": fallback to vim auto indent
+    --   "asis": use current indent as-is
+    --   "cindent": see `:h cindent()`
+    -- Or a custom function return the final indent result.
+    default_fallback = "auto"
+  },
+  indent = {
+    enable = false,
   },
   ensure_installed = 'all',
   additional_vim_regex_highlighting = false,
