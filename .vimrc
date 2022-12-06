@@ -97,7 +97,7 @@ endif
 set expandtab " タブ入力を複数の空白入力に置き換える
 set tabstop=2 " 画面上でタブ文字が占める幅(この値のみ変更)
 set cindent
-set cinoptions+=:0 "switch内のcaseのインデント幅(:h cinoptions-values)
+set cinoptions+=:0,N-s "switch内のcaseのインデント幅(:h cinoptions-values)
 set shiftwidth=0 " smartindentで増減する幅(0の場合tabstopに従う)
 set softtabstop=-1 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅(負の場合shiftwidthに従う)
 
