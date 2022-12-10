@@ -62,10 +62,10 @@
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "diagnostic-languageserver.filetypes": {
     "css": "stylelint",
-    "scss": "stylelint",
+    "scss": "stylelint"
   },
   "diagnostic-languageserver.formatFiletypes": {
     "css": "stylelint",
-    "scss": "stylelint",
-  },
+    "scss": "stylelint"
+  }
 }

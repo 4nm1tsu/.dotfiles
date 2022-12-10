@@ -51,6 +51,10 @@
 - norminette:`gem install --user --pre norminette`
   - pluginインストール後に`bash install.sh`(norminette.vimのシンボリックリンクを貼る)
 
+## coc
+jsonの末尾にコンマをつけるのはcoc-prettierのデフォルト挙動
+コンマがあると警告が出るのがcoc-jsonのデフォルト挙動→嫌ならjsoncに
+
 ## previm
 
 - `~/.cache/dein/repos/github.com/previm/previm/preview/_/index.html`
