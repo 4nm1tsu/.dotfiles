@@ -59,5 +59,13 @@
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "diagnostic-languageserver.filetypes": {
+    "css": "stylelint",
+    "scss": "stylelint",
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "css": "stylelint",
+    "scss": "stylelint",
+  },
 }
