@@ -180,7 +180,7 @@ Plug 'petertriho/nvim-scrollbar'
 Plug 'danymat/neogen'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'unblevable/quick-scope'
-Plug 'folke/todo-comments.nvim'
+Plug 'folke/todo-comments.nvim', {'branch': 'neovim-pre-0.8.0'}
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
