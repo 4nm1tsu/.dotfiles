@@ -188,6 +188,7 @@ Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
 Plug 'rafamadriz/friendly-snippets'
 Plug 'yioneko/nvim-yati'
 Plug 'MTDL9/vim-log-highlighting'
+Plug 'axelvc/template-string.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -1117,6 +1118,20 @@ let g:markdown_recommended_style = 0
 
 "pythonのデフォルト設定無視 :h ft-python-plugin
 let g:python_recommended_style = 0
+
+"template-string
+lua << EOF
+require('template-string').setup({
+  filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'python' }, -- filetypes where the plugin is active
+  jsx_brackets = true, -- must add brackets to jsx attributes
+  remove_template_string = false, -- remove backticks when there are no template string
+  restore_quotes = {
+    -- quotes used when "remove_template_string" option is enabled
+    normal = [[']],
+    jsx = [["]],
+  },
+})
+EOF
 
 "treesitter
 lua <<EOF
