@@ -168,7 +168,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
 "Plug 'dstein64/nvim-scrollview'
 Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+Plug 'rcarriga/nvim-dap-ui', {'commit': '6b6081ad244ae5aa1358775cc3c08502b04368f9'}
 Plug 'Pocco81/DAPInstall.nvim', {'commit': '24923c3', 'branch': 'dev'}
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
