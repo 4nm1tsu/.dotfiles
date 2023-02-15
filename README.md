@@ -32,6 +32,7 @@
 - jq
 - git-delta
 - grex
+- gh
 
 ## lsp
 
@@ -52,6 +53,7 @@
   - pluginインストール後に`bash install.sh`(norminette.vimのシンボリックリンクを貼る)
 
 ## coc
+
 jsonの末尾にコンマをつけるのはcoc-prettierのデフォルト挙動
 コンマがあると警告が出るのがcoc-jsonのデフォルト挙動→嫌ならjsoncに
 
@@ -216,17 +218,24 @@ int main() {
 でグローバルのコンフィグ設定可能
 
 ### Tips
+
 #### <bits/stdc++.h> on mac
+
 gcc -vしたときのインクルードパスに
+
 ```
 -I/usr/local/Cellar/gcc/11.2.0_3/bin/../lib/gcc/11/gcc/x86_64-apple-darwin19/11/include
 -I/usr/local/Cellar/gcc/11.2.0_3/bin/../lib/gcc/11/gcc/x86_64-apple-darwin19/11/include-fixed
 ```
+
 が含まれるが、上のパスをcompile_commands.txtに含めると
 clangdがbuiltin_functionありませんよ的なエラーを吐いてだるい
 
 #### useful shell
+
 - toplevel apt packages
+
 ```bash
 apt-mark showmanual | sort | grep -v -F -f <(apt show $(apt-mark showmanual) 2> /dev/null | grep -e ^Depends -e ^Pre-Depends | sed 's/^Depends: //; s/^Pre-Depends: //; s/(.*)//g; s/:any//g' | tr -d ',|' | tr ' ' '\n' | grep -v ^$ | sort -u)
 ```
+
