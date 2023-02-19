@@ -10,13 +10,16 @@ OPTIONS=menucolors
 
 OPTIONS=hitpointbar
 
-MENUCOLOR="blessed"=cyan&bold
-MENUCOLOR="cursed"=orange&bold
-MENUCOLOR="uncursed"=green
+MENUCOLOR="祝福された"=cyan&bold
+MENUCOLOR="呪われた"=orange&bold
+MENUCOLOR="呪われていない"=green
 
-MENUCOLOR="loadstone\|wand \(of\|called\) cancellation"=red&blink
-MENUCOLOR="Amulet of Yendor named"=magenta
-MENUCOLOR="gold piece"=yellow
+MENUCOLOR="loadstone"=red
+MENUCOLOR="重し"=red
+MENUCOLOR="cancellation"=red
+MENUCOLOR="無力化の杖"=red
+# MENUCOLOR="Amulet of Yendor named"=magenta
+MENUCOLOR="金貨"=yellow
 
 MENUCOLOR="[a-zA-Z] - [a-zA-Z ]+[ ]+[0-9]+\*[ ]+[a-z]+[ ]+[0-9]+%"=magenta
 
