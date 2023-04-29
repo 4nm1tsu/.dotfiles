@@ -115,6 +115,29 @@ set backspace=indent,eol,start
 
 set termguicolors
 
+"一般ユーザ権限でもsudo保存可能に
+function! s:sudo_write_current_buffer() abort
+    if has('nvim')
+        let s:askpass_path = '/tmp/askpass'
+        let s:password     = inputsecret("Enter Password: ")
+        let $SUDO_ASKPASS  = s:askpass_path
+
+        try
+            call delete(s:askpass_path)
+            call writefile(['#!/bin/sh'],                 s:askpass_path, 'a')
+            call writefile(["echo '" . s:password . "'"], s:askpass_path, 'a')
+            call setfperm(s:askpass_path, "rwx------")
+            write ! sudo -A tee % > /dev/null
+        finally
+            unlet s:password
+            call delete(s:askpass_path)
+        endtry
+    else
+        write ! sudo tee % > /dev/null
+    endif
+endfunction
+command! SudoWriteCurrentBuffer call s:sudo_write_current_buffer()
+
 "ale
 let g:ale_disable_lsp = 1
 let g:ale_sign_highlight_linenrs = 1
