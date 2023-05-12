@@ -28,12 +28,12 @@ autoload -Uz compinit
 compinit
 
 #代替コマンドのエイリアス
-if type "exa" > /dev/null 2>&1; then
-    alias ll='exa -labgh --icons --color-scale'
-    alias la='exa -abgh --icons'
-    alias ls='exa -bgh --icons'
-    alias lt='exa -T --icons'
-    alias lg='exa -labgh --icons --git --color-scale'
+if type "lsd" > /dev/null 2>&1; then
+    alias ll='lsd -la -S'
+    alias la='lsd -a'
+    alias ls='lsd'
+    alias lt='lsd --tree'
+    # alias lg='exa -labgh --icons --git --color-scale' # lsdのリリースを待つ<https://github.com/lsd-rs/lsd/pull/822>
 else
     echo "'exa' is not installed."
 fi
