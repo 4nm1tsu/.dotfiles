@@ -1,13 +1,13 @@
 font:
   size: 12
   normal:
-    family: Cica Nerd Font
+    family: Cica
     style: Regular
   bold:
-    family: Cica Nerd Font
+    family: Cica
     style: Bold
   italic:
-    family: Cica Nerd Font
+    family: Cica
     style: Italic
 window:
   opacity: 1.0
