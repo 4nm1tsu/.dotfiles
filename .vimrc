@@ -153,7 +153,7 @@ call plug#begin('~/.vim/plugged')
 
 "Plug 'tpope/vim-scriptease'
 "Plug 'itchyny/lightline.vim'
-Plug 'nvim-lualine/lualine.nvim', { 'commit': '84ffb80e452d95e2c46fa29a98ea11a240f7843e' }
+Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
 Plug 'nvim-telescope/telescope.nvim'
@@ -163,7 +163,7 @@ Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons', { 'tag': 'nerd-v2-compat' } " for telescope, bufferline
+Plug 'kyazdani42/nvim-web-devicons' " for telescope, bufferline
 Plug 'lewis6991/gitsigns.nvim'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'sheerun/vim-polyglot'
