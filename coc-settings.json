@@ -18,7 +18,7 @@
     "constant": "\uf8ff",
     "struct": "\ufb44",
     "class": "\uf0e8",
-    "interface": "\ufa52",
+    "interface": "\ueb61",
     "text": "\ue612",
     "enum": "\uf435",
     "enumMember": "\uf02b",
@@ -35,7 +35,7 @@
     "snippet": "\uf64d",
     "operator": "\uf915",
     "reference": "\uf55a",
-    "typeParameter": "\uf84c",
+    "typeParameter": "\uea92",
     "default": "\uf29c"
   },
   /*"suggest.noselect": true,*/ // デフォルトで補完の1つめの項目を選択しない
