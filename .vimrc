@@ -469,6 +469,7 @@ nmap <Space>n <Plug>(coc-rename)
 
 " Formatting selected code.
 nmap <Space>f  <Plug>(coc-format)
+nmap <Space>i :call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
 xmap <Space>f  <Plug>(coc-format-selected)
 
 augroup mygroup
