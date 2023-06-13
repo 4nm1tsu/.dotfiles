@@ -67,5 +67,8 @@
   "diagnostic-languageserver.formatFiletypes": {
     "css": "stylelint",
     "scss": "stylelint"
-  }
+  },
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "pyright.organizeimports.provider": "isort",
 }
