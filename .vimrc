@@ -556,28 +556,28 @@ require('gitsigns').setup {
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = {
-    -- Default keymap options
-    noremap = true,
-
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
-
-    ['n <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-    ['v <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-    ['n <space>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-    ['n <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-    ['v <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-    ['n <space>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-    ['n <space>gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-    ['n <space>gB'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
-    ['n <space>gA'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
-    ['n <space>gU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
-
-    -- Text objects
-    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
-  },
+--  keymaps = {
+--    -- Default keymap options
+--    noremap = true,
+--
+--    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+--    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+--
+--    ['n <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+--    ['v <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+--    ['n <space>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+--    ['n <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+--    ['v <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+--    ['n <space>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+--    ['n <space>gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+--    ['n <space>gB'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+--    ['n <space>gA'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
+--    ['n <space>gU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
+--
+--    -- Text objects
+--    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+--    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+--  },
   watch_gitdir = {
     interval = 1000,
     follow_files = true
@@ -608,6 +608,46 @@ require('gitsigns').setup {
   yadm = {
     enable = false
   },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    map('n', '<space>ga', gs.stage_hunk)
+    map('n', '<space>gr', gs.reset_hunk)
+    map('v', '<space>ga', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('v', '<space>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('n', '<space>gA', gs.stage_buffer)
+    map('n', '<space>gu', gs.undo_stage_hunk)
+    map('n', '<space>gR', gs.reset_buffer)
+    map('n', '<space>gp', gs.preview_hunk)
+    map('n', '<space>gB', function() gs.blame_line{full=true} end)
+--    map('n', '<space>gn', gs.toggle_current_line_blame)
+--    map('n', '<space>gm', gs.diffthis)
+--    map('n', '<space>go', function() gs.diffthis('~') end)
+    map('n', '<space>gD', gs.toggle_deleted)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
 }
 EOF
 
