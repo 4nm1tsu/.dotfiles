@@ -8,8 +8,8 @@
 #[include]
 #	path = ~/.gitconfig_shared
 [user]
-  email = hibiki.128627.mell@gmail.com
-  name = Hibiki Okada
+  email = 4nm1tsu@4nm1tsu.com
+  name = 4nm1tsu
 #version 2.13.0 or later
 [includeIf "gitdir:~/42tokyo/"]
   path = ~/42tokyo/.gitconfig
