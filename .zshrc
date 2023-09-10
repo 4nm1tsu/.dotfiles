@@ -29,7 +29,7 @@ compinit
 
 #代替コマンドのエイリアス
 if type "lsd" > /dev/null 2>&1; then
-    alias ll='lsd -la -S'
+    alias ll='lsd -lga -S'
     alias la='lsd -a'
     alias ls='lsd'
     alias lt='lsd --tree'
