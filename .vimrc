@@ -1203,6 +1203,14 @@ require('template-string').setup({
 })
 EOF
 
+" for docker-compose lang server(needs "npm i -g @microsoft/compose-language-service")
+au FileType yaml if bufname("%") =~# "docker-compose.yml" | set ft=yaml.docker-compose | endif
+au FileType yaml if bufname("%") =~# "compose.yml" | set ft=yaml.docker-compose | endif
+
+let g:coc_filetype_map = {
+  \ 'yaml.docker-compose': 'dockercompose',
+  \ }
+
 "treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

@@ -72,4 +72,12 @@
   "python.linting.flake8Enabled": true,
   "python.formatting.provider": "black",
   "pyright.organizeimports.provider": "isort",
+  "languageserver": {
+    "dockercompose": {
+      "command": "docker-compose-langserver",
+      "args": ["--stdio"],
+      "filetypes": ["dockercompose"],
+      "rootPatterns": [".git", ".env", "docker-compose.yml", "compose.yml"]
+    }
+  }
 }
