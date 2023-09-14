@@ -490,6 +490,9 @@ nmap <silent><Space>a <Plug>(coc-codeaction-cursor)
 xmap <silent> <Space>r <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <Space>r <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <Space>r <Plug>(coc-codeaction-refactor)
+
+nmap <silent> <Space>L  <Plug>(coc-codelens-action)
+
 " Remap keys for applying codeAction to the current buffer.
 "nmap <silent><Space>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
