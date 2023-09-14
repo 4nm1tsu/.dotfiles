@@ -445,7 +445,7 @@ nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <silent> ]d <Plug>(coc-definition)
 nmap <silent> ]t <Plug>(coc-type-definition)
 nmap <silent> ]i <Plug>(coc-implementation)
-nmap <silent> <Space>r <Plug>(coc-references)
+nmap <silent> ]r <Plug>(coc-references)
 nmap <silent><C-h> :call CocActionAsync('doHover')<CR>
 
 " Use K to show documentation in preview window.
