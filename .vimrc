@@ -176,7 +176,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim', {'commit': '9637670896b68805430e2f72cf5d16be5b97a22a'} "version 2
 Plug '4nm1tsu/iceberg.vim'
 "Plug 'ghifarit53/tokyonight-vim'
 "Plug 'kyazdani42/blue-moon'
@@ -781,7 +781,7 @@ autocmd FileType * setlocal textwidth=0
 
 "indentLine
 let g:indent_blankline_space_char=' '
-let g:indent_blankline_char='▏'
+let g:indent_blankline_char='▎'
 let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer', 'fzf']
 let g:indent_blankline_char_highlight_list = ['Comment']
 "let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
