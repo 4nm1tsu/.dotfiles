@@ -13,6 +13,7 @@
 # ⬇️   :arrow_down: when downgrading dependencies
 # 🔒  :lock: Limit of the range of new features
 # 👮  :cop: Security-related improvements
+# 👷  :construction_worker: building Changes to the build process or auxiliary tools and libraries
 
 # ==== Format ====
 # :emoji: Subject #issue No.
