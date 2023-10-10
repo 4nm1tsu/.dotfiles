@@ -212,6 +212,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'yioneko/nvim-yati'
 Plug 'MTDL9/vim-log-highlighting'
 Plug 'axelvc/template-string.nvim'
+Plug 'sindrets/diffview.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -1145,6 +1146,10 @@ EOF
 let g:qs_highlight_on_keys = ['f', 'F']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+
+" diffview
+nnoremap <silent><space>h :DiffviewFileHistory %<CR>
+" :tabclose to close
 
 "todo-comments
 lua << EOF
