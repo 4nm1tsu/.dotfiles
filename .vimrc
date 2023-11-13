@@ -107,7 +107,7 @@ autocmd BufNewFile,BufRead *.s set filetype=nasm
 "数行余裕を持たせてスクロールする
 :set scrolloff=7
 
-"クリップボードをつかえるようにする
+"クリップボードをつかえるようにする(要xclip)
 set clipboard=unnamedplus
 
 "backspaceを有効に
