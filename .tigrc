@@ -1,0 +1,4 @@
+# show commit hash
+set main-view = id date author commit-title:graph=yes,refs=yes
+# default
+# set main-view = date author commit-title:graph=yes,refs=yes
