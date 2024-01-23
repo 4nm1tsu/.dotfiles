@@ -157,7 +157,6 @@ Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
@@ -170,8 +169,6 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 "Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode'
@@ -186,7 +183,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'antoinemadec/coc-fzf' " cocListの結果をfzfに噛ませる
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'honza/vim-snippets'
 "Plug 'dstein64/nvim-scrollview'
@@ -541,10 +537,6 @@ endif
 "coc-markdownlint
 autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocAction('runCommand', 'markdownlint.fixAll')<CR>
 
-"coc-fzf
-nnoremap <silent><nowait> <space>s :<C-u>CocFzfList symbols<CR>
-nnoremap <silent><nowait> <space>e :<C-u>CocFzfList diagnostics --current-buf<CR>
-
 "coc-lightbulb
 "hi! link LightBulbDefaultVirtualText ALEWarningSign
 "hi! link LightBulbDefaultSign ALEWarningSign
@@ -675,13 +667,6 @@ nnoremap <Space>gd :Gvdiff<CR>
 "GitGutter
 "nnoremap <Space>gu :GitGutterUndoHunk<CR>
 
-"fzf
-"nnoremap <silent> <C-f> :Files<CR>
-"autocmd! FileType fzf tnoremap <buffer> <C-f> <c-c>
-"ファイル名が指定されなかったらfzf起動できるようにしたい
-"escでタブが閉じるのが遅いので追加
-"autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
-
 "telescope
 "nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr> " hidden=trueいれないほうがいいかも
 nnoremap <silent> <C-f> <cmd>Telescope find_files layout_config={"prompt_position":"top"}<cr>
@@ -713,15 +698,6 @@ require("telescope").setup({
                 preview_cutoff = 0,
                 preview_height = { padding = 7 },
             },
-        },
-    },
-    extensions = {
-        fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-            -- the default case_mode is "smart_case"
         },
     },
 })
@@ -783,7 +759,7 @@ autocmd FileType * setlocal textwidth=0
 "indentLine
 let g:indent_blankline_space_char=' '
 let g:indent_blankline_char='▎'
-let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer', 'fzf']
+let g:indent_blankline_filetype_exclude = ['help', 'coc-explorer']
 let g:indent_blankline_char_highlight_list = ['Comment']
 "let g:indentLine_showFirstIndentLevel=1 "現時点で機能しない
 lua <<EOF
@@ -934,7 +910,6 @@ EOF
 "telescope-extensions
 lua << EOF
 require('telescope').setup()
-require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
 EOF
 
