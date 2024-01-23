@@ -209,6 +209,7 @@ Plug 'yioneko/nvim-yati'
 Plug 'MTDL9/vim-log-highlighting'
 Plug 'axelvc/template-string.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'fannheyward/telescope-coc.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -440,9 +441,13 @@ nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> ]d <Plug>(coc-definition)
-nmap <silent> ]t <Plug>(coc-type-definition)
-nmap <silent> ]i <Plug>(coc-implementation)
-nmap <silent> ]r <Plug>(coc-references)
+"nmap <silent> ]d :<C-u>Telescope coc definitions layout_config={"prompt_position":"top"}<CR> "timeoutする
+"nmap <silent> ]t <Plug>(coc-type-definition)
+nmap <silent> ]t :<C-u>Telescope coc type_definitions layout_config={"prompt_position":"top"}<CR>
+"nmap <silent> ]i <Plug>(coc-implementation)
+nmap <silent> ]i :<C-u>Telescope coc implementations layout_config={"prompt_position":"top"}<CR>
+"nmap <silent> ]r <Plug>(coc-references)
+nmap <silent> ]r :<C-u>Telescope coc references layout_config={"prompt_position":"top"}<CR>
 nmap <silent><C-h> :call CocActionAsync('doHover')<CR>
 
 " Use K to show documentation in preview window.
@@ -536,6 +541,10 @@ endif
 
 "coc-markdownlint
 autocmd BufNewFile,BufRead *.md nnoremap <buffer><silent> <Space>f :call CocAction('runCommand', 'markdownlint.fixAll')<CR>
+
+"telescope-coc
+nnoremap <silent><nowait> <space>s :<C-u>Telescope coc document_symbols layout_config={"prompt_position":"top"}<CR>
+nnoremap <silent><nowait> <space>e :<C-u>Telescope coc diagnostics layout_config={"prompt_position":"top"}<CR>
 
 "coc-lightbulb
 "hi! link LightBulbDefaultVirtualText ALEWarningSign
@@ -699,6 +708,12 @@ require("telescope").setup({
                 preview_height = { padding = 7 },
             },
         },
+    },
+    extensions = {
+      coc = {
+          theme = 'ivy',
+          prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+      }
     },
 })
 EOF
@@ -910,6 +925,7 @@ EOF
 "telescope-extensions
 lua << EOF
 require('telescope').setup()
+require('telescope').load_extension('coc')
 require('telescope').load_extension('dap')
 EOF
 
