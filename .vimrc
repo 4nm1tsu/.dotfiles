@@ -622,7 +622,7 @@ nnoremap <Space>gd :Gvdiff<CR>
 
 "telescope
 "nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr> " hidden=trueいれないほうがいいかも
-nnoremap <silent> <C-f> <cmd>Telescope find_files layout_config={"prompt_position":"top"}<cr>
+nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"} find_command={'rg','--files','--hidden','-g','!.git'}<cr>
 nnoremap <silent> <Space>l <cmd>Telescope live_grep layout_config={"prompt_position":"top"}<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
