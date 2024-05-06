@@ -50,7 +50,7 @@ OPTIONS=hilite_status:hitpoints/<100%/green
 OPTIONS=hilite_status:hitpoints/<60%/yellow
 OPTIONS=hilite_status:hitpoints/<40%/red
 
-OPTIONS=hilite_obj_piles
+OPTIONS=hilite_pile
 
 # emergencies
 MSGTYPE=stop "The (couatl.*eel|kraken) swings itself around you!"
