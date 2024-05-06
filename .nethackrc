@@ -114,19 +114,22 @@ MSGTYPE=stop " is about to die."
 
 # noise
 MSGTYPE=hide "^With great effort you move the boulder"
-MSGTYPE=hide "^Your armor is rather cumbersome..."               #  monk wearing body armor
+#  monk wearing body armor
+MSGTYPE=hide "^Your armor is rather cumbersome..."
 MSGTYPE=hide "^You displaced "
 
 #########
 # B/U/C #
 #########
-#MENUCOLOR="^[a-zA-Z$] - "=white #may want to enable this if regularly playing priest.. (priests don't see the 'uncursed')
-MENUCOLOR=" !C"=white
-MENUCOLOR=" !B"=white
-MENUCOLOR=" !UC"=white
-MENUCOLOR=" uncursed| UC?($| )"=white
-MENUCOLOR=" \([-0-9]+:[-0-9]+\)"=white #nethack doesn't display "uncursed" if charges are known
-MENUCOLOR=" [+-][0-9]"=white
+#may want to enable this if regularly playing priest.. (priests don't see the 'uncursed')
+#MENUCOLOR="^[a-zA-Z$] - "=green
+MENUCOLOR=" !C"=green
+MENUCOLOR=" !B"=green
+MENUCOLOR=" !UC"=green
+MENUCOLOR=" uncursed| UC?($| )"=green
+#nethack doesn't display "uncursed" if charges are known
+MENUCOLOR=" \([-0-9]+:[-0-9]+\)"=green
+MENUCOLOR=" [+-][0-9]"=green
 
 MENUCOLOR=" blessed| B($| )"=cyan
 MENUCOLOR=" cursed| C($| )"=orange
@@ -151,17 +154,20 @@ MENUCOLOR=" potions? called water named (unholy|cursed|C)($| )"=orange
 # vegan
 MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green&bold
 MENUCOLOR="lembas wafer|melon|carrot|tins? .* spinach"=green&bold
-MENUCOLOR=" oranges?( named.*)?$"=green&bold # avoid coloring orange DSM
-MENUCOLOR=" pears?( named.*)?$"=green&bold # avoid coloring pearl rings
+# avoid coloring orange DSM
+MENUCOLOR=" oranges?( named.*)?$"=green&bold
+# avoid coloring pearl rings
+MENUCOLOR=" pears?( named.*)?$"=green&bold
 MENUCOLOR=" (apple|banana|kelp|eucalyptus|garlic|wolfsbane)"=green&bold
-MENUCOLOR=" (slime mold|brain)"=green&bold  ## YOUR FRUIT HERE
+## YOUR FRUIT HERE
+MENUCOLOR=" (slime mold|brain)"=green&bold
 MENUCOLOR="(tins? of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green&bold
 MENUCOLOR="(tins? of )?(blue|spotted|ochre) jelly( corpse)?"=green&bold
 MENUCOLOR="(tins? of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green&bold
 
 # vegetarian
-MENUCOLOR="egg|pancake|fortune cookie|candy bar|royal jelly|cream pie|candle"=green
-MENUCOLOR="(tin of )?brown pudding|gray ooze( corpse)?"=green
+MENUCOLOR="egg|pancake|fortune cookie|candy bar|royal jelly|cream pie|candle"=green&underline
+MENUCOLOR="(tin of )?brown pudding|gray ooze( corpse)?"=green&underline
 
 ###########
 # GOODIES #
@@ -176,7 +182,8 @@ MENUCOLOR=" gain level"=magenta
 MENUCOLOR=" full healing"=magenta
 MENUCOLOR=" magic marker"=magenta
 MENUCOLOR=" magic lamp|lamp .* magic"=magenta
-MENUCOLOR=" unicorn horn[^[]*$"=magenta #this doesn't color the #enhance unicorn
+#this doesn't color the #enhance unicorn
+MENUCOLOR=" unicorn horn[^[]*$"=magenta
 MENUCOLOR=" tinning kit"=magenta
 MENUCOLOR=" ring .* regen(eration)?($| )"=magenta
 MENUCOLOR=" ring .* conflict"=magenta
@@ -226,7 +233,7 @@ MENUCOLOR=" (Longbow of Diana|Master Key of Thievery)"=lightgreen
 MENUCOLOR=" (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=magenta&bold
 
 #raison d'etre
-MENUCOLOR=" Amulet of Yendor named"=magenta&bold&underline
+MENUCOLOR=" Amulet of Yendor named"=magenta&underline
 
 ##################
 # CURSED GOODIES #
@@ -235,7 +242,7 @@ MENUCOLOR=" cursed.* bag .* holding"=red&bold
 MENUCOLOR=" cursed.* luck(stone)?($| )"=red&bold
 MENUCOLOR=" cursed.* unicorn horn"=red&bold
 MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=red&bold
-MENUCOLOR="cursed tins? .* spinach|tins? .* spinach .* (cursed|C($| ))"=red
+#MENUCOLOR=" cursed tins? .* spinach|tins? .* spinach .* (cursed|C($| ))"=red
 
 #############
 # BAD STUFF #
@@ -282,10 +289,14 @@ MENUCOLOR="[a-zA-Z ]+ [0-9]\*   [a-z]+ +[0-9]+%"=magenta
 ############
 # #ENHANCE # thanks itsblah
 ############
-MENUCOLOR="^ +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=none           # normal
-MENUCOLOR="^ *[a-z] - +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white # ready to enhance
-MENUCOLOR="^ +\* +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white      # enhanceable if more skill slots
-MENUCOLOR="^ +# +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=none        # enhanceable if more potential
+# normal
+MENUCOLOR="^ +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=none
+# ready to enhance
+MENUCOLOR="^ *[a-z] - +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+# enhanceable if more skill slots
+MENUCOLOR="^ +\* +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+# enhanceable if more potential
+MENUCOLOR="^ +# +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=none
 
 ################
 # FORCE COLORS #
@@ -306,53 +317,53 @@ MENUCOLOR="\{g\}"=lightgreen
 MENUCOLOR="\{b\}"=lightblue
 MENUCOLOR="\{[mp]\}"=lightmagenta
 MENUCOLOR="\{c\}"=lightcyan
-MENUCOLOR="\{N\}"=none
-MENUCOLOR="\{X\}"=bold
-MENUCOLOR="\{x\}"=dim
-MENUCOLOR="\{U\}"=underline
-MENUCOLOR="\{I\}"=inverse
-MENUCOLOR="\{K\}"=blink
+#MENUCOLOR="\{N\}"=none
+#MENUCOLOR="\{X\}"=bold
+#MENUCOLOR="\{x\}"=dim
+#MENUCOLOR="\{U\}"=underline
+#MENUCOLOR="\{I\}"=inverse
+#MENUCOLOR="\{K\}"=blink
 
 ######################
 # FIX ORDINARY MENUS #
 ######################
-MENUCOLOR=" is empty. Do what?"=none
-MENUCOLOR="Put something into .*"=none
-MENUCOLOR="Take something out of .*"=none
+#MENUCOLOR=" is empty. Do what?"=none
+#MENUCOLOR="Put something into .*"=none
+#MENUCOLOR="Take something out of .*"=none
 
-MENUCOLOR="unicorn horn.*(Unskilled|Basic|Skilled|Expert)"=none
-MENUCOLOR="Info on what a given key does."=none
-MENUCOLOR="Full list of keyboard commands."=none
-MENUCOLOR="altkeyhandler"=none
-MENUCOLOR="fruit.*\["=none
+#MENUCOLOR="unicorn horn.*(Unskilled|Basic|Skilled|Expert)"=none
+#MENUCOLOR="Info on what a given key does."=none
+#MENUCOLOR="Full list of keyboard commands."=none
+#MENUCOLOR="altkeyhandler"=none
+#MENUCOLOR="fruit.*\["=none
 
 ###########################################################################
 # autopickup exceptions
 
 # autopickup items that have [,] in their name
-autopickup_exception="<* named *[,]*"
-autopickup_exception="<* called *[,]*"
+#autopickup_exception="<* named *[,]*"
+#autopickup_exception="<* called *[,]*"
 
 # never autopickup items that have [!,] in their name
-autopickup_exception="* named *[!,]*"
-autopickup_exception="* called *[!,]*"
+#autopickup_exception="* named *[!,]*"
+#autopickup_exception="* called *[!,]*"
 
 # crappy items
-autopickup_exception="* named* empty*"
-autopickup_exception="* named* crap*"
-autopickup_exception="* named* junk*"
-autopickup_exception="* named* worthless*"
+#autopickup_exception="* named* empty*"
+#autopickup_exception="* named* crap*"
+#autopickup_exception="* named* junk*"
+#autopickup_exception="* named* worthless*"
 
 # we might want to autopickup food, but never corpses
-autopickup_exception="* corpse*"
+#autopickup_exception="* corpse*"
 
 # really good items I don't normally autopickup
-autopickup_exception="<*magic marker*"
-autopickup_exception="<*magic lamp*"
-autopickup_exception="<*lamp called magic"
-autopickup_exception="<*silver bell*"
-autopickup_exception="<*Bell of Opening*"
-autopickup_exception="<*candelabrum*"
-autopickup_exception="<*Candelabrum*"
-autopickup_exception="<*Book of the Dead*"
-autopickup_exception="<*papyrus spellbook*"
+#autopickup_exception="<*magic marker*"
+#autopickup_exception="<*magic lamp*"
+#autopickup_exception="<*lamp called magic"
+#autopickup_exception="<*silver bell*"
+#autopickup_exception="<*Bell of Opening*"
+#autopickup_exception="<*candelabrum*"
+#autopickup_exception="<*Candelabrum*"
+#autopickup_exception="<*Book of the Dead*"
+#autopickup_exception="<*papyrus spellbook*"
