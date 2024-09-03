@@ -498,13 +498,23 @@ nnoremap <silent><nowait> <space>e :<C-u>Telescope coc diagnostics layout_config
 lua <<EOF
 require('gitsigns').setup {
   signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    add          = {text = '│'},
+    change       = {text = '│'},
+    delete       = {text = '_'},
+    topdelete    = {text = '‾'},
+    changedelete = {text = '~'},
+    untracked    = { text = '┆' },
   },
-  signcolumn = false,  -- Toggle with `:Gitsigns toggle_signs`
+  signs = {
+    add          = {text = '│'},
+    change       = {text = '│'},
+    delete       = {text = '_'},
+    topdelete    = {text = '‾'},
+    changedelete = {text = '~'},
+    untracked    = { text = '┆' },
+  },
+  signs_staged_enable = false,
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -534,17 +544,17 @@ require('gitsigns').setup {
     interval = 1000,
     follow_files = true
   },
-  attach_to_untracked = true,
+  auto_attach = true,
+  attach_to_untracked = false,
   current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
-    virt_text = false,
+    virt_text = true,
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
     delay = 150,
     ignore_whitespace = false,
+    virt_text_priority = 100,
   },
-  current_line_blame_formatter_opts = {
-    relative_time = false
-  },
+  current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
