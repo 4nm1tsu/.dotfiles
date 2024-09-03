@@ -200,7 +200,7 @@ Plug 'danymat/neogen'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'unblevable/quick-scope'
 Plug 'folke/todo-comments.nvim', {'branch': 'neovim-pre-0.8.0'}
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
 "Plug 'folke/noice.nvim'
@@ -566,9 +566,6 @@ require('gitsigns').setup {
     relative = 'cursor',
     row = 0,
     col = 1
-  },
-  yadm = {
-    enable = false
   },
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
