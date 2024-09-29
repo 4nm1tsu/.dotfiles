@@ -117,6 +117,7 @@ bindkey -v
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if type "fzf" > /dev/null 2>&1; then
+    export RUNEWIDTH_EASTASIAN=0
     if [[ -z $TMUX ]]; then
         if type "bat" > /dev/null 2>&1; then
             export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info --preview 'bat  --color=always --style=header,grid --line-range :100 {}'"
