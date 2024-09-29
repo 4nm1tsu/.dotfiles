@@ -157,6 +157,7 @@ Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim' " for gen.nvim(:Gen command)
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
@@ -210,6 +211,7 @@ Plug 'MTDL9/vim-log-highlighting'
 Plug 'axelvc/template-string.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'fannheyward/telescope-coc.nvim'
+Plug 'David-Kunz/gen.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -878,6 +880,7 @@ lua << EOF
 require('telescope').setup()
 require('telescope').load_extension('coc')
 require('telescope').load_extension('dap')
+require('telescope').load_extension('ui-select')
 EOF
 
 "nvim-treesitter-context
@@ -1092,6 +1095,37 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " diffview
 nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 " :tabclose to close
+
+"gen.nvim
+lua << EOF
+require('gen').setup({
+    model = "Llama-3-ELYZA-JP-8B-q4_k_m:latest", -- The default model to use.
+    quit_map = "q", -- set keymap for close the response window
+    retry_map = "<c-r>", -- set keymap to re-send the current prompt
+    accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
+    host = "localhost", -- The host running the Ollama service.
+    port = "11434", -- The port on which the Ollama service is listening.
+    display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+    show_prompt = false, -- Shows the prompt submitted to Ollama.
+    show_model = false, -- Displays which model you are using at the beginning of your chat session.
+    no_auto_close = false, -- Never closes the window automatically.
+    hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+    init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+    -- Function to initialize Ollama
+    command = function(options)
+    local body = {model = options.model, stream = true}
+    return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
+    end,
+    -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+    -- This can also be a command string.
+    -- The executed command must return a JSON object with { response, context }
+    -- (context property is optional).
+    -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+    debug = false -- Prints errors and the command which is run.
+})
+vim.keymap.set({ 'n', 'v' }, '<space>A', ':Gen<CR>')
+-- vim.keymap.set('v', '<leader>]', ':Gen Enhance_Grammar_Spelling<CR>') -- You can also directly invoke it with one of the predefined prompts or your custom prompts:
+EOF
 
 "todo-comments
 lua << EOF
