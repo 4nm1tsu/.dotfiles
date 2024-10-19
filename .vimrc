@@ -170,7 +170,6 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 "Plug 'gorodinskiy/vim-coloresque'
 Plug 'mattn/emmet-vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
@@ -214,6 +213,7 @@ Plug 'David-Kunz/gen.nvim'
 Plug 'b0o/incline.nvim'
 Plug 'neovim/nvim-lspconfig' " for nvim-navic
 Plug 'SmiteshP/nvim-navic' " for incline.nvim
+Plug 'hedyhli/outline.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -673,11 +673,12 @@ extensions = {
 })
 EOF
 
-"vista
-let g:vista_default_executive = 'coc'
-let g:vista_sidebar_width = 40
-let g:vista_echo_cursor = 0
-nnoremap <silent> <Space>v :Vista!!<CR>
+
+"outline
+lua << EOF
+require("outline").setup({})
+EOF
+nnoremap <silent> <Space>v :belowright Outline!<CR>
 
 "modifyOtherKeysの問題で制御文字4;2mが出るのを抑制
 let &t_TI = ""
