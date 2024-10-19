@@ -742,7 +742,7 @@ chunk = {
     },
     textobject = "",
     max_file_size = 1024 * 1024,
-    error_sign = true,
+    error_sign = false,
     -- animation related
     duration = 200,
     delay = 300,
