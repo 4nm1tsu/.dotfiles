@@ -211,6 +211,9 @@ Plug 'axelvc/template-string.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'fannheyward/telescope-coc.nvim'
 Plug 'David-Kunz/gen.nvim'
+Plug 'b0o/incline.nvim'
+Plug 'neovim/nvim-lspconfig' " for nvim-navic
+Plug 'SmiteshP/nvim-navic' " for incline.nvim
 
 " Initialize plugin system
 call plug#end()
@@ -1220,6 +1223,57 @@ require("todo-comments").setup {
       pattern = [[\b(KEYWORDS):]], -- ripgrep regex
       -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
     },
+}
+EOF
+
+""nvim-navic " navigation will work after migration to nvim-cmp completed.
+"lua << EOF
+"local on_attach = function(client, bufnr)
+"  if client.server_capabilities.documentSymbolProvider then
+"    navic.attach(client, bufnr)
+"  end
+"end
+"
+"require("lspconfig").clangd.setup {
+"  on_attach = on_attach
+"}
+"EOF
+
+"incline
+lua << EOF
+local helpers = require 'incline.helpers'
+local navic = require 'nvim-navic'
+local devicons = require 'nvim-web-devicons'
+require('incline').setup {
+  window = {
+    padding = 0,
+    margin = { horizontal = 0, vertical = 0 },
+  },
+  render = function(props)
+  local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+  if filename == '' then
+    filename = '[No Name]'
+    end
+    local ft_icon, ft_color = devicons.get_icon_color(filename)
+    local modified = vim.bo[props.buf].modified
+    local res = {
+      ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+      ' ',
+      { filename, gui = modified and 'bold,italic' or 'bold' },
+      -- guibg = '#44406e',
+    }
+    if props.focused then
+      for _, item in ipairs(navic.get_data(props.buf) or {}) do
+        table.insert(res, {
+          { ' > ', group = 'NavicSeparator' },
+          { item.icon, group = 'NavicIcons' .. item.type },
+          { item.name, group = 'NavicText' },
+        })
+      end
+    end
+    table.insert(res, ' ')
+    return res
+  end,
 }
 EOF
 
