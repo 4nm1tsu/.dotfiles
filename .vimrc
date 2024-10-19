@@ -1069,6 +1069,9 @@ excluded_buftypes = {
   "terminal",
 },
 excluded_filetypes = {
+  "dropbar_menu",
+  "dropbar_menu_fzf",
+  "DressingInput",
   "cmp_docs",
   "cmp_menu",
   "noice",
@@ -1096,7 +1099,9 @@ autocmd = {
   },
 },
 handlers = {
+  cursor = true,
   diagnostic = true,
+  handle = true,
   search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
   gitsigns = true
 },
