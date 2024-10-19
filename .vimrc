@@ -27,15 +27,15 @@ nnoremap <silent>gB :bprev<CR>
 
 " 編集箇所のカーソルを記憶
 if has("autocmd")
-    augroup redhat
-        " In text files, always limit the width of text to 78 characters
-        autocmd BufRead *.txt set tw=78
-        " When editing a file, always jump to the last cursor position
-        autocmd BufReadPost *
-                    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-                    \   exe "normal! g'\"" |
-                    \ endif
-    augroup END
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+          \   exe "normal! g'\"" |
+          \ endif
+  augroup END
 endif
 
 " ファイルタイプ検出を有効にする
@@ -57,7 +57,7 @@ set smartcase
 "set noignorecase " 検索パターンに大文字小文字を区別する
 "set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
 set hlsearch " 検索結果をハイライト
- " ESC2回でハイライト消す
+" ESC2回でハイライト消す
 nnoremap <silent> <Esc><Esc> :nohl<CR>
 
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動が可能になる
@@ -76,19 +76,19 @@ set wildmenu "コマンドモードのタブ補完
 
 "ペースト時、インデントが崩れないようにする    let &t_SI .=
 if &term =~ "xterm"
-    let &t_ti .= "\e[?2004h"
-    let &t_te .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
+  let &t_ti .= "\e[?2004h"
+  let &t_te .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
 
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
 
-    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-    cnoremap <special> <Esc>[200~ <nop>
-    cnoremap <special> <Esc>[201~ <nop>
+  noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+  cnoremap <special> <Esc>[200~ <nop>
+  cnoremap <special> <Esc>[201~ <nop>
 endif
 
 "----------------------------------------------------------
@@ -117,24 +117,24 @@ set termguicolors
 
 "一般ユーザ権限でもsudo保存可能に
 function! s:sudo_write_current_buffer() abort
-    if has('nvim')
-        let s:askpass_path = '/tmp/askpass'
-        let s:password     = inputsecret("Enter Password: ")
-        let $SUDO_ASKPASS  = s:askpass_path
+  if has('nvim')
+    let s:askpass_path = '/tmp/askpass'
+    let s:password     = inputsecret("Enter Password: ")
+    let $SUDO_ASKPASS  = s:askpass_path
 
-        try
-            call delete(s:askpass_path)
-            call writefile(['#!/bin/sh'],                 s:askpass_path, 'a')
-            call writefile(["echo '" . s:password . "'"], s:askpass_path, 'a')
-            call setfperm(s:askpass_path, "rwx------")
-            write ! sudo -A tee % > /dev/null
-        finally
-            unlet s:password
-            call delete(s:askpass_path)
-        endtry
-    else
-        write ! sudo tee % > /dev/null
-    endif
+    try
+      call delete(s:askpass_path)
+      call writefile(['#!/bin/sh'],                 s:askpass_path, 'a')
+      call writefile(["echo '" . s:password . "'"], s:askpass_path, 'a')
+      call setfperm(s:askpass_path, "rwx------")
+      write ! sudo -A tee % > /dev/null
+    finally
+      unlet s:password
+      call delete(s:askpass_path)
+    endtry
+  else
+    write ! sudo tee % > /dev/null
+  endif
 endfunction
 command! SudoWriteCurrentBuffer call s:sudo_write_current_buffer()
 
@@ -145,7 +145,7 @@ let g:ale_sign_highlight_linenrs = 1
 "plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -231,8 +231,8 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
 "popup透過
 if has('nvim')
-    "透過すると補完のアイコン右半分にに文字が被る
-    set pumblend=0
+  "透過すると補完のアイコン右半分にに文字が被る
+  set pumblend=0
 endif
 
 "nvim-scrollview
@@ -253,7 +253,7 @@ require'lualine'.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff',
-                  {'diagnostics', sources={'nvim_diagnostic', 'coc', 'ale'}}},
+    {'diagnostics', sources={'nvim_diagnostic', 'coc', 'ale'}}},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
@@ -267,15 +267,15 @@ require'lualine'.setup {
     lualine_y = {},
     lualine_z = {}
   },
---  tabline = {
---    lualine_a = {'buffers'},
---    lualine_b = {},
---    lualine_c = {},
---    lualine_x = {},
---    lualine_y = {},
---    lualine_z = {'tabs'}
---  },
-  extensions = {}
+  --  tabline = {
+    --    lualine_a = {'buffers'},
+    --    lualine_b = {},
+    --    lualine_c = {},
+    --    lualine_x = {},
+    --    lualine_y = {},
+    --    lualine_z = {'tabs'}
+    --  },
+    extensions = {}
 }
 EOF
 
@@ -288,9 +288,9 @@ set ruler " ステータスラインの右側にカーソルの現在位置を�
 "ale
 let g:ale_linters_explicit=1
 let g:ale_linters = {
-    \ }
+      \ }
 let g:ale_fixers = {
-    \ }
+      \ }
 
 " virtualtextにエラー表示
 let g:ale_virtualtext_cursor = 1
@@ -318,17 +318,17 @@ nmap <silent><c-n> :Neotree toggle float reveal_force_cwd <cr>
 lua <<EOF
 require("neo-tree").setup({
 filesystem = {
-    bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
-    cwd_target = {
-        sidebar = "tab",   -- sidebar is when position = left or right
-        current = "window" -- current is when position = current
-        },
-    },
-    window = {
-        mappings = {
-            ["<esc>"] = "close_window",
-        },
-    },
+  bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+  cwd_target = {
+    sidebar = "tab",   -- sidebar is when position = left or right
+    current = "window" -- current is when position = current
+  },
+},
+window = {
+  mappings = {
+    ["<esc>"] = "close_window",
+  },
+},
 })
 EOF
 
@@ -520,95 +520,95 @@ require('gitsigns').setup {
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
---  keymaps = {
---    -- Default keymap options
---    noremap = true,
---
---    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
---    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
---
---    ['n <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
---    ['v <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
---    ['n <space>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
---    ['n <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
---    ['v <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
---    ['n <space>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
---    ['n <space>gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
---    ['n <space>gB'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
---    ['n <space>gA'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
---    ['n <space>gU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
---
---    -- Text objects
---    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
---    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
---  },
-  watch_gitdir = {
-    interval = 1000,
-    follow_files = true
-  },
-  auto_attach = true,
-  attach_to_untracked = false,
-  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = false,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 150,
-    ignore_whitespace = false,
-    virt_text_priority = 100,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000,
-  preview_config = {
-    -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-  on_attach = function(bufnr)
+  --  keymaps = {
+    --    -- Default keymap options
+    --    noremap = true,
+    --
+    --    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+    --    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+    --
+    --    ['n <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    --    ['v <space>ga'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    --    ['n <space>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    --    ['n <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    --    ['v <space>gr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    --    ['n <space>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    --    ['n <space>gp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    --    ['n <space>gB'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+    --    ['n <space>gA'] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
+    --    ['n <space>gU'] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
+    --
+    --    -- Text objects
+    --    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    --    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+    --  },
+    watch_gitdir = {
+      interval = 1000,
+      follow_files = true
+    },
+    auto_attach = true,
+    attach_to_untracked = false,
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+      virt_text = false,
+      virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+      delay = 150,
+      ignore_whitespace = false,
+      virt_text_priority = 100,
+    },
+    current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+    sign_priority = 6,
+    update_debounce = 100,
+    status_formatter = nil, -- Use default
+    max_file_length = 40000,
+    preview_config = {
+      -- Options passed to nvim_open_win
+      border = 'single',
+      style = 'minimal',
+      relative = 'cursor',
+      row = 0,
+      col = 1
+    },
+    on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
     local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    vim.keymap.set(mode, l, r, opts)
     end
 
     -- Navigation
     map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
+    if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+      end, {expr=true})
 
-    map('n', '[c', function()
+      map('n', '[c', function()
       if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+        vim.schedule(function() gs.prev_hunk() end)
+        return '<Ignore>'
+        end, {expr=true})
 
-    -- Actions
-    map('n', '<space>ga', gs.stage_hunk)
-    map('n', '<space>gr', gs.reset_hunk)
-    map('v', '<space>ga', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('v', '<space>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('n', '<space>gA', gs.stage_buffer)
-    map('n', '<space>gu', gs.undo_stage_hunk)
-    map('n', '<space>gR', gs.reset_buffer)
-    map('n', '<space>gp', gs.preview_hunk)
-    map('n', '<space>gB', function() gs.blame_line{full=true} end)
---    map('n', '<space>gn', gs.toggle_current_line_blame)
---    map('n', '<space>gm', gs.diffthis)
---    map('n', '<space>go', function() gs.diffthis('~') end)
-    map('n', '<space>gD', gs.toggle_deleted)
+        -- Actions
+        map('n', '<space>ga', gs.stage_hunk)
+        map('n', '<space>gr', gs.reset_hunk)
+        map('v', '<space>ga', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+        map('v', '<space>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+        map('n', '<space>gA', gs.stage_buffer)
+        map('n', '<space>gu', gs.undo_stage_hunk)
+        map('n', '<space>gR', gs.reset_buffer)
+        map('n', '<space>gp', gs.preview_hunk)
+        map('n', '<space>gB', function() gs.blame_line{full=true} end)
+        --    map('n', '<space>gn', gs.toggle_current_line_blame)
+        --    map('n', '<space>gm', gs.diffthis)
+        --    map('n', '<space>go', function() gs.diffthis('~') end)
+        map('n', '<space>gD', gs.toggle_deleted)
 
-    -- Text object
-    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
+        -- Text object
+        map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+        end
 }
 EOF
 
@@ -640,34 +640,34 @@ lua <<EOF
 local actions = require("telescope.actions")
 
 require("telescope").setup({
-    defaults = {
-        mappings = {
-            i = {
-                ["<esc>"] = actions.close,
-            },
-        },
-        sorting_strategy = "ascending",
-        layout_strategy = "flex",
-        layout_config = {
-            flex = {
-                flip_columns = 161, -- half 27" monitor, scientifically calculated
-            },
-            horizontal = {
-                preview_cutoff = 0,
-                preview_width = { padding = 27 },
-            },
-            vertical = {
-                preview_cutoff = 0,
-                preview_height = { padding = 7 },
-            },
-        },
+defaults = {
+  mappings = {
+    i = {
+      ["<esc>"] = actions.close,
     },
-    extensions = {
-      coc = {
-          theme = 'ivy',
-          prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-      }
+  },
+  sorting_strategy = "ascending",
+  layout_strategy = "flex",
+  layout_config = {
+    flex = {
+      flip_columns = 161, -- half 27" monitor, scientifically calculated
     },
+    horizontal = {
+      preview_cutoff = 0,
+      preview_width = { padding = 27 },
+    },
+    vertical = {
+      preview_cutoff = 0,
+      preview_height = { padding = 7 },
+    },
+  },
+},
+extensions = {
+  coc = {
+    theme = 'ivy',
+    prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+  }
+  },
 })
 EOF
 
@@ -700,11 +700,11 @@ function! s:isAtStartOfLine(mapping)
 endfunction
 
 inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+      \ <SID>isAtStartOfLine('\|\|') ?
+      \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
 inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+      \ <SID>isAtStartOfLine('__') ?
+      \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 "localvimrc
 let g:localvimrc_ask=0
@@ -726,10 +726,10 @@ autocmd FileType * setlocal textwidth=0
 
 lua <<EOF
 require('hlchunk').setup({
-  chunk = {
-    enable = true,
-    priority = 15,
-    --style = {
+chunk = {
+  enable = true,
+  priority = 15,
+  --style = {
     --  { fg = "#806d9c" },
     --  { fg = "#c21f30" },
     --},
@@ -747,27 +747,27 @@ require('hlchunk').setup({
     -- animation related
     duration = 200,
     delay = 300,
-  },
-  indent = {
-    enable = true,
-    priority = 10,
-    style = { vim.api.nvim_get_hl(0, { name = "Whitespace" }) },
-    use_treesitter = false,
-    chars = { "│" },
-    ahead_lines = 5,
-    delay = 100,
-  },
-  line_num = {
-    enable = false,
-    --style = "#806d9c",
-    priority = 10,
-    use_treesitter = false,
-  },
-  blank = {
-    enable = false,
-    priority = 9,
-    chars = { "․" },
-  }
+},
+indent = {
+  enable = true,
+  priority = 10,
+  style = { vim.api.nvim_get_hl(0, { name = "Whitespace" }) },
+  use_treesitter = false,
+  chars = { "│" },
+  ahead_lines = 5,
+  delay = 100,
+},
+line_num = {
+  enable = false,
+  --style = "#806d9c",
+  priority = 10,
+  use_treesitter = false,
+},
+blank = {
+  enable = false,
+  priority = 9,
+  chars = { "․" },
+}
 })
 EOF
 
@@ -798,18 +798,18 @@ let g:mkdp_echo_preview_url = 1
 " content_editable: if enable content editable for preview page, default: v:false
 " disable_filename: if disable filename header for preview page, default: 0
 let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
+      \ 'mkit': {},
+      \ 'katex': {},
+      \ 'uml': {},
+      \ 'maid': {},
+      \ 'disable_sync_scroll': 0,
+      \ 'sync_scroll_type': 'middle',
+      \ 'hide_yaml_meta': 1,
+      \ 'sequence_diagrams': {},
+      \ 'flowchart_diagrams': {},
+      \ 'content_editable': v:false,
+      \ 'disable_filename': 0
+      \ }
 
 " use a custom markdown style must be absolute path
 " like '/Users/username/markdown.css' or expand('~/markdown.css')
@@ -844,7 +844,7 @@ xmap <C-x>  <Plug>(coc-convert-snippet)
 
 " C-lで確定(enter一発で改行したい)←tabだと副作用が大きい
 inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "      \ <SID>check_back_space() ? "\<TAB>" :
 "      \ coc#refresh()
 
@@ -867,9 +867,9 @@ dap.defaults.fallback.force_external_terminal = true
 dap.defaults.fallback.terminal_win_cmd = 'belowright new'
 
 dap.defaults.fallback.external_terminal = {
-    -- command = '/usr/bin/alacritty';
-    command = 'alacritty';
-    args = {'-e'};
+  -- command = '/usr/bin/alacritty';
+  command = 'alacritty';
+  args = {'-e'};
 }
 vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='NONE', numhl='NONE'})
 vim.fn.sign_define('DapStopped', {text='', texthl='DapStopped', linehl='NONE', numhl='NONE'})
@@ -894,13 +894,13 @@ lua << EOF
 local dap_install = require("dap-install")
 
 dap_install.setup({
-	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
-    verbosely_call_debuggers = true,
+installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+verbosely_call_debuggers = true,
 })
 
 local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 for _, debugger in ipairs(dbg_list) do
-	dap_install.config(debugger)
+  dap_install.config(debugger)
 end
 EOF
 
@@ -919,197 +919,197 @@ EOF
 "nvim-treesitter-context
 lua << EOF
 require'treesitter-context'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-        -- For all filetypes
-        -- Note that setting an entry here replaces all other patterns for this entry.
-        -- By setting the 'default' entry below, you can control which nodes you want to
-        -- appear in the context window.
-        default = {
-            'class',
-            'function',
-            'method',
-            -- 'for', -- These won't appear in the context
-            -- 'while',
-            -- 'if',
-            -- 'switch',
-            -- 'case',
-        },
-        -- Example for a specific filetype.
-        -- If a pattern is missing, *open a PR* so everyone can benefit.
-        --   rust = {
-        --       'impl_item',
-        --   },
-    },
-    exact_patterns = {
-        -- Example for a specific filetype with Lua patterns
-        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-        -- exactly match "impl_item" only)
-        -- rust = true,
-    },
+enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+-- For all filetypes
+-- Note that setting an entry here replaces all other patterns for this entry.
+-- By setting the 'default' entry below, you can control which nodes you want to
+-- appear in the context window.
+default = {
+  'class',
+  'function',
+  'method',
+  -- 'for', -- These won't appear in the context
+  -- 'while',
+  -- 'if',
+  -- 'switch',
+  -- 'case',
+},
+-- Example for a specific filetype.
+-- If a pattern is missing, *open a PR* so everyone can benefit.
+--   rust = {
+  --       'impl_item',
+  --   },
+},
+exact_patterns = {
+  -- Example for a specific filetype with Lua patterns
+  -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+  -- exactly match "impl_item" only)
+  -- rust = true,
+},
 
-    -- [!] The options below are exposed but shouldn't require your attention,
-    --     you can safely ignore them.
+-- [!] The options below are exposed but shouldn't require your attention,
+--     you can safely ignore them.
 
-    zindex = 20, -- The Z-index of the context window
+zindex = 20, -- The Z-index of the context window
 }
 EOF
 
 "nvim-scrollbar
 lua <<EOF
 require("scrollbar").setup({
-    show = true,
-    show_in_active_only = false,
-    set_highlights = true,
-    folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-    max_lines = false, -- disables if no. of lines in buffer exceeds this
-    hide_if_all_visible = false, -- Hides everything if all lines are visible
-    throttle_ms = 100,
-    handle = {
-        text = " ",
-        blend = 30, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
-        color = nil,
-        color_nr = nil, -- cterm
-        highlight = "Pmenu",
-        hide_if_all_visible = true, -- Hides handle if all lines are visible
-    },
-    marks = {
-        Cursor = {
-            text = "•",
-            priority = 0,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "Normal",
-        },
-        Search = {
-            text = { "-", "=" },
-            priority = 1,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "Title",
-        },
-        Error = {
-            text = { "-", "=" },
-            priority = 2,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "DiagnosticVirtualTextError",
-        },
-        Warn = {
-            text = { "-", "=" },
-            priority = 3,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "DiagnosticVirtualTextWarn",
-        },
-        Info = {
-            text = { "-", "=" },
-            priority = 4,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "DiagnosticVirtualTextInfo",
-        },
-        Hint = {
-            text = { "-", "=" },
-            priority = 5,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "DiagnosticVirtualTextHint",
-        },
-        Misc = {
-            text = { "-", "=" },
-            priority = 6,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "Normal",
-        },
-        GitAdd = {
-            text = "┆",
-            priority = 7,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "GitSignsAdd",
-        },
-        GitChange = {
-            text = "┆",
-            priority = 7,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "GitSignsChange",
-        },
-        GitDelete = {
-            text = "▁",
-            priority = 7,
-            gui = nil,
-            color = nil,
-            cterm = nil,
-            color_nr = nil, -- cterm
-            highlight = "GitSignsDelete",
-        },
-    },
-    excluded_buftypes = {
-        "terminal",
-    },
-    excluded_filetypes = {
-        "cmp_docs",
-        "cmp_menu",
-        "noice",
-        "prompt",
-        "TelescopePrompt",
-        "neo-tree",
-        "neo-tree-popup",
-    },
-    autocmd = {
-        render = {
-            "BufWinEnter",
-            "TabEnter",
-            "TermEnter",
-            "WinEnter",
-            "CmdwinLeave",
-            "TextChanged",
-            "VimResized",
-            "WinScrolled",
-        },
-        clear = {
-            "BufWinLeave",
-            "TabLeave",
-            "TermLeave",
-            "WinLeave",
-        },
-    },
-    handlers = {
-        diagnostic = true,
-        search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
-        gitsigns = true
-    },
+show = true,
+show_in_active_only = false,
+set_highlights = true,
+folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
+max_lines = false, -- disables if no. of lines in buffer exceeds this
+hide_if_all_visible = false, -- Hides everything if all lines are visible
+throttle_ms = 100,
+handle = {
+  text = " ",
+  blend = 30, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
+  color = nil,
+  color_nr = nil, -- cterm
+  highlight = "Pmenu",
+  hide_if_all_visible = true, -- Hides handle if all lines are visible
+},
+marks = {
+  Cursor = {
+    text = "•",
+    priority = 0,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "Normal",
+  },
+  Search = {
+    text = { "-", "=" },
+    priority = 1,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "Title",
+  },
+  Error = {
+    text = { "-", "=" },
+    priority = 2,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "DiagnosticVirtualTextError",
+  },
+  Warn = {
+    text = { "-", "=" },
+    priority = 3,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "DiagnosticVirtualTextWarn",
+  },
+  Info = {
+    text = { "-", "=" },
+    priority = 4,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "DiagnosticVirtualTextInfo",
+  },
+  Hint = {
+    text = { "-", "=" },
+    priority = 5,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "DiagnosticVirtualTextHint",
+  },
+  Misc = {
+    text = { "-", "=" },
+    priority = 6,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "Normal",
+  },
+  GitAdd = {
+    text = "┆",
+    priority = 7,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "GitSignsAdd",
+  },
+  GitChange = {
+    text = "┆",
+    priority = 7,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "GitSignsChange",
+  },
+  GitDelete = {
+    text = "▁",
+    priority = 7,
+    gui = nil,
+    color = nil,
+    cterm = nil,
+    color_nr = nil, -- cterm
+    highlight = "GitSignsDelete",
+  },
+},
+excluded_buftypes = {
+  "terminal",
+},
+excluded_filetypes = {
+  "cmp_docs",
+  "cmp_menu",
+  "noice",
+  "prompt",
+  "TelescopePrompt",
+  "neo-tree",
+  "neo-tree-popup",
+},
+autocmd = {
+  render = {
+    "BufWinEnter",
+    "TabEnter",
+    "TermEnter",
+    "WinEnter",
+    "CmdwinLeave",
+    "TextChanged",
+    "VimResized",
+    "WinScrolled",
+  },
+  clear = {
+    "BufWinLeave",
+    "TabLeave",
+    "TermLeave",
+    "WinLeave",
+  },
+},
+handlers = {
+  diagnostic = true,
+  search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+  gitsigns = true
+},
 })
 EOF
 
 "neogen
 lua <<  EOF
 require('neogen').setup {
-    enabled = true,             --if you want to disable Neogen
-    input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
-    -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
+  enabled = true,             --if you want to disable Neogen
+  input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
+  -- jump_map = "<C-e>"       -- (DROPPED SUPPORT, see [here](#cycle-between-annotations) !) The keymap in order to jump in the annotation fields (in insert mode)
 }
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<space>G", ":lua require('neogen').generate()<CR>", opts)
@@ -1132,29 +1132,29 @@ nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 "gen.nvim
 lua << EOF
 require('gen').setup({
-    model = "Llama-3-ELYZA-JP-8B-q4_k_m:latest", -- The default model to use.
-    quit_map = "q", -- set keymap for close the response window
-    retry_map = "<c-r>", -- set keymap to re-send the current prompt
-    accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
-    host = "localhost", -- The host running the Ollama service.
-    port = "11434", -- The port on which the Ollama service is listening.
-    display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-    show_prompt = false, -- Shows the prompt submitted to Ollama.
-    show_model = false, -- Displays which model you are using at the beginning of your chat session.
-    no_auto_close = false, -- Never closes the window automatically.
-    hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
-    init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
-    -- Function to initialize Ollama
-    command = function(options)
-    local body = {model = options.model, stream = true}
-    return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
-    end,
-    -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
-    -- This can also be a command string.
-    -- The executed command must return a JSON object with { response, context }
-    -- (context property is optional).
-    -- list_models = '<omitted lua function>', -- Retrieves a list of model names
-    debug = false -- Prints errors and the command which is run.
+model = "Llama-3-ELYZA-JP-8B-q4_k_m:latest", -- The default model to use.
+quit_map = "q", -- set keymap for close the response window
+retry_map = "<c-r>", -- set keymap to re-send the current prompt
+accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
+host = "localhost", -- The host running the Ollama service.
+port = "11434", -- The port on which the Ollama service is listening.
+display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+show_prompt = false, -- Shows the prompt submitted to Ollama.
+show_model = false, -- Displays which model you are using at the beginning of your chat session.
+no_auto_close = false, -- Never closes the window automatically.
+hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+-- Function to initialize Ollama
+command = function(options)
+local body = {model = options.model, stream = true}
+return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
+end,
+-- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+-- This can also be a command string.
+-- The executed command must return a JSON object with { response, context }
+-- (context property is optional).
+-- list_models = '<omitted lua function>', -- Retrieves a list of model names
+debug = false -- Prints errors and the command which is run.
 })
 vim.keymap.set({ 'n', 'v' }, '<space>A', ':Gen<CR>')
 -- vim.keymap.set('v', '<leader>]', ':Gen Enhance_Grammar_Spelling<CR>') -- You can also directly invoke it with one of the predefined prompts or your custom prompts:
@@ -1163,39 +1163,39 @@ EOF
 "todo-comments
 lua << EOF
 require("todo-comments").setup {
-    signs = true, -- show icons in the signs column
-    sign_priority = 8, -- sign priority
-    -- keywords recognized as todo comments
-    keywords = {
-        FIX = {
-            icon = " ", -- icon used for the sign, and in search results
-            color = "error", -- can be a hex color, or a named color (see below)
-            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-            -- signs = false, -- configure signs for some keywords individually
-            },
-        TODO = { icon = " ", color = "info" },
-        HACK = { icon = " ", color = "warning" },
-        WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-        PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-        NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-        },
-    merge_keywords = true, -- when true, custom keywords will be merged with the defaults
-    -- highlighting of the line containing the todo comment
-    -- * before: highlights before the keyword (typically comment characters)
-    -- * keyword: highlights of the keyword
-    -- * after: highlights after the keyword (todo text)
-    highlight = {
-        before = "", -- "fg" or "bg" or empty
-        keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-        after = "fg", -- "fg" or "bg" or empty
-        pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
-        comments_only = true, -- uses treesitter to match keywords in comments only
-        max_line_len = 400, -- ignore lines longer than this
-        exclude = {}, -- list of file types to exclude highlighting
-        },
-    -- list of named colors where we try to extract the guifg from the
-    -- list of hilight groups or use the hex color if hl not found as a fallback
-    --colors = {
+  signs = true, -- show icons in the signs column
+  sign_priority = 8, -- sign priority
+  -- keywords recognized as todo comments
+  keywords = {
+    FIX = {
+      icon = " ", -- icon used for the sign, and in search results
+      color = "error", -- can be a hex color, or a named color (see below)
+      alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+      -- signs = false, -- configure signs for some keywords individually
+    },
+    TODO = { icon = " ", color = "info" },
+    HACK = { icon = " ", color = "warning" },
+    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+  },
+  merge_keywords = true, -- when true, custom keywords will be merged with the defaults
+  -- highlighting of the line containing the todo comment
+  -- * before: highlights before the keyword (typically comment characters)
+  -- * keyword: highlights of the keyword
+  -- * after: highlights after the keyword (todo text)
+  highlight = {
+    before = "", -- "fg" or "bg" or empty
+    keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+    after = "fg", -- "fg" or "bg" or empty
+    pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
+    comments_only = true, -- uses treesitter to match keywords in comments only
+    max_line_len = 400, -- ignore lines longer than this
+    exclude = {}, -- list of file types to exclude highlighting
+  },
+  -- list of named colors where we try to extract the guifg from the
+  -- list of hilight groups or use the hex color if hl not found as a fallback
+  --colors = {
     --    error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
     --    warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
     --    info = { "DiagnosticInfo", "#2563EB" },
@@ -1203,20 +1203,20 @@ require("todo-comments").setup {
     --    default = { "Identifier", "#7C3AED" },
     --    },
     search = {
-        command = "rg",
-        args = {
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            },
-        -- regex that will be used to match keywords.
-        -- don't replace the (KEYWORDS) placeholder
-        pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-        -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-        },
-    }
+      command = "rg",
+      args = {
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+      },
+      -- regex that will be used to match keywords.
+      -- don't replace the (KEYWORDS) placeholder
+      pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+      -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+    },
+}
 EOF
 
 " bufferline
@@ -1224,12 +1224,12 @@ lua <<EOF
 vim.opt.termguicolors = true
 require("bufferline").setup{
 options = {
-    diagnostics = "coc",
-    --    diagnostics_indicator = function(count, level, diagnostics_dict, context)
-    --    local icon = level:match("error") and " " or " "
-    --    return " " .. icon .. count
-    --    end
-    }
+  diagnostics = "coc",
+  --    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+  --    local icon = level:match("error") and " " or " "
+  --    return " " .. icon .. count
+  --    end
+}
 }
 EOF
 " These commands will navigate through buffers in order regardless of which mode you are using
@@ -1243,15 +1243,15 @@ nnoremap <silent>[b :BufferLineCyclePrev<CR>
 
 "インデント
 augroup c
-    autocmd!
-    "autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl tabstop=2
-    "
-    "au FileType c,cpp setl tabstop=2
-    "au FileType dbui setl tabstop=2
-    "au FileType json,jsonc setl tabstop=2 " shiftwidth=2
-    "au FileType markdown setl tabstop=2
-    au FileType go set noexpandtab tabstop=2
-    au FileType python set tabstop=4
+  autocmd!
+  "autocmd BufNewFile,BufRead *.c,*.cpp,*.md setl tabstop=2
+  "
+  "au FileType c,cpp setl tabstop=2
+  "au FileType dbui setl tabstop=2
+  "au FileType json,jsonc setl tabstop=2 " shiftwidth=2
+  "au FileType markdown setl tabstop=2
+  au FileType go set noexpandtab tabstop=2
+  au FileType python set tabstop=4
 augroup END
 
 "markdownのインデント幅(デフォルト4)を無視
@@ -1263,14 +1263,14 @@ let g:python_recommended_style = 0
 "template-string
 lua << EOF
 require('template-string').setup({
-  filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'python' }, -- filetypes where the plugin is active
-  jsx_brackets = true, -- must add brackets to jsx attributes
-  remove_template_string = false, -- remove backticks when there are no template string
-  restore_quotes = {
-    -- quotes used when "remove_template_string" option is enabled
-    normal = [[']],
-    jsx = [["]],
-  },
+filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'python' }, -- filetypes where the plugin is active
+jsx_brackets = true, -- must add brackets to jsx attributes
+remove_template_string = false, -- remove backticks when there are no template string
+restore_quotes = {
+  -- quotes used when "remove_template_string" option is enabled
+  normal = [[']],
+  jsx = [["]],
+},
 })
 EOF
 
@@ -1279,8 +1279,8 @@ au FileType yaml if bufname("%") =~# "docker-compose.yml" | set ft=yaml.docker-c
 au FileType yaml if bufname("%") =~# "compose.yml" | set ft=yaml.docker-compose | endif
 
 let g:coc_filetype_map = {
-  \ 'yaml.docker-compose': 'dockercompose',
-  \ }
+      \ 'yaml.docker-compose': 'dockercompose',
+      \ }
 
 "treesitter
 lua <<EOF
@@ -1288,9 +1288,9 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = {
-        'php',
+      'php',
     }
-  },
+    },
   yati = {
     enable = true,
     -- Disable by languages, see `Supported languages`
@@ -1307,7 +1307,7 @@ require'nvim-treesitter.configs'.setup {
     default_fallback = "auto"
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   ensure_installed = 'all',
   additional_vim_regex_highlighting = false,
