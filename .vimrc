@@ -320,6 +320,17 @@ inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 nmap <silent><c-n> :Neotree toggle reveal_force_cwd <cr>
 lua <<EOF
 require("neo-tree").setup({
+event_handlers = {
+  {
+      event = "file_open_requested",
+      handler = function()
+      -- auto close
+      -- vim.cmd("Neotree close")
+      -- OR
+      require("neo-tree.command").execute({ action = "close" })
+      end
+  },
+},
 filesystem = {
   bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
   cwd_target = {
