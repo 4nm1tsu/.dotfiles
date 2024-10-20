@@ -203,7 +203,7 @@ Plug 'folke/todo-comments.nvim', {'branch': 'neovim-pre-0.8.0'}
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim avante.nvim
-"Plug 'folke/noice.nvim'
+Plug 'folke/noice.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'MTDL9/vim-log-highlighting'
 Plug 'axelvc/template-string.nvim'
@@ -350,9 +350,16 @@ window = {
 EOF
 
 " noice.nvim
-"lua <<EOF
-"require("noice").setup()
-"EOF
+lua <<EOF
+require("noice").setup({
+  routes = {
+    {
+      view = "mini",
+      filter = { event = "msg_show" },
+    },
+  },
+})
+EOF
 
 "coc-highlight
 nnoremap <silent><Space>p :call CocAction('pickColor')<CR>
