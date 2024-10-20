@@ -155,9 +155,9 @@ call plug#begin('~/.vim/plugged')
 "Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
-Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
+Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments avante.nvim
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'stevearc/dressing.nvim'
+Plug 'stevearc/dressing.nvim' " for avante.nvim
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
@@ -202,7 +202,7 @@ Plug 'unblevable/quick-scope'
 Plug 'folke/todo-comments.nvim', {'branch': 'neovim-pre-0.8.0'}
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
+Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim avante.nvim
 "Plug 'folke/noice.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'MTDL9/vim-log-highlighting'
@@ -215,6 +215,9 @@ Plug 'neovim/nvim-lspconfig' " for nvim-navic
 Plug 'SmiteshP/nvim-navic' " for incline.nvim
 Plug 'hedyhli/outline.nvim'
 Plug 'windwp/nvim-autopairs'
+Plug 'HakonHarnes/img-clip.nvim' "for avante.nvim
+Plug 'MeanderingProgrammer/render-markdown.nvim' "for avante.nvim
+Plug 'yetone/avante.nvim', {'branch': 'main', 'do': 'make'}
 
 " Initialize plugin system
 call plug#end()
@@ -1142,6 +1145,41 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 " diffview
 nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 " :tabclose to close
+
+"avante.nvim
+autocmd! User avante.nvim
+lua << EOF
+require('avante_lib').load()
+require('avante').setup({
+provider = "ollama",
+vendors = {
+  ---@type AvanteProvider
+  ollama = {
+    ["local"] = true,
+    endpoint = "127.0.0.1:11434/v1",
+    model = "Llama-3-ELYZA-JP-8B-q4_k_m:latest",
+    parse_curl_args = function(opts, code_opts)
+    return {
+      url = opts.endpoint .. "/chat/completions",
+      headers = {
+        ["Accept"] = "application/json",
+        ["Content-Type"] = "application/json",
+      },
+      body = {
+        model = opts.model,
+        messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+        max_tokens = 2048,
+        stream = true,
+      },
+    }
+    end,
+    parse_response_data = function(data_stream, event_state, opts)
+    require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+    end,
+  },
+},
+})
+EOF
 
 "gen.nvim
 lua << EOF
