@@ -690,16 +690,6 @@ nnoremap <silent> <Space>v :belowright Outline!<CR>
 let &t_TI = ""
 let &t_TE = ""
 
-"markdown
-"Tex記法のみconcealする場合→微妙にうまくいかない
-"let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_math = 1
-"全てconcealしない場合
-let g:vim_markdown_conceal=0
-let g:vim_markdown_conceal_code_blocks = 0
-let g:tex_conceal=''
-let g:vim_markdown_new_list_item_indent = 0
-
 "vim-table-mode
 function! s:isAtStartOfLine(mapping)
   let text_before_cursor = getline('.')[0 : col('.')-1]
