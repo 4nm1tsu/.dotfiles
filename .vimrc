@@ -157,7 +157,7 @@ Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
 Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-ui-select.nvim' " for gen.nvim(:Gen command)
+Plug 'stevearc/dressing.nvim'
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
@@ -923,7 +923,6 @@ lua << EOF
 require('telescope').setup()
 require('telescope').load_extension('coc')
 require('telescope').load_extension('dap')
-require('telescope').load_extension('ui-select')
 EOF
 
 "nvim-treesitter-context
