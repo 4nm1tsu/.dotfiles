@@ -214,6 +214,7 @@ Plug 'b0o/incline.nvim'
 Plug 'neovim/nvim-lspconfig' " for nvim-navic
 Plug 'SmiteshP/nvim-navic' " for incline.nvim
 Plug 'hedyhli/outline.nvim'
+Plug 'windwp/nvim-autopairs'
 
 " Initialize plugin system
 call plug#end()
@@ -309,7 +310,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap)
 nmap <silent> <Space>F :ALEFix<CR>
 
 " coc
-let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-pydocstring', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-pairs', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-tsserver', 'coc-vetur', 'coc-lightbulb', 'coc-java', 'coc-haxe', 'coc-lua', 'coc-eslint', 'coc-toml', 'coc-diagnostic', 'coc-prettier', 'coc-lua', 'coc-docker']
+let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-pydocstring', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-tsserver', 'coc-vetur', 'coc-lightbulb', 'coc-java', 'coc-haxe', 'coc-lua', 'coc-eslint', 'coc-toml', 'coc-diagnostic', 'coc-prettier', 'coc-lua', 'coc-docker']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
 
 "signatuer表示
@@ -630,6 +631,11 @@ nnoremap <Space>gd :Gvdiff<CR>
 
 "GitGutter
 "nnoremap <Space>gu :GitGutterUndoHunk<CR>
+
+"nvim-autopairs
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
 
 "telescope
 "nnoremap <silent> <C-f> <cmd>Telescope find_files hidden=true layout_config={"prompt_position":"top"}<cr> " hidden=trueいれないほうがいいかも
