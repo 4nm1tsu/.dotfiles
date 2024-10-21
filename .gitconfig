@@ -21,6 +21,7 @@
   pager = delta # git-delta
   excludesfile = ~/.gitignore
   editor = nvim
+  quotepath = false
 
 [delta]
   navigate = true # git-delta # use n and N to move between diff sections
