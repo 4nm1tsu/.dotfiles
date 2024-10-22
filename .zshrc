@@ -134,7 +134,7 @@ fi
 #git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m --preview "" | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
 #file alias
-alias -g F='`fzf`'
+alias -g F='"`fzf`"'
 #cd
 fcd() {
     local dir
