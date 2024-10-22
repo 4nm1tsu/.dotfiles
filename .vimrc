@@ -1148,7 +1148,7 @@ nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 "gen.nvim
 lua << EOF
 require('gen').setup({
-model = "Llama-3-ELYZA-JP-8B-q4_k_m:latest", -- The default model to use.
+model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest", -- The default model to use.
 quit_map = "q", -- set keymap for close the response window
 retry_map = "<c-r>", -- set keymap to re-send the current prompt
 accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
