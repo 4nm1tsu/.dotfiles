@@ -1424,7 +1424,7 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
-    disable = { 'markdown' },
+    disable = { },
   },
   ensure_installed = 'all',
   additional_vim_regex_highlighting = false,
