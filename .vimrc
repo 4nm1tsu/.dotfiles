@@ -155,9 +155,9 @@ call plug#begin('~/.vim/plugged')
 "Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
-Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments
+Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments avante.nvim
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'stevearc/dressing.nvim'
+Plug 'stevearc/dressing.nvim' " for avante.nvim
 Plug 'embear/vim-localvimrc'
 Plug 'w0rp/ale'
 "Plug 'scrooloose/nerdtree'
@@ -202,19 +202,22 @@ Plug 'unblevable/quick-scope'
 Plug 'folke/todo-comments.nvim', {'branch': 'neovim-pre-0.8.0'}
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim
+Plug 'MunifTanjim/nui.nvim' "for neo-tree noice.nvim avante.nvim
 "Plug 'folke/noice.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'MTDL9/vim-log-highlighting'
 Plug 'axelvc/template-string.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'fannheyward/telescope-coc.nvim'
-Plug 'David-Kunz/gen.nvim'
 Plug 'b0o/incline.nvim'
 Plug 'neovim/nvim-lspconfig' " for nvim-navic
 Plug 'SmiteshP/nvim-navic' " for incline.nvim
 Plug 'hedyhli/outline.nvim'
 Plug 'windwp/nvim-autopairs'
+Plug 'nosduco/remote-sshfs.nvim'
+Plug 'HakonHarnes/img-clip.nvim' "for avante.nvim
+Plug 'MeanderingProgrammer/render-markdown.nvim' "for avante.nvim
+Plug 'yetone/avante.nvim', {'branch': 'main', 'do': 'make'}
 Plug 'nosduco/remote-sshfs.nvim'
 
 " Initialize plugin system
@@ -313,6 +316,8 @@ nmap <silent> <Space>F :ALEFix<CR>
 " coc
 let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-pydocstring', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-tsserver', 'coc-vetur', 'coc-lightbulb', 'coc-java', 'coc-haxe', 'coc-lua', 'coc-eslint', 'coc-toml', 'coc-diagnostic', 'coc-prettier', 'coc-lua', 'coc-docker']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
+
+nnoremap <leader>uu i<c-r>=trim(system('uuidgen'))<cr><esc>
 
 "signatuer表示
 inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
@@ -1145,35 +1150,70 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 " :tabclose to close
 
-"gen.nvim
+"avante.nvim
+autocmd! User avante.nvim
 lua << EOF
-require('gen').setup({
-model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest", -- The default model to use.
-quit_map = "q", -- set keymap for close the response window
-retry_map = "<c-r>", -- set keymap to re-send the current prompt
-accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
-host = "localhost", -- The host running the Ollama service.
-port = "11434", -- The port on which the Ollama service is listening.
-display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-show_prompt = false, -- Shows the prompt submitted to Ollama.
-show_model = false, -- Displays which model you are using at the beginning of your chat session.
-no_auto_close = false, -- Never closes the window automatically.
-hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
-init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
--- Function to initialize Ollama
-command = function(options)
-local body = {model = options.model, stream = true}
-return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
-end,
--- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
--- This can also be a command string.
--- The executed command must return a JSON object with { response, context }
--- (context property is optional).
--- list_models = '<omitted lua function>', -- Retrieves a list of model names
-debug = false -- Prints errors and the command which is run.
+require('avante_lib').load()
+require('avante').setup({
+provider = "ollama",
+vendors = {
+  ---@type AvanteProvider
+  ollama = {
+    ["local"] = true,
+    endpoint = "127.0.0.1:11434/v1",
+    model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
+    parse_curl_args = function(opts, code_opts)
+    return {
+      url = opts.endpoint .. "/chat/completions",
+      headers = {
+        ["Accept"] = "application/json",
+        ["Content-Type"] = "application/json",
+      },
+      body = {
+        model = opts.model,
+        messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+        max_tokens = 2048,
+        stream = true,
+      },
+    }
+    end,
+    parse_response_data = function(data_stream, event_state, opts)
+    require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+    end,
+  },
+},
+mappings = {
+  --- @class AvanteConflictMappings
+  ask = "<leader>ua", -- ask
+  edit = "<leader>ue", -- edit
+  refresh = "<leader>ur", -- refresh
+  -- '/clear' to clear chat
+},
+hints = { enabled = false },
 })
-vim.keymap.set({ 'n', 'v' }, '<space>A', ':Gen<CR>')
--- vim.keymap.set('v', '<leader>]', ':Gen Enhance_Grammar_Spelling<CR>') -- You can also directly invoke it with one of the predefined prompts or your custom prompts:
+EOF
+nmap <silent> <leader>uc <Plug>(AvanteChat)
+
+"render-markdown
+lua << EOF
+require('render-markdown').setup {
+	file_types = { "markdown", "Avante" },
+	enable = true,
+}
+EOF
+
+"img-clip
+lua << EOF
+require('img-clip').setup({
+	-- recommended settings
+	default = {
+		embed_image_as_base64 = false,
+		prompt_for_file_name = false,
+		drag_and_drop = {
+			insert_mode = true,
+		},
+	},
+})
 EOF
 
 "todo-comments
