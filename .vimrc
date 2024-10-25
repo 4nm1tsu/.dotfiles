@@ -316,6 +316,8 @@ nmap <silent> <Space>F :ALEFix<CR>
 let g:coc_global_extensions = ['coc-db', 'coc-json', 'coc-texlab', 'coc-sql', 'coc-sh', 'coc-pyright', 'coc-pydocstring', 'coc-phpls', 'coc-html', 'coc-htmlhint', 'coc-css', 'coc-cssmodules', 'coc-go', 'coc-clangd', 'coc-emoji', 'coc-vimlsp', 'coc-spell-checker', 'coc-yaml', 'coc-yank', 'coc-markdownlint', 'coc-snippets', 'coc-highlight', 'coc-tsserver', 'coc-vetur', 'coc-lightbulb', 'coc-java', 'coc-haxe', 'coc-lua', 'coc-eslint', 'coc-toml', 'coc-diagnostic', 'coc-prettier', 'coc-lua', 'coc-docker']
 "'coc-word', 'coc-translator', 'coc-xml', 'coc-graphql'
 
+nnoremap <leader>uu i<c-r>=trim(system('uuidgen'))<cr><esc>
+
 "signatuer表示
 inoremap <silent> <C-h> <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
