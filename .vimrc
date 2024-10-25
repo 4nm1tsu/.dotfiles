@@ -1191,6 +1191,28 @@ hints = { enabled = false },
 EOF
 nmap <silent> <leader>uc <Plug>(AvanteChat)
 
+"render-markdown
+lua << EOF
+require('render-markdown').setup {
+	file_types = { "markdown", "Avante" },
+	enable = true,
+}
+EOF
+
+"img-clip
+lua << EOF
+require('img-clip').setup({
+	-- recommended settings
+	default = {
+		embed_image_as_base64 = false,
+		prompt_for_file_name = false,
+		drag_and_drop = {
+			insert_mode = true,
+		},
+	},
+})
+EOF
+
 "todo-comments
 lua << EOF
 require("todo-comments").setup {
