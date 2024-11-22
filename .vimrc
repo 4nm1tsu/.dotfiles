@@ -1159,7 +1159,7 @@ provider = "ollama",
 vendors = {
   ---@type AvanteProvider
   ollama = {
-    ["local"] = true,
+    api_key_name = "",
     endpoint = "127.0.0.1:11434/v1",
     model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
     parse_curl_args = function(opts, code_opts)
