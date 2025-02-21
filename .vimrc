@@ -70,7 +70,7 @@ set number " 行番号を表示
 " nnoremap <up> gk
 
 set showmatch " 括弧の対応関係を一瞬表示する
-source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する(タグジャンプ)
+" source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する(タグジャンプ)
 
 set wildmenu "コマンドモードのタブ補完
 
@@ -78,7 +78,7 @@ set wildmenu "コマンドモードのタブ補完
 if &term =~ "xterm"
   let &t_ti .= "\e[?2004h"
   let &t_te .= "\e[?2004l"
-  let &pastetoggle = "\e[201~"
+  "let &pastetoggle = "\e[201~"
 
   function XTermPasteBegin(ret)
     set paste
