@@ -1455,3 +1455,8 @@ require'nvim-treesitter.configs'.setup {
   additional_vim_regex_highlighting = false,
 }
 EOF
+
+"temporary
+highlight StatusLine term=None cterm=None gui=None " lualine
+highlight StatusLineNC term=None cterm=None gui=None " lualine
+highlight TabLineFill term=None cterm=None gui=None " bufferline
