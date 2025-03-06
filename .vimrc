@@ -1159,27 +1159,10 @@ provider = "ollama",
 vendors = {
   ---@type AvanteProvider
   ollama = {
+    __inherited_from = "openai",
     api_key_name = "",
     endpoint = "127.0.0.1:11434/v1",
     model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
-    parse_curl_args = function(opts, code_opts)
-    return {
-      url = opts.endpoint .. "/chat/completions",
-      headers = {
-        ["Accept"] = "application/json",
-        ["Content-Type"] = "application/json",
-      },
-      body = {
-        model = opts.model,
-        messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
-        max_tokens = 2048,
-        stream = true,
-      },
-    }
-    end,
-    parse_response_data = function(data_stream, event_state, opts)
-    require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-    end,
   },
 },
 mappings = {
