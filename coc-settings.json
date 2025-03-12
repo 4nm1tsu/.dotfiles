@@ -8,7 +8,7 @@
   "diagnostic.enableHighlightLineNumber": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": "labeling",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd",
   "clangd.checkUpdates": true,
   "clangd.inlayHints.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
