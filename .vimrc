@@ -1165,15 +1165,31 @@ ollama = {
 },
 mappings = {
   --- @class AvanteConflictMappings
-  ask = "<leader>ua", -- ask
-  edit = "<leader>ue", -- edit
+  -- ask = "<leader>ua", -- ask
+  -- edit = "<leader>ue", -- edit
   refresh = "<leader>ur", -- refresh
   -- '/clear' to clear chat
+  sidebar = {
+    close = {
+      normal = nil, -- Do not close with ESC
+    }
+  },
 },
 hints = { enabled = false },
+windows = {
+  width = 40,
+  edit = {
+    start_insert = false,
+  },
+  ask = {
+    start_insert = false,
+  }
+}
 })
 EOF
-nmap <silent> <leader>uc <Plug>(AvanteChat)
+"nmap <silent> <leader>uc <Plug>(AvanteChat)
+nmap <silent> <space>u <Plug>(AvanteToggle)
+vmap <silent> <space>u <Plug>(AvanteAsk)
 
 "render-markdown
 lua << EOF
