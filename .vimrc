@@ -1156,11 +1156,9 @@ lua << EOF
 require('avante_lib').load()
 require('avante').setup({
 provider = "ollama",
-vendors = {
+ollama = {
   ---@type AvanteProvider
   ollama = {
-    __inherited_from = "openai",
-    api_key_name = "",
     endpoint = "127.0.0.1:11434/v1",
     model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
   },
