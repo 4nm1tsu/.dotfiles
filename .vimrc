@@ -668,7 +668,11 @@ require("telescope").setup({
 defaults = {
   mappings = {
     i = {
-      ["<esc>"] = actions.close,
+      ["<esc>"] = {
+        actions.close,
+        type = 'action',
+				opts = { nowait = true, silent = true },
+      },
     },
   },
   sorting_strategy = "ascending",
