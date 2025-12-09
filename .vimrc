@@ -1159,36 +1159,20 @@ autocmd! User avante.nvim
 lua << EOF
 require('avante_lib').load()
 require('avante').setup({
-provider = "ollama",
-ollama = {
-  ---@type AvanteProvider
-  ollama = {
-    endpoint = "127.0.0.1:11434/v1",
-    model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
+  provider = "openai",
+
+  providers = {
+    openai = {
+      endpoint = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1/",
+      model = "gpt-5.1",
+      -- max_tokens = 16384,
+    },
+
+    ollama = {
+      endpoint = "http://127.0.0.1:11434/v1",
+      model = "Llama-3-ELYZA-JP-8B-q4_k_m.gguf:latest",
+    },
   },
-},
-mappings = {
-  --- @class AvanteConflictMappings
-  -- ask = "<leader>ua", -- ask
-  -- edit = "<leader>ue", -- edit
-  refresh = "<leader>ur", -- refresh
-  -- '/clear' to clear chat
-  sidebar = {
-    close = {
-      normal = nil, -- Do not close with ESC
-    }
-  },
-},
-hints = { enabled = false },
-windows = {
-  width = 40,
-  edit = {
-    start_insert = false,
-  },
-  ask = {
-    start_insert = false,
-  }
-}
 })
 EOF
 "nmap <silent> <leader>uc <Plug>(AvanteChat)
