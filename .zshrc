@@ -231,3 +231,5 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 zinit load zsh-users/zsh-syntax-highlighting
+
+export AVANTE_OPENAI_API_KEY=""
