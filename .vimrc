@@ -1164,7 +1164,7 @@ require('avante').setup({
   providers = {
     openai = {
       endpoint = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1/",
-      model = "gpt-5.1",
+      model = "gpt-5.2",
       -- max_tokens = 16384,
     },
 
