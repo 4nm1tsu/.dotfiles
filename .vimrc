@@ -183,7 +183,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
 Plug 'honza/vim-snippets'
 "Plug 'dstein64/nvim-scrollview'
 Plug 'mfussenegger/nvim-dap'
@@ -1427,18 +1427,31 @@ let g:coc_filetype_map = {
 
 "treesitter
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    disable = { }
-  },
-  indent = {
-    enable = true,
-    disable = { },
-  },
-  ensure_installed = 'all',
-  additional_vim_regex_highlighting = false,
-}
+require("nvim-treesitter").setup({})
+
+local group = vim.api.nvim_create_augroup("treesitter_all", {})
+
+-- 起動時に全パーサーをチェックして不足分だけインストール
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = group,
+  once = true,
+  callback = function()
+    pcall(vim.cmd, "TSInstall all")
+  end,
+})
+
+-- FileType ごとに Tree-sitter を有効化
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+
+    -- highlight
+    pcall(vim.treesitter.start)
+
+    -- indent
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+
+})
 EOF
 
 "temporary
