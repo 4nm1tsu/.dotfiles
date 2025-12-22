@@ -155,7 +155,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'cohama/lexima.vim'
-Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments avante.nvim
+Plug 'nvim-lua/plenary.nvim' " for telescope, gitsigns, todo-comments avante.nvim mcphub
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/dressing.nvim' " for avante.nvim
 Plug 'embear/vim-localvimrc'
@@ -218,6 +218,7 @@ Plug 'nosduco/remote-sshfs.nvim'
 Plug 'HakonHarnes/img-clip.nvim' "for avante.nvim
 Plug 'MeanderingProgrammer/render-markdown.nvim' "for avante.nvim
 Plug 'yetone/avante.nvim', {'branch': 'main', 'do': 'make'}
+Plug 'ravitemer/mcphub.nvim', { 'do': 'npm install -g mcp-hub@latest && nodenv rehash' }
 Plug 'nosduco/remote-sshfs.nvim'
 
 " Initialize plugin system
@@ -1154,13 +1155,32 @@ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=und
 nnoremap <silent><space>h :DiffviewFileHistory %<CR>
 " :tabclose to close
 
+"mcphub
+lua << EOF
+require('mcphub').setup({
+  auto_approve = true,
+})
+EOF
+
 "avante.nvim
 autocmd! User avante.nvim
 lua << EOF
 require('avante_lib').load()
 require('avante').setup({
-  provider = "openai",
+  -- system_prompt as function ensures LLM always has latest MCP server state
+  -- This is evaluated for every message, even in existing chats
+  system_prompt = function()
+      local hub = require("mcphub").get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ""
+  end,
+  -- Using function prevents requiring mcphub before it's loaded
+  custom_tools = function()
+      return {
+          require("mcphub.extensions.avante").mcp_tool(),
+      }
+  end,
 
+  provider = "openai",
   providers = {
     openai = {
       endpoint = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1/",
