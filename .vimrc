@@ -215,7 +215,7 @@ Plug 'SmiteshP/nvim-navic' " for incline.nvim
 Plug 'hedyhli/outline.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'nosduco/remote-sshfs.nvim'
-Plug 'HakonHarnes/img-clip.nvim' "for avante.nvim
+"Plug 'HakonHarnes/img-clip.nvim' "for avante.nvim
 Plug 'MeanderingProgrammer/render-markdown.nvim' "for avante.nvim
 Plug 'yetone/avante.nvim', {'branch': 'main', 'do': 'make'}
 Plug 'ravitemer/mcphub.nvim', { 'do': 'npm install -g mcp-hub@latest && nodenv rehash' }
@@ -1208,18 +1208,18 @@ require('render-markdown').setup {
 EOF
 
 "img-clip
-lua << EOF
-require('img-clip').setup({
-	-- recommended settings
-	default = {
-		embed_image_as_base64 = false,
-		prompt_for_file_name = false,
-		drag_and_drop = {
-			insert_mode = true,
-		},
-	},
-})
-EOF
+"lua << EOF
+"require('img-clip').setup({
+"	-- recommended settings
+"	default = {
+"		embed_image_as_base64 = false,
+"		prompt_for_file_name = false,
+"		drag_and_drop = {
+"			insert_mode = true,
+"		},
+"	},
+"})
+"EOF
 
 "todo-comments
 lua << EOF
