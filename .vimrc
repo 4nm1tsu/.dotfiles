@@ -220,6 +220,8 @@ Plug 'MeanderingProgrammer/render-markdown.nvim' "for avante.nvim
 Plug 'yetone/avante.nvim', {'branch': 'main', 'do': 'make'}
 Plug 'ravitemer/mcphub.nvim', { 'do': 'npm install -g mcp-hub@latest && nodenv rehash' }
 Plug 'nosduco/remote-sshfs.nvim'
+Plug 'ravsii/tree-sitter-d2', { 'do': 'make nvim-install' }
+Plug 'terrastruct/d2-vim'
 
 " Initialize plugin system
 call plug#end()
