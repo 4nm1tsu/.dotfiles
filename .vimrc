@@ -105,7 +105,7 @@ set softtabstop=-1 " 連続した空白に対してタブキーやバックス�
 autocmd BufNewFile,BufRead *.s set filetype=nasm
 
 "数行余裕を持たせてスクロールする
-:set scrolloff=7
+set scrolloff=7
 
 "クリップボードをつかえるようにする(要xclip)
 set clipboard=unnamedplus
