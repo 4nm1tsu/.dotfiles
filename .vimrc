@@ -1184,7 +1184,7 @@ require('avante').setup({
   providers = {
     openai = {
       endpoint = "xxx",
-      model = "gpt-5.2",
+      model = "gpt-5.1",
       -- max_tokens = 16384,
     },
 
