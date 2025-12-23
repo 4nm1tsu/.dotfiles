@@ -79,5 +79,6 @@
       "filetypes": ["dockercompose"],
       "rootPatterns": [".git", ".env", "docker-compose.yml", "compose.yml"]
     }
-  }
+  },
+  "python.linting.ruffEnabled": true,
 }
