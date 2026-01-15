@@ -174,7 +174,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'dhruvasagar/vim-table-mode'
 "Plug 'Yggdroot/indentLine'
 Plug 'shellRaining/hlchunk.nvim'
-Plug '4nm1tsu/iceberg.vim'
+"Plug '4nm1tsu/iceberg.vim'
+Plug 'sainnhe/everforest'
 "Plug 'ghifarit53/tokyonight-vim'
 "Plug 'kyazdani42/blue-moon'
 "Plug 'pbondoer/vim-42header'
@@ -226,7 +227,7 @@ Plug 'terrastruct/d2-vim'
 " Initialize plugin system
 call plug#end()
 
-colorscheme iceberg
+colorscheme everforest
 hi! link DiagnosticError ALEErrorSign
 hi! link DiagnosticWarning ALEWarningSign
 hi! link DiagnosticInfo ALEInfoSign
