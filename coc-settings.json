@@ -8,7 +8,7 @@
   "diagnostic.enableHighlightLineNumber": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": "labeling",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/21.1.0/clangd_21.1.0/bin/clangd",
   "clangd.checkUpdates": true,
   "clangd.inlayHints.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
@@ -75,10 +75,21 @@
   "languageserver": {
     "dockercompose": {
       "command": "docker-compose-langserver",
-      "args": ["--stdio"],
-      "filetypes": ["dockercompose"],
-      "rootPatterns": [".git", ".env", "docker-compose.yml", "compose.yml"]
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "dockercompose"
+      ],
+      "rootPatterns": [
+        ".git",
+        ".env",
+        "docker-compose.yml",
+        "compose.yml"
+      ]
     }
   },
   "python.linting.ruffEnabled": true,
+  "semanticTokens.enable": true,
+  "eslint.format.enable": true
 }
