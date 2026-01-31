@@ -231,3 +231,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 zinit load zsh-users/zsh-syntax-highlighting
+
+# flatpak
+if type "flatpak" > /dev/null 2>&1; then
+  export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+fi
