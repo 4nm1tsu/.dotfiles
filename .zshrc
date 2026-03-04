@@ -24,9 +24,6 @@ setopt share_history
 # 余分な空白を削除
 setopt hist_reduce_blanks
 
-autoload -Uz compinit
-compinit
-
 #代替コマンドのエイリアス
 if type "lsd" > /dev/null 2>&1; then
     alias ll='lsd -lga -S'
@@ -231,6 +228,10 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 zinit load zsh-users/zsh-syntax-highlighting
+
+autoload -Uz compinit
+compinit -u
+zinit cdreplay -q
 
 # flatpak
 if type "flatpak" > /dev/null 2>&1; then
