@@ -237,3 +237,6 @@ zinit cdreplay -q
 if type "flatpak" > /dev/null 2>&1; then
   export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 fi
+
+# for Bitwarden ssh-agent
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
