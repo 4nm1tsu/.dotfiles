@@ -240,3 +240,6 @@ fi
 
 # for Bitwarden ssh-agent
 export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+
+# Added by Hugging Face CLI installer
+export PATH="/home/hibiki/.local/bin:$PATH"
