@@ -46,3 +46,8 @@
 [filter "gitignore"]
   smudge = cat
   clean = "sed -e '/gitignore$/'d -e '/gitignore_start/,/gitignore_end/'d"
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = false
